@@ -32,8 +32,8 @@ export const FileInputForm: React.FC<FileInputFormProps> = ({
   const errorMessage = useSelector(
     (state: { tool: ToolState }) => state.tool.errorMessage
   );
-  const arrangement = useSelector(
-    (state: { tool: ToolState }) => state.tool.arrangement
+  const prompt = useSelector(
+    (state: { tool: ToolState }) => state.tool.prompt
   );
   const dispatch = useDispatch();
   // file store
@@ -68,7 +68,7 @@ export const FileInputForm: React.FC<FileInputFormProps> = ({
           {
             path,
             errorMessage,
-            arrangement
+            prompt
           },
           files,
           errors,
@@ -112,8 +112,8 @@ export const FileInputForm: React.FC<FileInputFormProps> = ({
           onClick={(e) => {
             e.stopPropagation();
           }}
-          onChange={(e) => {
-            handleChange(e, dispatch, setFiles, data.type, errors, files, {
+          onChange={async (e) => {
+            await handleChange(e, dispatch, setFiles, data.type, errors, files, {
               path,
             });
           }}

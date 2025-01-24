@@ -3,8 +3,8 @@ const { pathname } = Astro.url;
 const { title, pageProps, to } = Astro.props;
 let lang = "en";
 let dir = "ltr";
-// @ts-ignore
-import { fetchSubscriptionStatus } from "fetch-subscription-status/dist/fetchSubscriptionStatus.mjs";
+
+import { fetchSubscriptionStatus } from "fetch-subscription-status";
 
 let locale;
 
@@ -99,6 +99,10 @@ import { howToSchema } from "./how-to/how-to";
                 }
             });
         </script>
+        <script
+            type="text/partytown"
+            src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"
+        ></script>
     </head>
     <body>
         <main>

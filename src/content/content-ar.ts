@@ -99,34 +99,35 @@ export const tools: _tools = {
 
 export const edit_page: _edit_page = {
   edit_page_titles: {
-    merge_pages: "Merge Pages options",
+    pdf_assistant: "خيارات مساعد PDF",
   },
-  loader_text: "please wait...",
-  add_more_button: "Add more pages",
+  loader_text: "يرجى الانتظار...",
+  add_more_button: "إضافة المزيد من الصفحات",
   action_buttons: {
-    merge_pages: "Merge Pages",
+    pdf_assistant: "معالجة PDF",
   },
-  pages: "pages",
-  page: "page",
+  pages: "صفحات",
+  page: "صفحة",
   options: {
-    info: "حدد ترتيب الصفحات من القائمة المنسدلة أدناه. سيحدد هذا كيفية ترتيب الصفحات في مستند PDF المدمج.",
-    placeholder: "حدد ترتيب الصفحات"
-  }
+    info: "أضف ملاحظتك",
+    placeholder: "أرسل رسالة إلى مساعد PDFEquips",
+  },
 };
 
 export const downloadFile: _downloadFile = {
   titles: {
-    "merge-pages": ["PDF pages have been merged!", "PDF page has been merged!"],
+    "pdf-assistant": ["تم إكمال مهمتك بنجاح!", "تم إكمال مهامك بنجاح!"],
   },
 
   btnText: {
-    "merge-pages": ["Download Merged PDF pages", "Download Merged PDF page"],
+    "pdf-assistant": ["تنزيل الملف المعالج", "تنزيل الملفات المعالجة"],
   },
 
   backto: {
-    "merge-pages": "Back To Merge Pages",
+    "pdf-assistant": "العودة إلى مساعد PDF",
   },
 };
+
 
 export const footer: _footer = {
   brand: "PDFEquips",
@@ -173,11 +174,6 @@ export const errors: _errors = {
       "الملف يحتوي على بيانات صورة غير صالحة. يرجى التأكد من تنسيق جميع الصور بشكل صحيح.",
     code: "ERR_INVALID_IMAGE_DATA",
   },
-  SECURITY_RISK: {
-    message:
-      "الملف يحتوي على مخاطر أمان ولا يمكن معالجته. يرجى اختيار ملف صالح.",
-    code: "ERR_SECURITY_RISK",
-  },
   MAX_FILES_EXCEEDED: {
     message:
       "لقد تجاوزت الحد الأقصى لعدد الملفات المسموح به. يرجى حذف بعض الملفات والمحاولة مرة أخرى.",
@@ -197,8 +193,12 @@ export const errors: _errors = {
       "حدث خطأ في الشبكة. يرجى التحقق من اتصالك بالإنترنت وحاول مرة أخرى.",
     code: "ERR_NETWORK",
   },
-  ERR_UPLOAD_COUNT: {
-    message: "يرجى رفع ملفين على الأقل للدمج.",
-    code: "ERR_UPLOAD_COUNT",
+  ERR_MAX_USAGE: {
+    message: "تم تجاوز الحد الأقصى للاستخدام. يرجى الترقية أو الاشتراك لمواصلة استخدام هذه الخدمة.",
+    code: "ERR_MAX_USAGE",
+  },
+  ERR_FILE_PAGE_LIMIT: {
+    message: "الملف الذي تم تحميله يتجاوز الحد الأقصى لعدد الصفحات وهو 10. يرجى تحميل ملف يحتوي على صفحات أقل.",
+    code: "ERR_FILE_PAGE_LIMIT",
   },
 };

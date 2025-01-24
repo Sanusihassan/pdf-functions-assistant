@@ -1,10 +1,8 @@
-import type { RefObject } from "../react-astro";
-
 export const downloadConvertedFile = (
   response: any,
   fileType: string,
   fileName: string,
-  downloadBtn: RefObject<HTMLAnchorElement>
+  downloadBtn: React.RefObject<HTMLAnchorElement>
 ) => {
   const blob = new Blob([response.data], { type: fileType });
   const url = URL.createObjectURL(blob);

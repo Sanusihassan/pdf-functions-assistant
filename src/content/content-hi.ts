@@ -94,34 +94,35 @@ export const pageProps: SeoProps = {
 
 export const edit_page: _edit_page = {
   edit_page_titles: {
-    merge_pages: "पृष्ठ मर्ज विकल्प",
+    pdf_assistant: "PDF सहायक विकल्प",
   },
   loader_text: "कृपया प्रतीक्षा करें...",
-  add_more_button: "और पृष्ठ जोड़ें",
+  add_more_button: "अधिक पृष्ठ जोड़ें",
   action_buttons: {
-    merge_pages: "पृष्ठ मर्ज करें",
+    pdf_assistant: "PDF संसाधित करें",
   },
   pages: "पृष्ठ",
   page: "पृष्ठ",
   options: {
-    info: "नीचे दिए गए ड्रॉपडाउन मेनू से एक पृष्ठ व्यवस्था का चयन करें। यह निर्धारित करेगा कि संयुक्त पीडीएफ दस्तावेज़ में पृष्ठ कैसे व्यवस्थित किए गए हैं।",
-    placeholder: "पृष्ठ व्यवस्था चुनें"
-  }
+    info: "अपना संकेत जोड़ें",
+    placeholder: "PDFEquips सहायक को संदेश भेजें",
+  },
 };
 
 export const downloadFile: _downloadFile = {
   titles: {
-    "merge-pages": ["PDF पृष्ठ मर्ज कर दिए गए हैं!", "PDF पृष्ठ मर्ज कर दिया गया है!"],
+    "pdf-assistant": ["आपका कार्य सफलतापूर्वक पूरा हो गया है!", "आपके कार्य सफलतापूर्वक पूरे हो गए हैं!"],
   },
 
   btnText: {
-    "merge-pages": ["मर्ज किए गए PDF पृष्ठ डाउनलोड करें", "मर्ज किया गया PDF पृष्ठ डाउनलोड करें"],
+    "pdf-assistant": ["प्रक्रियाजित फ़ाइल डाउनलोड करें", "प्रक्रियाजित फ़ाइलें डाउनलोड करें"],
   },
 
   backto: {
-    "merge-pages": "पृष्ठ मर्ज करने पर वापस जाएं",
+    "pdf-assistant": "PDF सहायक पर वापस जाएं",
   },
 };
+
 
 export const tools: _tools = {
   select: "चुनें",
@@ -176,11 +177,6 @@ export const errors: _errors = {
       "फ़ाइल में अवैध छवि डेटा है। कृपया सुनिश्चित करें कि सभी छवियाँ सही ढंग से फ़ॉर्मेटेड हैं।",
     code: "ERR_INVALID_IMAGE_DATA",
   },
-  SECURITY_RISK: {
-    message:
-      "फ़ाइल में सुरक्षा जोखिम हो सकता है और इसे प्रसंस्करण नहीं किया जा सकता है। कृपया एक मान्य फ़ाइल चुनें।",
-    code: "ERR_SECURITY_RISK",
-  },
   MAX_FILES_EXCEEDED: {
     message:
       "आपने अनुमति दी हुई अधिकतम फ़ाइलों की संख्या पार कर दी है। कृपया कुछ फ़ाइलें हटाएं और पुनः प्रयास करें।",
@@ -200,9 +196,12 @@ export const errors: _errors = {
       "नेटवर्क में त्रुटि हो गई है। कृपया अपना इंटरनेट कनेक्शन जांचें और पुनः प्रयास करें।",
     code: "ERR_NETWORK",
   },
-
-  ERR_UPLOAD_COUNT: {
-    message: "कृपया फ्यूजन करने के लिए कम से कम दो फ़ाइलें अपलोड करें।",
-    code: "ERR_UPLOAD_COUNT",
+  ERR_MAX_USAGE: {
+    message: "अधिकतम उपयोग सीमा पार हो गई है। कृपया इस सेवा का उपयोग जारी रखने के लिए अपग्रेड करें या सब्सक्राइब करें।",
+    code: "ERR_MAX_USAGE",
+  },
+  ERR_FILE_PAGE_LIMIT: {
+    message: "अपलोड की गई फ़ाइल 10 पृष्ठों की सीमा से अधिक है। कृपया कम पृष्ठों वाली फ़ाइल अपलोड करें।",
+    code: "ERR_FILE_PAGE_LIMIT",
   },
 };

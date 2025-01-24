@@ -17,9 +17,9 @@ const HowTo = ({ howTo, alt, imgSrc }: {
             <div className={`how-to row align-items-center py-3${stateShowTool ? "" : " d-none"}`}>
                 <div className="col-12 col-md-6 text-center image">
                     <picture>
-                        <source srcSet={`/images/${imgSrc}-ad-xs.png`} media="(max-width: 575px)" />
-                        <source srcSet={`/images/${imgSrc}-ad-md.png`} media="(min-width: 575px) and (max-width: 1200px)" />
-                        <source srcSet={`/images/${imgSrc}-ad-xl.png`} media="(min-width: 1200px)" />
+                        <source srcSet={`/images/${imgSrc}-xs.png`} media="(max-width: 575px)" />
+                        <source srcSet={`/images/${imgSrc}-md.png`} media="(min-width: 575px) and (max-width: 1200px)" />
+                        <source srcSet={`/images/${imgSrc}-xl.png`} media="(min-width: 1200px)" />
                         <img src={`/pdfequips.png`} className="img-fluid" alt={alt} title={alt} />
                     </picture>
 

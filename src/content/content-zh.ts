@@ -93,34 +93,35 @@ export const pageProps: SeoProps = {
 
 export const edit_page: _edit_page = {
   edit_page_titles: {
-    merge_pages: "合并页面选项",
+    pdf_assistant: "PDF助手选项",
   },
   loader_text: "请稍候...",
   add_more_button: "添加更多页面",
   action_buttons: {
-    merge_pages: "合并页面",
+    pdf_assistant: "处理PDF",
   },
-  pages: "页",
+  pages: "页面",
   page: "页",
   options: {
-    info: "从下面的下拉菜单中选择页面布局。这将确定在合并的PDF文档中页面的排列方式。",
-    placeholder: "选择页面布局"
-  }
+    info: "添加您的提示",
+    placeholder: "向PDFEquips助手发送消息",
+  },
 };
 
 export const downloadFile: _downloadFile = {
   titles: {
-    "merge-pages": ["PDF页面已合并！", "PDF页面已合并！"],
+    "pdf-assistant": ["您的任务已成功完成！", "您的任务已成功完成！"],
   },
 
   btnText: {
-    "merge-pages": ["下载合并的PDF页面", "下载合并的PDF页面"],
+    "pdf-assistant": ["下载已处理文件", "下载已处理文件"],
   },
 
   backto: {
-    "merge-pages": "返回到合并页面",
+    "pdf-assistant": "返回PDF助手",
   },
 };
+
 
 export const tools: _tools = {
   select: "选择",
@@ -172,10 +173,6 @@ export const errors: _errors = {
     message: "文件包含无效的图像数据。请确保所有图像格式正确。",
     code: "ERR_INVALID_IMAGE_DATA",
   },
-  SECURITY_RISK: {
-    message: "文件存在安全风险，无法处理。请选择一个有效的文件。",
-    code: "ERR_SECURITY_RISK",
-  },
   MAX_FILES_EXCEEDED: {
     message: "您已超出允许的最大文件数。请删除一些文件并重试。",
     code: "ERR_MAX_FILES_EXCEEDED",
@@ -192,8 +189,12 @@ export const errors: _errors = {
     message: "网络错误，请检查您的互联网连接并重试。",
     code: "ERR_NETWORK",
   },
-  ERR_UPLOAD_COUNT: {
-    message: "请至少上传两个文件以合并。",
-    code: "ERR_UPLOAD_COUNT",
+  ERR_MAX_USAGE: {
+    message: "已超出最大使用限制。请升级或订阅以继续使用此服务。",
+    code: "ERR_MAX_USAGE",
+  },
+  ERR_FILE_PAGE_LIMIT: {
+    message: "上传的文件超过了10页的限制。请上传页数较少的文件。",
+    code: "ERR_FILE_PAGE_LIMIT",
   },
 };

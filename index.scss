@@ -31,6 +31,8 @@ $color-map: (
     "pdf-assistant": #38ada9
 );
 
+$main-color: #38ada9;
+
 body {
     @include ar-wrapper {
         text-align: right !important;
@@ -148,3 +150,26 @@ a.dropdown-item {
 }
 
 @import "pdfequips-footer/scss/footer";
+
+
+.styled-textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    transition: all 0.3s ease;
+    resize: none;
+    font-size: 0.875rem;
+    color: #333;
+
+    &::placeholder {
+        color: #9ca3af;
+    }
+
+    &:focus {
+        outline: none;
+        border-color: transparent;
+        box-shadow: 0 0 0 2px $main-color;
+    }
+}

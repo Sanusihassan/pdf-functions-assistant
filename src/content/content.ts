@@ -89,41 +89,34 @@ export const tools = {
 
 export const edit_page = {
   edit_page_titles: {
-    merge_pages: "Merge Pages options",
+    pdf_assistant: "PDF assistant options",
   },
   loader_text: "please wait...",
   add_more_button: "Add more pages",
   action_buttons: {
-    merge_pages: "Merge Pages",
+    pdf_assistant: "Process PDF",
   },
   pages: "pages",
   page: "page",
   options: {
-    info: "Select a page arrangement from the dropdown menu below. This will determine how the pages are arranged in the merged PDF document.",
-    placeholder: "Select Page Arrangement"
+    info: "Add your prompt",
+    placeholder: "Message PDFEquips Assistant"
   }
 };
 
 export const downloadFile = {
   titles: {
-    "merge-pages": ["PDF pages have been merged!", "PDF page has been merged!"],
+    "pdf-assistant": ["Your task has been successfully completed!", "Your tasks have been successfully completed!"],
   },
 
   btnText: {
-    "merge-pages": ["Download Merged PDF pages", "Download Merged PDF page"],
+    "pdf-assistant": ["Download processed file", "Download processed files"],
   },
 
   backto: {
-    "merge-pages": "Back To Merge Pages",
+    "pdf-assistant": "Back To PDF assistant",
   },
 };
-
-export const footer = {
-  brand: "PDFEquips",
-  terms: "terms",
-  conditions: "conditions",
-  privacy_policy: "privacy policy",
-}
 
 export const errors = {
   EMPTY_FILE: {
@@ -164,11 +157,6 @@ export const errors = {
       "The file contains invalid image data. Please ensure all images are properly formatted.",
     code: "ERR_INVALID_IMAGE_DATA",
   },
-  SECURITY_RISK: {
-    message:
-      "The file contains a security risk and cannot be processed. Please choose a valid file.",
-    code: "ERR_SECURITY_RISK",
-  },
   MAX_FILES_EXCEEDED: {
     message:
       "You have exceeded the maximum number of files allowed. Please delete some files and try again.",
@@ -183,14 +171,19 @@ export const errors = {
       "An unknown error occurred. Please try again later or contact support.",
     code: "ERR_UNKNOWN",
   },
-  // i want another error like this but when only one file is uploaded
   ERR_NETWORK: {
     message:
       "A network error occurred. Please check your internet connection and try again.",
     code: "ERR_NETWORK",
   },
-  ERR_UPLOAD_COUNT: {
-    message: "Please upload at least two files to merge.",
-    code: "ERR_UPLOAD_COUNT",
+  ERR_MAX_USAGE: {
+    message:
+      "Maximum usage exceeded. Please upgrade or subscribe to continue using this service.",
+    code: "ERR_MAX_USAGE",
+  },
+  ERR_FILE_PAGE_LIMIT: {
+    message:
+      "The uploaded file exceeds the page limit of 10. Please upload a file with fewer pages.",
+    code: "ERR_FILE_PAGE_LIMIT",
   },
 };

@@ -1,11 +1,11 @@
-import type { Dispatch, SetStateAction } from "../../react-astro";
+// import type { Dispatch, SetStateAction } from "react-astro";
 
-export function useSelectedOption(
-  setSelectedOption: Dispatch<SetStateAction<number>>
-) {
-  const handleOptionClick = (index: number) => {
-    setSelectedOption(index);
-  };
+// export function useSelectedOption(
+//   setSelectedOption: Dispatch<SetStateAction<number>>
+// ) {
+//   const handleOptionClick = (index: number) => {
+//     setSelectedOption(index);
+//   };
 
-  return handleOptionClick;
-}
+//   return handleOptionClick;
+// }

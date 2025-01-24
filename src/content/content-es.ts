@@ -100,34 +100,35 @@ export const tools: _tools = {
 
 export const edit_page: _edit_page = {
   edit_page_titles: {
-    merge_pages: "Opciones de fusión de páginas",
+    pdf_assistant: "Opciones del asistente PDF",
   },
-  loader_text: "por favor espere...",
+  loader_text: "por favor espera...",
   add_more_button: "Agregar más páginas",
   action_buttons: {
-    merge_pages: "Fusionar páginas",
+    pdf_assistant: "Procesar PDF",
   },
   pages: "páginas",
   page: "página",
   options: {
-    info: "Seleccione una disposición de página del menú desplegable a continuación. Esto determinará cómo se organizan las páginas en el documento PDF combinado.",
-    placeholder: "Seleccione disposición de página"
-  }
+    info: "Agrega tu indicación",
+    placeholder: "Enviar mensaje al Asistente de PDFEquips",
+  },
 };
 
 export const downloadFile: _downloadFile = {
   titles: {
-    "merge-pages": ["¡Las páginas PDF han sido fusionadas!", "¡La página PDF ha sido fusionada!"],
+    "pdf-assistant": ["¡Tu tarea se ha completado con éxito!", "¡Tus tareas se han completado con éxito!"],
   },
 
   btnText: {
-    "merge-pages": ["Descargar páginas PDF fusionadas", "Descargar página PDF fusionada"],
+    "pdf-assistant": ["Descargar archivo procesado", "Descargar archivos procesados"],
   },
 
   backto: {
-    "merge-pages": "Volver a Fusionar páginas",
+    "pdf-assistant": "Volver al asistente PDF",
   },
 };
+
 
 export const footer: _footer = {
   brand: "PDFEquips",
@@ -175,11 +176,6 @@ export const errors: _errors = {
       "El archivo contiene datos de imagen no válidos. Por favor, asegúrese de que todas las imágenes estén correctamente formateadas.",
     code: "ERR_INVALID_IMAGE_DATA",
   },
-  SECURITY_RISK: {
-    message:
-      "El archivo contiene un riesgo de seguridad y no se puede procesar. Por favor, elija un archivo válido.",
-    code: "ERR_SECURITY_RISK",
-  },
   MAX_FILES_EXCEEDED: {
     message:
       "Ha excedido el número máximo de archivos permitidos. Por favor, elimine algunos archivos e intente nuevamente.",
@@ -200,8 +196,12 @@ export const errors: _errors = {
       "Ha ocurrido un error en la red. Por favor, comprueba tu conexión a internet e inténtalo de nuevo.",
     code: "ERR_NETWORK",
   },
-  ERR_UPLOAD_COUNT: {
-    message: "Por favor, suba al menos dos archivos para fusionar.",
-    code: "ERR_UPLOAD_COUNT",
+  ERR_MAX_USAGE: {
+    message: "Se ha excedido el uso máximo. Por favor, actualice o suscríbase para continuar utilizando este servicio.",
+    code: "ERR_MAX_USAGE",
+  },
+  ERR_FILE_PAGE_LIMIT: {
+    message: "El archivo cargado excede el límite de páginas de 10. Por favor, cargue un archivo con menos páginas.",
+    code: "ERR_FILE_PAGE_LIMIT",
   },
 };

@@ -1,35 +1,35 @@
 import { type _howToSchema } from "./how-to";
 
 export const howToSchema: _howToSchema = {
-    "@context": "http://schema.org",
+    "@context": "https://schema.org",
     "@type": "HowTo",
-    name: "¿Cómo combinar páginas PDF?",
-    description: "Pasos para combinar múltiples páginas PDF en una sola página.",
+    name: "¿Cómo usar el asistente de PDF?",
+    description: "Pasos para utilizar el asistente de PDF en PDFEquips.",
     step: [
         {
             "@type": "HowToStep",
             name: "Paso 1",
-            text: "Abre la herramienta de Combinar Páginas en PDFEquips."
+            text: "Abre la herramienta Asistente de PDF en PDFEquips."
         },
         {
             "@type": "HowToStep",
             name: "Paso 2",
-            text: "Sube los archivos PDF que deseas combinar."
+            text: "Carga el archivo PDF que deseas procesar."
         },
         {
             "@type": "HowToStep",
             name: "Paso 3",
-            text: "Selecciona una disposición de página del menú desplegable. Esto determinará cómo se organizan las páginas en el documento PDF combinado."
+            text: "Agrega tu indicación o instrucción en el cuadro de texto. Por ejemplo, puedes pedir al asistente que resuma, extraiga datos o realice tareas específicas."
         },
         {
             "@type": "HowToStep",
             name: "Paso 4",
-            text: "Haz clic en el botón 'Combinar Páginas' para combinar las páginas según la disposición seleccionada."
+            text: "Haz clic en el botón 'Procesar PDF' para iniciar la operación impulsada por IA."
         },
         {
             "@type": "HowToStep",
             name: "Paso 5",
-            text: "Haz clic en el botón 'Descargar archivo PDF combinado' para guardar el archivo PDF combinado en tu dispositivo."
+            text: "Espera los resultados y descarga el archivo procesado cuando esté listo."
         }
     ]
 };

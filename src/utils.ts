@@ -4,8 +4,10 @@ import type { errors as _ } from "./content";
 import { setField } from "./store";
 import * as pdfjs from "pdfjs-dist";
 import { type PDFDocumentProxy, type PageViewport, type RenderTask } from "pdfjs-dist";
+import { canUseSiteToday, fetchSubscriptionStatus } from "fetch-subscription-status";
 
 // @ts-ignore
+// how can i optimize this using partytown? this is included in a astro.js app
 const pdfjsWorker = await import("pdfjs-dist/build/pdf.worker.min.mjs");
 // pdfjs.GlobalWorkerOptions = pdfjs.GlobalWorkerOptions || {};
 // pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker;
@@ -175,8 +177,7 @@ export const getPlaceHoderImageUrl = (extension: string) => {
 export const isDraggableExtension = (ext: string, asPath: string) => {
   return ext === ".jpg" || asPath.includes("merge-pdf");
 };
-
-export const validateFiles = (
+export const validateFiles = async (
   _files: FileList | File[],
   extension: string,
   errors: _,
@@ -186,6 +187,19 @@ export const validateFiles = (
   }
 ) => {
   const files = Array.from(_files); // convert FileList to File[] array
+  const status = await fetchSubscriptionStatus();
+  if (!canUseSiteToday(1) && !status) {
+    dispatch(setField({ errorMessage: errors.ERR_MAX_USAGE.message }));
+    dispatch(setField({ errorCode: "ERR_MAX_USAGE" }));
+    return false;
+  }
+
+  const pageCount = await calculatePages(files[0]);
+  if (pageCount > 10) {
+    dispatch(setField({ errorMessage: errors.ERR_FILE_PAGE_LIMIT.message }));
+    dispatch(setField({ errorCode: "ERR_FILE_PAGE_LIMIT" }));
+    return false;
+  }
 
   let allowedMimeTypes = [
     "application/pdf",
@@ -197,12 +211,7 @@ export const validateFiles = (
     "application/vnd.ms-powerpoint",
     "application/vnd.ms-excel",
   ];
-  // validation for merge-pdf page & empty files
-  if (state.path == "merge-pdf" && files.length <= 1) {
-    dispatch(setField({ errorMessage: errors.ERR_UPLOAD_COUNT.message }));
-    dispatch(setField({ errorCode: "ERR_UPLOAD_COUNT" }));
-    return false;
-  }
+
   if (files.length == 0) {
     dispatch(setField({ errorMessage: errors.NO_FILES_SELECTED.message }));
     dispatch(setField({ errorCode: "ERR_NO_FILES_SELECTED" }));
