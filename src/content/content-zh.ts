@@ -8,32 +8,88 @@ import type {
   downloadFile as _downloadFile,
   landing_page as _landing_page,
 } from "../content";
+import type { SeoProps } from "../head";
 
 export const tool: _tool = {
-  Merge_Pages: {
-    title: "合并PDF页面",
-    seoTitle: "在线合并PDF页面 - 将多个页面合并为一个",
-    description: "高效地将多个PDF页面合并成一个页面",
-    color: "var(--blue)",
+  PDF_Assistant: {
+    title: "PDF助手",
+    seoTitle: "AI PDF助手 - 提升您的PDF体验",
+    description: "由AI驱动的助手，轻松完成高级PDF任务。",
+    color: "#38ada9",
     type: ".pdf",
-    to: "/merge-pages",
+    to: "/pdf-assistant",
     features: [
       {
-        title: "高效合并",
-        description: "轻松将多个PDF页面合并成一个页面，简化您的文档。"
+        title: "AI驱动的任务",
+        description: "利用AI执行您的PDF任务、提取数据、总结内容等等。"
       },
       {
-        title: "自定义布局",
-        description: "指定每张纸上的页面数量，并按您喜欢的顺序排列它们。"
+        title: "节省时间的自动化",
+        description: "通过智能自动化简化您的工作流程，适用于复杂的PDF操作。"
       },
       {
-        title: "用户友好界面",
-        description: "享受简单直观的界面，让页面合并变得轻而易举。"
+        title: "一体化解决方案",
+        description: "在一个用户友好的平台上访问全面的PDF工具套件。"
       }
     ],
-    keywords: "合并PDF页面，组合PDF页面，PDF页面合并器，多页合并为一个PDF，整合PDF页面，PDF页面组合器，在线合并PDF页面，免费PDF页面合并器，在线合并PDF页面，合并多个PDF页面，PDF页面整合工具，安全PDF页面合并，无需注册合并PDF页面，PDF页面布局工具，免费在线PDF页面组合器，合并PDF表格，组合PDF跨页，PDF拼版工具"
+    keywords: "AI PDF助手, PDF功能工具, AI PDF助手帮助工具, PDF总结, PDF数据提取, 自动化PDF任务, 在线PDF AI, 高级PDF操作, 交互式PDF解决方案"
   },
 };
+
+export const pageProps: SeoProps = {
+  title: "PDFEquips | 您的AI驱动PDF助手",
+  description: "PDFEquips利用AI简化您的PDF任务。按章节拆分PDF，获取摘要，提取数据等。您的终极PDF助手就在这里！",
+  canonical: "https://www.pdfequips.com",
+  image: "https://www.pdfequips.com/images/pdf-assistant-zh.png",
+  images: [
+    {
+      url: "https://www.pdfequips.com/assets/images/pdf-assistant-zh.png",
+      width: 1200,
+      height: 630,
+      alt: "PDFEquips - 您的AI驱动PDF助手",
+    },
+  ],
+  lang: "zh",
+  keywords: [
+    "PDF助手",
+    "AI PDF工具",
+    "按章节拆分PDF",
+    "PDF摘要生成器",
+    "AI PDF聊天机器人",
+    "PDF处理",
+    "PDFEquips",
+    "AI驱动的PDF编辑器",
+  ],
+  noindex: false,
+  nofollow: false,
+  type: "website",
+  locale: "zh_CN",
+  structuredData: [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      name: "PDFEquips",
+      description:
+        "一个AI驱动的PDF助手，可以执行拆分PDF、摘要内容、提取数据等任务。",
+      applicationCategory: "Productivity",
+      operatingSystem: "All",
+      url: "https://www.pdfequips.com",
+      image: "https://www.pdfequips.com/assets/images/pdf-assistant-zh.png",
+      offers: {
+        "@type": "Offer",
+        price: "0.00",
+        priceCurrency: "USD",
+      },
+    },
+  ],
+  twitter: {
+    handle: "@PDFEquips",
+    site: "@PDFEquips",
+    cardType: "summary_large_image",
+  },
+};
+
+
 
 export const edit_page: _edit_page = {
   edit_page_titles: {

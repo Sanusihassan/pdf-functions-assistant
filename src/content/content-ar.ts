@@ -7,32 +7,89 @@ import type {
   downloadFile as _downloadFile,
   landing_page as _landing_page,
 } from "../content";
+import type { SeoProps } from "../head";
 
 export const tool: _tool = {
-  Merge_Pages: {
-    title: "دمج صفحات PDF",
-    seoTitle: "دمج صفحات PDF عبر الإنترنت - دمج صفحات متعددة في صفحة واحدة",
-    description: "دمج صفحات PDF متعددة في صفحة واحدة بكفاءة",
-    color: "var(--blue)",
+  PDF_Assistant: {
+    title: "مساعد PDF",
+    seoTitle: "مساعد PDF بالذكاء الاصطناعي - تحسين تجربة PDF الخاصة بك",
+    description: "مساعد مدعوم بالذكاء الاصطناعي لتنفيذ مهام PDF المتقدمة بسهولة.",
+    color: "#38ada9",
     type: ".pdf",
-    to: "/merge-pages",
+    to: "/pdf-assistant",
     features: [
       {
-        title: "دمج فعال",
-        description: "قم بدمج صفحات PDF متعددة في صفحة واحدة بسهولة، مما يبسط مستنداتك."
+        title: "مهام مدعومة بالذكاء الاصطناعي",
+        description: "استخدم الذكاء الاصطناعي لتنفيذ مهام PDF الخاصة بك، واستخراج البيانات، وتلخيص المحتوى، والمزيد."
       },
       {
-        title: "تخطيطات مخصصة",
-        description: "حدد عدد الصفحات لكل ورقة ورتبها بالترتيب الذي تفضله."
+        title: "أتمتة لتوفير الوقت",
+        description: "قم بتبسيط سير العمل الخاص بك باستخدام أتمتة ذكية للعمليات المعقدة على ملفات PDF."
       },
       {
-        title: "واجهة سهلة الاستخدام",
-        description: "استمتع بواجهة بسيطة وبديهية تجعل دمج الصفحات سهلاً."
+        title: "حل شامل",
+        description: "الوصول إلى مجموعة متكاملة من أدوات PDF في منصة سهلة الاستخدام."
       }
     ],
-    keywords: "دمج صفحات PDF، جمع صفحات PDF، أداة دمج صفحات PDF، صفحات متعددة إلى PDF واحد، توحيد صفحات PDF، جامع صفحات PDF، دمج صفحات PDF عبر الإنترنت، أداة دمج صفحات PDF مجانية، دمج صفحات PDF عبر الإنترنت، دمج صفحات PDF متعددة، أداة توحيد صفحات PDF، دمج آمن لصفحات PDF، دمج صفحات PDF بدون تسجيل، أداة تخطيط صفحات PDF، جامع صفحات PDF مجاني عبر الإنترنت، دمج أوراق PDF، دمج صفحات PDF مزدوجة، أداة ترتيب PDF"
+    keywords: "مساعد PDF بالذكاء الاصطناعي, أداة وظائف PDF, مساعد PDF الذكي, تلخيص PDF, استخراج بيانات PDF, أتمتة مهام PDF, مساعد PDF عبر الإنترنت, عمليات PDF المتقدمة, مساعد PDF الذكي"
   },
 };
+
+export const pageProps: SeoProps = {
+  title: "PDFEquips | مساعد PDF بالذكاء الاصطناعي",
+  description: "PDFEquips يجعل مهام PDF أسهل باستخدام الذكاء الاصطناعي. قم بتقسيم ملفات PDF حسب الفصول، واحصل على ملخصات، واستخرج البيانات والمزيد. مساعد PDF النهائي الخاص بك هنا!",
+  canonical: "https://www.pdfequips.com",
+  image: "https://www.pdfequips.com/images/pdf-assistant-ar.png",
+  images: [
+    {
+      url: "https://www.pdfequips.com/assets/images/pdf-assistant-ar.png",
+      width: 1200,
+      height: 630,
+      alt: "PDFEquips - مساعد PDF بالذكاء الاصطناعي",
+    },
+  ],
+  lang: "ar",
+  keywords: [
+    "مساعد PDF",
+    "أدوات PDF بالذكاء الاصطناعي",
+    "تقسيم PDF حسب الفصول",
+    "ملخص PDF",
+    "روبوت PDF الذكي",
+    "معالجة PDF",
+    "PDFEquips",
+    "محرر PDF بالذكاء الاصطناعي",
+  ],
+  noindex: false,
+  nofollow: false,
+  type: "website",
+  locale: "ar_SA",
+  structuredData: [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      name: "PDFEquips",
+      description:
+        "مساعد PDF مدعوم بالذكاء الاصطناعي يقوم بمهام مثل تقسيم PDF، وتلخيص المحتوى، واستخراج البيانات.",
+      applicationCategory: "Productivity",
+      operatingSystem: "All",
+      url: "https://www.pdfequips.com",
+      image: "https://www.pdfequips.com/assets/images/pdf-assistant-ar.png",
+      offers: {
+        "@type": "Offer",
+        price: "0.00",
+        priceCurrency: "USD",
+      },
+    },
+  ],
+  twitter: {
+    handle: "@PDFEquips",
+    site: "@PDFEquips",
+    cardType: "summary_large_image",
+  },
+};
+
+
+
 export const tools: _tools = {
   select: "اختر",
   or_drop: "أو قم بإسقاط الملفات هنا",

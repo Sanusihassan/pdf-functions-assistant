@@ -1,6 +1,6 @@
 ---
 const { pathname } = Astro.url;
-const { title, description, seoTitle, to } = Astro.props;
+const { title, pageProps, to } = Astro.props;
 let lang = "en";
 let dir = "ltr";
 // @ts-ignore
@@ -41,32 +41,6 @@ if (pathname.startsWith("/ar")) {
     lang = "zh";
     locale = "zh_CN";
 }
-const seoConfig = {
-    title: seoTitle,
-    description: description,
-    canonical: `https://www.pdfequips.com/${to}`,
-    openGraph: {
-        url: `https://www.pdfequips.com/${to}`,
-        title: seoTitle,
-        description: description,
-        images: [
-            {
-                url: `https://www.pdfequips.com/images/${to}.png`,
-                width: 1200,
-                height: 630,
-                alt: title,
-                type: "image/png",
-            },
-        ],
-        site_name: "PDFEquips",
-        locale: locale || "en_US",
-    },
-    twitter: {
-        handle: "@pdfequips",
-        site: "@pdfequips",
-        cardType: "summary_large_image",
-    },
-};
 
 import { AstroSeo } from "@astrolib/seo";
 
@@ -80,7 +54,7 @@ import { howToSchema } from "./how-to/how-to";
 <!doctype html>
 <html lang={lang} dir={dir}>
     <head>
-        <AstroSeo {...seoConfig} />
+        <AstroSeo {...pageProps} />
         <Schema item={howToSchema} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

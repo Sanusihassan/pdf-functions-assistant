@@ -1,28 +1,84 @@
+import type { SeoProps } from "../head";
 export const tool = {
-  Merge_Pages: {
-    title: "Merge PDF Pages",
-    seoTitle: "Merge PDF Pages Online - Combine Multiple Pages Into One",
-    description: "Combine multiple PDF pages into a single page efficiently",
-    color: "var(--blue)",
+  PDF_Assistant: {
+    title: "PDF Assistant",
+    seoTitle: "PDF AI Assistant - Enhance Your PDF Experience",
+    description: "AI-powered assistant to perform advanced PDF tasks effortlessly.",
+    color: "#38ada9",
     type: ".pdf",
-    to: "/merge-pages",
+    to: "/pdf-assistant",
     features: [
       {
-        title: "Efficient Combination",
-        description: "Easily combine multiple PDF pages into a single page, streamlining your documents."
+        title: "AI-Driven Tasks",
+        description: "Leverage AI to perform your PDF tasks, extract data, summarize content, and more."
       },
       {
-        title: "Custom Layouts",
-        description: "Specify the number of pages per sheet and arrange them in the order you prefer."
+        title: "Time-Saving Automation",
+        description: "Streamline your workflow with intelligent automation for complex PDF operations."
       },
       {
-        title: "User-Friendly Interface",
-        description: "Enjoy a simple and intuitive interface that makes merging pages a breeze."
+        title: "All-in-One Solution",
+        description: "Access a comprehensive suite of PDF tools in one user-friendly platform."
       }
     ],
-    keywords: "merge PDF pages, combine PDF pages, PDF page merger, multiple pages to one PDF, consolidate PDF pages, PDF page combiner, online PDF page merge, free PDF page merger, merge PDF pages online, combine multiple PDF pages, PDF page consolidation tool, secure PDF page merge, no registration PDF page merge, PDF page layout tool, free online PDF page combiner, merge PDF sheets, combine PDF spreads, PDF imposition tool"
+    keywords: "AI PDF assistant, PDF functions tool, pdf ai assistant to help with pdf tools, PDF summarizer, PDF data extraction, automate PDF tasks, intelligent PDF assistant, online PDF AI, advanced PDF operations, functions assistant for PDF, secure AI PDF tool, free PDF assistant, efficient PDF tools, interactive PDF solutions, manage PDFs with AI, PDF AI assistant features"
   },
 };
+
+
+export const pageProps: SeoProps = {
+  title: "PDFEquips | Your AI-Powered PDF Assistant",
+  description: "PDFEquips simplifies your PDF tasks with AI. Split PDFs by chapters, get summaries, extract data, and more. Your ultimate PDF assistant is here!",
+  canonical: "https://www.pdfequips.com",
+  image: "https://www.pdfequips.com/assets/images/og-image.png",
+  images: [
+    {
+      url: "https://www.pdfequips.com/assets/images/og-image.png",
+      width: 1200,
+      height: 630,
+      alt: "PDFEquips - Your AI-Powered PDF Assistant",
+    },
+  ],
+  lang: "en",
+  keywords: [
+    "PDF assistant",
+    "AI PDF tools",
+    "split PDF by chapter",
+    "PDF summarizer",
+    "PDF AI chatbot",
+    "PDF processing",
+    "PDFEquips",
+    "AI-powered PDF editor",
+  ],
+  noindex: false,
+  nofollow: false,
+  type: "website",
+  locale: "en_US",
+  structuredData: [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      name: "PDFEquips",
+      description:
+        "An AI-powered PDF assistant that performs tasks like splitting PDFs, summarizing content, and extracting data.",
+      applicationCategory: "Productivity",
+      operatingSystem: "All",
+      url: "https://www.pdfequips.com",
+      image: "https://www.pdfequips.com/assets/images/og-image.png",
+      offers: {
+        "@type": "Offer",
+        price: "0.00",
+        priceCurrency: "USD",
+      },
+    },
+  ],
+  twitter: {
+    handle: "@PDFEquips",
+    site: "@PDFEquips",
+    cardType: "summary_large_image",
+  },
+};
+
 
 export const tools = {
   select: "Select",

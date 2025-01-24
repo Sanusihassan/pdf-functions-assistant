@@ -8,32 +8,88 @@ import type {
   downloadFile as _downloadFile,
   landing_page as _landing_page,
 } from "../content";
+import type { SeoProps } from "../head";
 
 export const tool: _tool = {
-  Merge_Pages: {
-    title: "PDF पृष्ठ मर्ज करें",
-    seoTitle: "PDF पृष्ठों को ऑनलाइन मर्ज करें - कई पृष्ठों को एक में संयोजित करें",
-    description: "कई PDF पृष्ठों को कुशलतापूर्वक एक पृष्ठ में संयोजित करें",
-    color: "var(--blue)",
+  PDF_Assistant: {
+    title: "पीडीएफ असिस्टेंट",
+    seoTitle: "एआई पीडीएफ असिस्टेंट - अपनी पीडीएफ अनुभव को बेहतर बनाएं",
+    description: "एआई-संचालित सहायक जो उन्नत पीडीएफ कार्यों को आसानी से पूरा करता है।",
+    color: "#38ada9",
     type: ".pdf",
-    to: "/merge-pages",
+    to: "/pdf-assistant",
     features: [
       {
-        title: "कुशल संयोजन",
-        description: "अपने दस्तावेज़ों को सुव्यवस्थित करते हुए, कई PDF पृष्ठों को आसानी से एक पृष्ठ में मिलाएं।"
+        title: "एआई-ड्रिवन टास्क्स",
+        description: "एआई का उपयोग करके अपने पीडीएफ कार्य करें, डेटा निकालें, सामग्री का सारांश बनाएं, और अधिक।"
       },
       {
-        title: "कस्टम लेआउट्स",
-        description: "प्रति शीट पृष्ठों की संख्या निर्दिष्ट करें और उन्हें अपनी पसंद के क्रम में व्यवस्थित करें।"
+        title: "समय बचाने वाली ऑटोमेशन",
+        description: "जटिल पीडीएफ ऑपरेशंस के लिए इंटेलिजेंट ऑटोमेशन से अपने कार्य प्रवाह को सरल बनाएं।"
       },
       {
-        title: "उपयोगकर्ता-अनुकूल इंटरफ़ेस",
-        description: "एक सरल और सहज इंटरफ़ेस का आनंद लें जो पृष्ठों को मर्ज करना आसान बनाता है।"
+        title: "एक संपूर्ण समाधान",
+        description: "एक उपयोगकर्ता-अनुकूल प्लेटफ़ॉर्म पर पीडीएफ टूल्स का व्यापक सेट एक्सेस करें।"
       }
     ],
-    keywords: "PDF पृष्ठ मर्ज करें, PDF पृष्ठ संयोजित करें, PDF पृष्ठ मर्जर, कई पृष्ठों को एक PDF में, PDF पृष्ठ समेकित करें, PDF पृष्ठ संयोजक, ऑनलाइन PDF पृष्ठ मर्ज, मुफ्त PDF पृष्ठ मर्जर, PDF पृष्ठ ऑनलाइन मर्ज करें, कई PDF पृष्ठ संयोजित करें, PDF पृष्ठ समेकन टूल, सुरक्षित PDF पृष्ठ मर्ज, बिना पंजीकरण के PDF पृष्ठ मर्ज, PDF पृष्ठ लेआउट टूल, मुफ्त ऑनलाइन PDF पृष्ठ संयोजक, PDF शीट्स मर्ज करें, PDF स्प्रेड्स संयोजित करें, PDF इम्पोजिशन टूल"
+    keywords: "एआई पीडीएफ असिस्टेंट, पीडीएफ फंक्शन टूल, पीडीएफ के लिए एआई असिस्टेंट, पीडीएफ का सारांश, पीडीएफ डेटा निष्कर्षण, पीडीएफ कार्य ऑटोमेशन, ऑनलाइन पीडीएफ एआई, उन्नत पीडीएफ ऑपरेशन"
   },
 };
+
+
+export const pageProps: SeoProps = {
+  title: "PDFEquips | आपका AI-संचालित PDF सहायक",
+  description: "PDFEquips आपके PDF कार्यों को AI के साथ सरल बनाता है। अध्यायों के अनुसार PDF विभाजित करें, सारांश प्राप्त करें, डेटा निकालें और अधिक। आपका अंतिम PDF सहायक यहाँ है!",
+  canonical: "https://www.pdfequips.com",
+  image: "https://www.pdfequips.com/images/pdf-assistant-hi.png",
+  images: [
+    {
+      url: "https://www.pdfequips.com/assets/images/pdf-assistant-hi.png",
+      width: 1200,
+      height: 630,
+      alt: "PDFEquips - आपका AI-संचालित PDF सहायक",
+    },
+  ],
+  lang: "hi",
+  keywords: [
+    "PDF सहायक",
+    "AI PDF टूल्स",
+    "अध्याय के अनुसार PDF विभाजित करें",
+    "PDF सारांशक",
+    "AI PDF चैटबॉट",
+    "PDF प्रसंस्करण",
+    "PDFEquips",
+    "AI-संचालित PDF संपादक",
+  ],
+  noindex: false,
+  nofollow: false,
+  type: "website",
+  locale: "hi_IN",
+  structuredData: [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      name: "PDFEquips",
+      description:
+        "एक AI-संचालित PDF सहायक जो PDF को विभाजित करने, सामग्री का सारांश बनाने और डेटा निकालने जैसे कार्य करता है।",
+      applicationCategory: "Productivity",
+      operatingSystem: "All",
+      url: "https://www.pdfequips.com",
+      image: "https://www.pdfequips.com/assets/images/pdf-assistant-hi.png",
+      offers: {
+        "@type": "Offer",
+        price: "0.00",
+        priceCurrency: "USD",
+      },
+    },
+  ],
+  twitter: {
+    handle: "@PDFEquips",
+    site: "@PDFEquips",
+    cardType: "summary_large_image",
+  },
+};
+
 
 
 export const edit_page: _edit_page = {

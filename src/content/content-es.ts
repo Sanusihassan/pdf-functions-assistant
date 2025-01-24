@@ -8,31 +8,88 @@ import type {
   downloadFile as _downloadFile,
   landing_page as _landing_page,
 } from "../content";
+import type { SeoProps } from "../head";
+
 export const tool: _tool = {
-  Merge_Pages: {
-    title: "Fusionar Páginas PDF",
-    seoTitle: "Fusionar Páginas PDF en Línea - Combinar Múltiples Páginas en Una",
-    description: "Combina eficientemente múltiples páginas PDF en una sola página",
-    color: "var(--blue)",
+  PDF_Assistant: {
+    title: "Asistente de PDF",
+    seoTitle: "Asistente de PDF con IA - Mejora tu experiencia con PDF",
+    description: "Asistente impulsado por IA para realizar tareas avanzadas de PDF sin esfuerzo.",
+    color: "#38ada9",
     type: ".pdf",
-    to: "/merge-pages",
+    to: "/pdf-assistant",
     features: [
       {
-        title: "Combinación Eficiente",
-        description: "Combina fácilmente múltiples páginas PDF en una sola página, optimizando tus documentos."
+        title: "Tareas impulsadas por IA",
+        description: "Aprovecha la IA para realizar tus tareas de PDF, extraer datos, resumir contenido y más."
       },
       {
-        title: "Diseños Personalizados",
-        description: "Especifica el número de páginas por hoja y organízalas en el orden que prefieras."
+        title: "Automatización que ahorra tiempo",
+        description: "Optimiza tu flujo de trabajo con automatización inteligente para operaciones complejas de PDF."
       },
       {
-        title: "Interfaz Amigable",
-        description: "Disfruta de una interfaz simple e intuitiva que facilita la combinación de páginas."
+        title: "Solución todo en uno",
+        description: "Accede a un conjunto completo de herramientas PDF en una plataforma fácil de usar."
       }
     ],
-    keywords: "fusionar páginas PDF, combinar páginas PDF, fusionador de páginas PDF, múltiples páginas a un PDF, consolidar páginas PDF, combinador de páginas PDF, fusionar páginas PDF en línea, fusionador de páginas PDF gratis, fusionar páginas PDF en línea, combinar múltiples páginas PDF, herramienta de consolidación de páginas PDF, fusión segura de páginas PDF, fusionar páginas PDF sin registro, herramienta de diseño de páginas PDF, combinador de páginas PDF gratis en línea, fusionar hojas PDF, combinar pliegos PDF, herramienta de imposición PDF"
+    keywords: "asistente de PDF con IA, herramienta de funciones PDF, asistente de IA para herramientas PDF, resumen de PDF, extracción de datos de PDF, automatización de tareas PDF, asistente de PDF inteligente, operaciones avanzadas de PDF, soluciones PDF interactivas"
   },
 };
+
+export const pageProps: SeoProps = {
+  title: "PDFEquips | Tu Asistente de PDF con IA",
+  description: "PDFEquips simplifica tus tareas de PDF con IA. Divide PDFs por capítulos, obtén resúmenes, extrae datos y más. ¡Tu asistente definitivo para PDFs está aquí!",
+  canonical: "https://www.pdfequips.com",
+  image: "https://www.pdfequips.com/images/pdf-assistant-es.png",
+  images: [
+    {
+      url: "https://www.pdfequips.com/assets/images/pdf-assistant-es.png",
+      width: 1200,
+      height: 630,
+      alt: "PDFEquips - Tu Asistente de PDF con IA",
+    },
+  ],
+  lang: "es",
+  keywords: [
+    "Asistente de PDF",
+    "Herramientas PDF con IA",
+    "dividir PDF por capítulos",
+    "resumidor de PDF",
+    "Chatbot PDF con IA",
+    "Procesamiento de PDF",
+    "PDFEquips",
+    "Editor PDF impulsado por IA",
+  ],
+  noindex: false,
+  nofollow: false,
+  type: "website",
+  locale: "es_ES",
+  structuredData: [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      name: "PDFEquips",
+      description:
+        "Un asistente PDF impulsado por IA que realiza tareas como dividir PDFs, resumir contenido y extraer datos.",
+      applicationCategory: "Productivity",
+      operatingSystem: "All",
+      url: "https://www.pdfequips.com",
+      image: "https://www.pdfequips.com/assets/images/pdf-assistant-es.png",
+      offers: {
+        "@type": "Offer",
+        price: "0.00",
+        priceCurrency: "USD",
+      },
+    },
+  ],
+  twitter: {
+    handle: "@PDFEquips",
+    site: "@PDFEquips",
+    cardType: "summary_large_image",
+  },
+};
+
+
 
 export const tools: _tools = {
   select: "Seleccionar",
