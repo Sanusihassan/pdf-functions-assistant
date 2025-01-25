@@ -2,6 +2,7 @@ import type { errors as _ } from "../../src/content";
 import { useEffect, useState } from "react";
 import { Loader } from "./Loader";
 import {
+  analyzePDF,
   calculatePages,
   getNthPageAsImage,
   getPlaceHoderImageUrl,
@@ -9,6 +10,7 @@ import {
 import { useDispatch, } from "react-redux";
 import type { ActionProps } from "./ActionDiv";
 import { Pages } from "./Pages";
+import { setField } from "../../src/store";
 type OmitFileName<T extends ActionProps> = Omit<T, "fileName" | "index">;
 
 type CardProps = OmitFileName<ActionProps> & {
@@ -44,6 +46,8 @@ const FileCard = ({
           }
           setImageUrls(urls);
         }
+        const result = await analyzePDF(file);
+        dispatch(setField({ isScanned: result.scanned }))
       } else if (extension && extension !== ".jpg") {
         if (isSubscribed) {
           setImageUrls(

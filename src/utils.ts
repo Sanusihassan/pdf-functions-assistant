@@ -3,7 +3,7 @@ import { type Action, type Dispatch } from "@reduxjs/toolkit";
 import type { errors as _ } from "./content";
 import { setField } from "./store";
 import * as pdfjs from "pdfjs-dist";
-import { type PDFDocumentProxy, type PageViewport, type RenderTask } from "pdfjs-dist";
+import { getDocument, type PDFDocumentProxy, type PageViewport, type RenderTask } from "pdfjs-dist";
 import { canUseSiteToday, fetchSubscriptionStatus } from "fetch-subscription-status";
 
 // @ts-ignore
@@ -344,5 +344,84 @@ export async function getNthPageAsImage(
 
       return DEFAULT_PDF_IMAGE; // Return the placeholder image URL when an error occurs
     }
+  }
+}
+
+
+
+
+
+export async function analyzePDF(pdfFile) {
+  try {
+    // Load PDF from File or Blob object
+    const data = await pdfFile.arrayBuffer();
+    const pdf = await pdfjs.getDocument({ data }).promise;
+
+    let totalPages = pdf.numPages;
+    let textContent = '';
+    let imageCount = 0;
+    let totalArea = 0;
+    let imageArea = 0;
+
+    for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
+      const page = await pdf.getPage(pageNum);
+
+      // Get page text content
+      const content = await page.getTextContent();
+      textContent += content.items.map(item => 'str' in item ? item.str : '').join(' ');
+
+      // Get page operations (including images)
+      const ops = await page.getOperatorList();
+      const viewport = page.getViewport({ scale: 1.0 });
+      totalArea += viewport.width * viewport.height;
+
+      // Count and analyze images
+      for (let i = 0; i < ops.fnArray.length; i++) {
+        if (ops.fnArray[i] === pdfjs.OPS.paintImageXObject ||
+          ops.fnArray[i] === pdfjs.OPS.paintInlineImageXObject) {
+          imageCount++;
+          // Estimate image area (this is approximate)
+          const args = ops.argsArray[i];
+          if (args && args.length >= 2) {
+            imageArea += (args[0] * args[1]); // width * height
+          }
+        }
+      }
+    }
+
+    // Analysis criteria
+    const textLength = textContent.trim().length;
+    const imageRatio = imageArea / totalArea;
+    const wordsPerPage = textContent.split(/\s+/).length / totalPages;
+
+    // Calculate confidence score (0-1)
+    let confidence = 0;
+
+    if (imageRatio > 0.5 && wordsPerPage < 50) {
+      confidence += 0.4;
+    }
+    if (textLength < 100 && imageCount > 0) {
+      confidence += 0.3;
+    }
+    if (imageCount >= totalPages) {
+      confidence += 0.3;
+    }
+
+    // Additional heuristics
+    const hasRegularTextStructure = /^[A-Za-z0-9\s.,!?-]+$/.test(textContent);
+    if (!hasRegularTextStructure && imageCount > 0) {
+      confidence += 0.2;
+    }
+
+    // Normalize confidence to 0-1
+    confidence = Math.min(1, confidence);
+
+    return {
+      scanned: confidence > 0.6, // Consider it scanned if confidence > 60%
+      confidence
+    };
+  } catch (error) {
+    console.error('Error analyzing PDF:', error);
+    throw error;
   }
 }

@@ -16,6 +16,7 @@ export const handleUpload = async (
     path: string;
     errorMessage: string;
     prompt: string;
+    isScanned: boolean
   },
   files: File[],
   errors: _,
@@ -45,6 +46,7 @@ export const handleUpload = async (
     formData.append("files", files[i]);
   }
   formData.append("prompt", state.prompt);
+  formData.append("isScanned", String(state.isScanned));
   let url: string;
   // @ts-ignore
   if (process.env.NODE_ENV === "development") {
