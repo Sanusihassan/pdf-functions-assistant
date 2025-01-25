@@ -16,7 +16,8 @@ export const handleUpload = async (
     path: string;
     errorMessage: string;
     prompt: string;
-    isScanned: boolean
+    isScanned: boolean;
+    pageCount: number
   },
   files: File[],
   errors: _,
@@ -47,10 +48,11 @@ export const handleUpload = async (
   }
   formData.append("prompt", state.prompt);
   formData.append("isScanned", String(state.isScanned));
+  formData.append("pageCount", String(state.pageCount));
   let url: string;
   // @ts-ignore
   if (process.env.NODE_ENV === "development") {
-    url = `http://127.0.0.1:5000/${state.path}`;
+    url = `https://www.pdfequips.com/api/pdf-assistant`;
     // url = `https://5000-planetcreat-pdfequipsap-te4zoi6qkr3.ws-eu102.gitpod.io/${state.path}`;
   } else {
     url = `/api/${state.path}`;

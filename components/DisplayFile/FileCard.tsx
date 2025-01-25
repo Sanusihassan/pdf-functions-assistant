@@ -64,6 +64,7 @@ const FileCard = ({
   useEffect(() => {
     (async () => {
       let _pageCount = await calculatePages(file);
+      dispatch(setField({ pageCount: _pageCount }))
       setPageCount(_pageCount <= 16 ? _pageCount : 16);
     })();
     processFile();

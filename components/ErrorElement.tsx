@@ -16,7 +16,7 @@ const ErrorElement = () => {
     <>
       <div
         style={{
-          display: showErrorMessage ? "block" : "none",
+          display: errorMessage.length ? "block" : "none",
         }}
         className="error-element alert alert-danger text-center mt-3"
         role="alert"

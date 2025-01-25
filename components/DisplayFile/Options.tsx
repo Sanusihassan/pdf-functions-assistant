@@ -22,7 +22,7 @@ const Options = ({ content }: OptionsProps) => {
       <textarea
         placeholder={content.placeholder}
         className="styled-textarea"
-        onChange={(e) => { dispatch(setField({ prompt: e.target.value })); console.log(prompt) }}
+        onChange={(e) => { dispatch(setField({ prompt: e.target.value })) }}
       ></textarea>
     </div>
   );

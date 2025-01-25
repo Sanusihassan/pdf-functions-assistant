@@ -15,7 +15,8 @@ export interface ToolState {
   showOptions: boolean;
   nav_height: number;
   prompt: string;
-  isScanned: boolean
+  isScanned: boolean;
+  pageCount: number
 }
 
 const initialState: ToolState = {
@@ -28,7 +29,8 @@ const initialState: ToolState = {
   showOptions: false,
   nav_height: 0,
   prompt: "",
-  isScanned: false
+  isScanned: false,
+  pageCount: 0
 };
 
 const toolSlice = createSlice({

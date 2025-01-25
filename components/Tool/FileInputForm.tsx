@@ -38,6 +38,9 @@ export const FileInputForm: React.FC<FileInputFormProps> = ({
   const isScanned = useSelector(
     (state: { tool: ToolState }) => state.tool.isScanned
   );
+  const pageCount = useSelector(
+    (state: { tool: ToolState }) => state.tool.pageCount
+  );
   const dispatch = useDispatch();
   // file store
   const {
@@ -72,7 +75,8 @@ export const FileInputForm: React.FC<FileInputFormProps> = ({
             path,
             errorMessage,
             prompt,
-            isScanned
+            isScanned,
+            pageCount
           },
           files,
           errors,

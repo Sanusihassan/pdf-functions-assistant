@@ -18,6 +18,7 @@ export const handleChange = async (
   const _files = (e.target?.files as FileList) || null;
   setFiles([...files, ...Array.from(!_files ? [] : _files)]);
   const isValid = await validateFiles(_files, extension, errors, dispatch, state);
+  console.log(isValid);
   if (isValid && files) {
     dispatch(setField({ showTool: false }));
     dispatch(resetErrorMessage());
