@@ -18,5 +18,5 @@ export default defineConfig({
             forward: ['pdfjs-dist']
         }
     })],
-    base: isProd ? "/template" : "/",
+    base: isProd ? "/assistant" : "/",
 });
