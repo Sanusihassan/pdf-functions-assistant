@@ -4,8 +4,6 @@ const { title, pageProps, to } = Astro.props;
 let lang = "en";
 let dir = "ltr";
 
-import { fetchSubscriptionStatus } from "fetch-subscription-status";
-
 let locale;
 
 switch (lang) {
@@ -77,7 +75,16 @@ import { howToSchema } from "./how-to/how-to";
         />
 
         <slot name="head" />
-        <script define:vars={fetchSubscriptionStatus}>
+        <!-- root@vmi1914414:/home/pdf-functions-assistant# ls
+astro.config.mjs  dist        node_modules  package-lock.json  README.md  src
+components        index.scss  package.json  public             scss       tsconfig.json
+root@vmi1914414:/home/pdf-functions-assistant# ls dist/
+ ar   _astro   es   favicon.svg   fr   hi   index.html  '~partytown'   pdf-assistant-md.png   pdf-assistant-xl.png   zh
+root@vmi1914414:/home/pdf-functions-assistant#  -->
+        <!-- Uncaught TypeError: Failed to resolve module specifier "fetch-subscription-status". Relative references must start with either "/", "./", or "../".
+ -->
+        <script type="module">
+            import { fetchSubscriptionStatus } from "fetch-subscription-status";
             document.addEventListener("DOMContentLoaded", async () => {
                 const status = await fetchSubscriptionStatus();
                 if (!status) {

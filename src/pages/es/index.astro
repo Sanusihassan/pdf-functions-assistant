@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../../BaseLayout.astro";
+import {
+    downloadFile,
+    edit_page,
+    errors,
+    pageProps,
+    tool,
+    tools,
+} from "../../content/content-es";
+const { to } = tool.PDF_Assistant;
+import { Provider as ReduxProvider } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
+import toolReducer from "../../store";
+import { ToolWrapper } from "../../../components/ToolWrapper";
+import { howToSchema } from "../../how-to/how-to-es";
+export const store = configureStore({
+    reducer: {
+        tool: toolReducer,
+    },
+});
+---
+
+<BaseLayout pageProps={pageProps} to={to}>
+    <ReduxProvider store={store}>
+        <ToolWrapper
+            client:load
+            tools={tools}
+            data={tool.PDF_Assistant}
+            lang=""
+            errors={errors}
+            edit_page={edit_page}
+            pages={edit_page.pages}
+            page={edit_page.page}
+            downloadFile={downloadFile}
+            features={tool.PDF_Assistant.features}
+            howTo={howToSchema}
+            to={to}
+            seoTitle={tool.PDF_Assistant.seoTitle}
+        />
+    </ReduxProvider>
+</BaseLayout>
