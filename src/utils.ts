@@ -188,7 +188,7 @@ export const validateFiles = async (
 ) => {
   const files = Array.from(_files); // convert FileList to File[] array
   const status = await fetchSubscriptionStatus();
-  if (!canUseSiteToday(10) && !status) {
+  if (!canUseSiteToday(100) && !status) {
     dispatch(setField({ errorMessage: errors.ERR_MAX_USAGE.message }));
     dispatch(setField({ errorCode: "ERR_MAX_USAGE" }));
     return false;
