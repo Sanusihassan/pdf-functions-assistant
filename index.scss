@@ -1,8 +1,8 @@
-@use "pdfequips-navbar/scss/navbar";
-@use "./scss/minxins";
-@use "./scss/placeholders";
-@use "./scss/toolspage";
-@use "./scss/editpage";
+@import "/node_modules/pdfequips-navbar/scss/navbar";
+@import "./scss/minxins";
+@import "./scss/placeholders";
+@import "./scss/toolspage";
+@import "./scss/editpage";
 
 %debug {
     outline: 1px solid;

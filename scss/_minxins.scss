@@ -1,3 +1,25 @@
+@use "sass:list";
+@use "./str-split" as s;
+
+@mixin extend($res, $extend-type: "") {
+
+  @if(type-of($res)=="string") {
+
+    $placeholders: s.str-split($res, " ");
+    $extends: "";
+    $i: 0;
+    $prefix: if($extend-type =="class" or $extend-type ==".", ".", "%");
+
+    @each $placeholder in $placeholders {
+      $i: $i +1;
+      $extends: $extends +#{$prefix + $placeholder + if(list.length($placeholders) == $i, "", ",") };
+    }
+
+    @extend #{$extends} !optional;
+  }
+
+}
+
 /* Extra small devices (phones) */
 @mixin xs {
   @media only screen and (max-width: 575px) {

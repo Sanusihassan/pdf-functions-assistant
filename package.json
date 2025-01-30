@@ -26,12 +26,11 @@
     "react-select": "^5.8.3",
     "react-tooltip": "^5.28.0",
     "schema-dts": "^1.1.2",
-    "typescript": "^5.7.2",
-    "vite-plugin-sass": "^0.1.0"
+    "typescript": "^5.7.2"
   },
   "devDependencies": {
     "@astrojs/react": "^4.0.0",
     "@types/js-cookie": "^3.0.6",
-    "sass": "^1.83.4"
+    "sass": "^1.66.1"
   }
 }
