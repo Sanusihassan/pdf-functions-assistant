@@ -1,11 +1,13 @@
-@import "pdfequips-navbar/scss/navbar";
+@use "pdfequips-navbar/scss/navbar";
+@use "./scss/minxins";
+@use "./scss/placeholders";
+@use "./scss/toolspage";
+@use "./scss/editpage";
 
 %debug {
     outline: 1px solid;
 }
 
-@import "./scss/minxins";
-@import "./scss/placeholders";
 
 $pdf-color: #fc271c;
 $color-map: (
@@ -124,11 +126,7 @@ a.dropdown-item {
     }
 }
 
-@import "./scss/toolspage";
-@import "./scss/editpage";
-@import "./scss/display-file";
 
-@import "./scss/features";
 
 .how-to {
     .image {
@@ -149,7 +147,6 @@ a.dropdown-item {
     }
 }
 
-@import "pdfequips-footer/scss/footer";
 
 
 .styled-textarea {

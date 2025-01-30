@@ -7,11 +7,19 @@ const isProd = process.env.NODE_ENV === "production";
 export default defineConfig({
     vite: {
         optimizeDeps: {
-            include: ['react-dropzone', 'pdfequips-navbar'],
+            include: ['react-dropzone'],
         },
         ssr: {
-            noExternal: ['react-dropzone', 'pdfequips-navbar', 'react-icons']
-        }
+            noExternal: ['react-dropzone', 'react-icons']
+        },
+        // build: {
+        //     rollupOptions: {
+        //         external: [
+        //             'pdfequips-navbar',
+        //             'pdfequips-navbar/Navbar.tsx'
+        //         ]
+        //     }
+        // }
     },
     integrations: [react(), partytown({
         config: {

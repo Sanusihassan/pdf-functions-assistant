@@ -17,7 +17,7 @@
     "astro-seo-schema": "^5.0.0",
     "fetch-subscription-status": "^2.0.4",
     "pdfequips-footer": "^0.1.6",
-    "pdfequips-navbar": "^3.4.1",
+    "pdfequips-navbar": "^3.4.2",
     "pdfjs-dist": "^4.9.155",
     "react-beautiful-dnd": "^13.1.1",
     "react-bootstrap": "^2.10.6",
@@ -26,11 +26,12 @@
     "react-select": "^5.8.3",
     "react-tooltip": "^5.28.0",
     "schema-dts": "^1.1.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "vite-plugin-sass": "^0.1.0"
   },
   "devDependencies": {
     "@astrojs/react": "^4.0.0",
     "@types/js-cookie": "^3.0.6",
-    "sass": "^1.82.0"
+    "sass": "^1.83.4"
   }
 }
