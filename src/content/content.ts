@@ -94,7 +94,7 @@ export const edit_page = {
   loader_text: "please wait...",
   add_more_button: "Add more pages",
   action_buttons: {
-    pdf_assistant: "Process PDF",
+    pdf_assistant: "Process Document",
   },
   pages: "pages",
   page: "page",

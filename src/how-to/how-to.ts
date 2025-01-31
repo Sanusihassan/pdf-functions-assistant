@@ -38,7 +38,7 @@ export const howToSchema: WithContext<HowTo> = {
         {
             "@type": "HowToStep",
             name: "Step 4",
-            text: "Click the 'Process PDF' button to start the AI-powered operation."
+            text: "Click the 'Process Document' button to start the AI-powered operation."
         },
         {
             "@type": "HowToStep",

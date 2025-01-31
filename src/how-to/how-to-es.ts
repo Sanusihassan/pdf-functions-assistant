@@ -24,7 +24,7 @@ export const howToSchema: _howToSchema = {
         {
             "@type": "HowToStep",
             name: "Paso 4",
-            text: "Haz clic en el botón 'Procesar PDF' para iniciar la operación impulsada por IA."
+            text: "Haz clic en el botón 'Procesar documento' para iniciar la operación impulsada por IA."
         },
         {
             "@type": "HowToStep",

@@ -1,6 +1,6 @@
 ---
 const { pathname } = Astro.url;
-const { title, pageProps, to } = Astro.props;
+const { seoTitle, pageProps, to } = Astro.props;
 let lang = "en";
 let dir = "ltr";
 
@@ -85,7 +85,7 @@ import { fetchSubscriptionStatus } from "fetch-subscription-status";
         <main>
             <Navbar client:load lang={lang} path={to} />
             <slot />
-            <Footer client:load title={title} lang={lang} />
+            <Footer client:load title={seoTitle.split("-")[0]} lang={lang} />
         </main>
     </body>
 </html>

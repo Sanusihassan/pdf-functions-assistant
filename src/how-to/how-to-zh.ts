@@ -24,7 +24,7 @@ export const howToSchema: _howToSchema = {
         {
             "@type": "HowToStep",
             name: "步骤 4",
-            text: "点击“处理 PDF”按钮以启动 AI 驱动的操作。"
+            text: "点击“处理文档”按钮以启动 AI 驱动的操作。"
         },
         {
             "@type": "HowToStep",
