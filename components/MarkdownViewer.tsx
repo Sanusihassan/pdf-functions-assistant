@@ -13,12 +13,14 @@ interface MathNode {
 interface MarkdownViewerProps {
     content: string;
     className?: string;
+    speed?: number; // number of characters to add per animation frame
     onComplete?: () => void;
 }
 
 const MarkdownViewer: React.FC<MarkdownViewerProps> = ({
     content,
     className = '',
+    speed = 15,
     onComplete
 }) => {
     const [displayContent, setDisplayContent] = useState('');
@@ -28,9 +30,10 @@ const MarkdownViewer: React.FC<MarkdownViewerProps> = ({
         let currentIndex = 0;
 
         const typeContent = () => {
-            if (currentIndex <= content.length) {
+            if (currentIndex < content.length) {
+                // Increase by "speed" characters per frame
+                currentIndex = Math.min(content.length, currentIndex + speed);
                 setDisplayContent(content.slice(0, currentIndex));
-                currentIndex++;
                 animationFrameId = requestAnimationFrame(typeContent);
             } else {
                 onComplete && onComplete();
@@ -42,9 +45,10 @@ const MarkdownViewer: React.FC<MarkdownViewerProps> = ({
         return () => {
             cancelAnimationFrame(animationFrameId);
         };
-    }, [content, onComplete]);
+    }, [content, speed, onComplete]);
 
     const customComponents: Components = {
+        // Inline math
         // @ts-ignore
         math: ({ node }: { node: MathNode }) => (
             <span
@@ -56,6 +60,7 @@ const MarkdownViewer: React.FC<MarkdownViewerProps> = ({
                 }}
             />
         ),
+        // Block math
         mathBlock: ({ node }: { node: MathNode }) => (
             <div
                 className="math math-block"

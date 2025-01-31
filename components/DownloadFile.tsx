@@ -30,7 +30,7 @@ const DownloadFile = ({
 
   if (mdResponse) {
     return (
-      <div className={`download-page flex-column align-items-center justify-content-center${showDownloadBtn ? " d-flex" : " d-none"}`}>
+      <div className={`download-page flex-column justify-content-center${showDownloadBtn ? " d-flex" : " d-none"}`}>
         <div className="d-flex align-items-center justify-content-between w-100">
           <button
             className={`btn btn-dark rounded-circle mr-2 back-btn align-items-center`}
