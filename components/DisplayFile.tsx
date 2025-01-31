@@ -5,7 +5,6 @@ import Files from "./DisplayFile/Files";
 import { useDispatch } from "react-redux";
 import { useFileStore } from "../src/file-store";
 type propTypes = {
-  extension: string;
   pages: string;
   page: string;
   lang: string;
@@ -15,7 +14,6 @@ type propTypes = {
 };
 
 const DisplayFile = ({
-  extension,
   pages,
   page,
   lang,
@@ -95,7 +93,7 @@ const DisplayFile = ({
     return () => {
       isSubscribed = false;
     };
-  }, [extension]);
+  }, []);
   // const handleDragEnd = (result: any) => {
   //   if (!result.destination) {
   //     return;
@@ -106,7 +104,6 @@ const DisplayFile = ({
     <>
       <Files
         errors={errors}
-        extension={extension}
         setToolTipSizes={setToolTipSizes}
         toolTipSizes={toolTipSizes}
         loader_text={edit_page.loader_text}

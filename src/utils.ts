@@ -177,6 +177,7 @@ export const getPlaceHoderImageUrl = (extension: string) => {
 export const isDraggableExtension = (ext: string, asPath: string) => {
   return ext === ".jpg" || asPath.includes("merge-pdf");
 };
+
 export const validateFiles = async (
   _files: FileList | File[],
   extension: string,
@@ -186,104 +187,88 @@ export const validateFiles = async (
     path: string;
   }
 ) => {
-  const files = Array.from(_files); // convert FileList to File[] array
+  const files = Array.from(_files);
   const status = await fetchSubscriptionStatus();
+
+  // Validate usage limits
   if (!canUseSiteToday(100) && !status) {
     dispatch(setField({ errorMessage: errors.ERR_MAX_USAGE.message }));
     dispatch(setField({ errorCode: "ERR_MAX_USAGE" }));
     return false;
   }
 
-  const pageCount = await calculatePages(files[0]);
-  if (pageCount > 10) {
-    dispatch(setField({ errorMessage: errors.ERR_FILE_PAGE_LIMIT.message }));
-    dispatch(setField({ errorCode: "ERR_FILE_PAGE_LIMIT" }));
-    return false;
+  // Validate PDF page count
+  if (extension === ".pdf") {
+    const pageCount = await calculatePages(files[0]);
+    if (pageCount > 10) {
+      dispatch(setField({ errorMessage: errors.ERR_FILE_PAGE_LIMIT.message }));
+      dispatch(setField({ errorCode: "ERR_FILE_PAGE_LIMIT" }));
+      return false;
+    }
   }
 
-  let allowedMimeTypes = [
-    "application/pdf",
-    "text/html",
-    "image/jpeg",
-    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-    "application/vnd.ms-powerpoint",
-    "application/vnd.ms-excel",
+  // Supported file configurations
+  const SUPPORTED_EXTENSIONS = ['csv', 'txt', 'md', 'json', 'pdf'];
+  const ALLOWED_MIME_TYPES = [
+    'text/csv',
+    'text/plain',
+    'text/markdown',
+    'application/json',
+    'application/pdf'
   ];
 
-  if (files.length == 0) {
+  // Validate file presence
+  if (files.length === 0) {
     dispatch(setField({ errorMessage: errors.NO_FILES_SELECTED.message }));
     dispatch(setField({ errorCode: "ERR_NO_FILES_SELECTED" }));
     return false;
   }
-  const fileSizeLimit = 50 * 1024 * 1024; // 50 MB
-  for (let i = 0; i < files.length; i++) {
-    const file = files[i] || null;
-    extension = extension.replace(".", "").toUpperCase();
-    let file_extension = file.name.split(".").pop()?.toUpperCase() || "";
-    // this contains all types and some special types that might potentially be of than one extension
-    const types = [
-      "ppt",
-      "pptx",
-      "doc",
-      "docx",
-      "xls",
-      "xlsx",
-      "html",
-      "htm",
-      "jpg",
-      "pdf",
-    ];
 
-    if (!file || !file.name) {
-      // handle FILE_CORRUPT error
+  const FILE_SIZE_LIMIT = 50 * 1024 * 1024; // 50MB
+
+  for (const file of files) {
+    const fileExtension = (file.name.split('.').pop() || '').toLowerCase();
+
+    // Basic file validation
+    if (!file?.name) {
       dispatch(setField({ errorMessage: errors.FILE_CORRUPT.message }));
       return false;
-    } else if (!file.type) {
-      // handle NOT_SUPPORTED_TYPE error
-      dispatch(setField({ errorMessage: errors.NOT_SUPPORTED_TYPE.message }));
-      return false;
-    } else if (
-      !allowedMimeTypes.includes(file.type) ||
-      !types.includes(file_extension.toLowerCase())
-    ) {
-      const errorMessage =
-        errors.NOT_SUPPORTED_TYPE.types[
-        extension as keyof typeof errors.NOT_SUPPORTED_TYPE.types
-        ] || errors.NOT_SUPPORTED_TYPE.message;
-      dispatch(setField({ errorMessage: errorMessage }));
-      return false;
-    } else if (file.size > fileSizeLimit) {
-      // handle FILE_TOO_LARGE error
+    }
+
+    if (file.size > FILE_SIZE_LIMIT) {
       dispatch(setField({ errorMessage: errors.FILE_TOO_LARGE.message }));
       return false;
-    } else if (!file.size) {
-      // handle EMPTY_FILE error
+    }
 
+    if (!file.size) {
       dispatch(setField({ errorMessage: errors.EMPTY_FILE.message }));
       dispatch(setField({ errorCode: "ERR_EMPTY_FILE" }));
       return false;
-    } else if (file.type.startsWith("image/")) {
-      // handle INVALID_IMAGE_DATA error
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        const img = new Image();
-        img.src = reader.result as string;
-        img.onerror = () => {
-          dispatch(
-            setField({ errorMessage: errors.INVALID_IMAGE_DATA.message })
-          );
-          return false;
-        };
-      };
-      return true;
+    }
+
+    // File type validation
+    const isValidType =
+      ALLOWED_MIME_TYPES.includes(file.type) ||
+      SUPPORTED_EXTENSIONS.includes(fileExtension);
+
+    if (!isValidType) {
+      dispatch(setField({
+        errorMessage: errors.NOT_SUPPORTED_TYPE.message.replace(
+          '{types}',
+          SUPPORTED_EXTENSIONS.map(ext => `.${ext}`).join(', ')
+        )
+      }));
+      return false;
+    }
+
+    // Special case for markdown files (often misidentified as text/plain)
+    if (fileExtension === 'md' && !ALLOWED_MIME_TYPES.includes(file.type)) {
+      continue; // Allow .md files even with text/plain MIME type
     }
   }
+
   return true;
 };
-
 interface PDFFile extends Blob {
   name: string;
 }

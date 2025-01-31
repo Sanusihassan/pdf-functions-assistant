@@ -16,6 +16,9 @@ export function SubmitBtn({
   const errorMessage = useSelector(
     (state: { tool: ToolState }) => state.tool.errorMessage
   );
+  const prompt = useSelector(
+    (state: { tool: ToolState }) => state.tool.prompt
+  );
   const isSubmitted = useSelector(
     (state: { tool: ToolState }) => state.tool.isSubmitted
   );
@@ -29,7 +32,7 @@ export function SubmitBtn({
           submitBtn?.current?.click();
         }
       }}
-      disabled={errorMessage.length > 0}
+      disabled={errorMessage.length > 0 || prompt.length === 0}
     >
       <bdi>
         {

@@ -8,7 +8,6 @@ export const handleChange = async (
   e: React.ChangeEvent<HTMLInputElement>,
   dispatch: Dispatch<Action>,
   setFiles: (files: FileList | File[]) => void,
-  extension: string,
   errors: typeof _,
   files: File[],
   state: {
@@ -16,7 +15,13 @@ export const handleChange = async (
   }
 ) => {
   const _files = (e.target?.files as FileList) || null;
+  console.log("files", files)
   setFiles([...files, ...Array.from(!_files ? [] : _files)]);
+
+  const fileNameParts = _files[0].name.split('.');
+  const extension = fileNameParts.length > 1
+    ? `.${fileNameParts.pop()?.toLowerCase()}`
+    : '';
   const isValid = await validateFiles(_files, extension, errors, dispatch, state);
   console.log(isValid);
   if (isValid && files) {

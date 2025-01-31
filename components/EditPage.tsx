@@ -14,7 +14,6 @@ import AddMoreButton from "./EditArea/AddMoreButton";
 import { SubmitBtn } from "./EditArea/SubmitBtn";
 
 type editPageProps = {
-  extension: string;
   edit_page: edit_page;
   pages: string;
   page: string;
@@ -26,7 +25,6 @@ type editPageProps = {
 // calculate image height;
 
 const EditPage = ({
-  extension,
   edit_page,
   pages,
   page,
@@ -67,7 +65,6 @@ const EditPage = ({
     >
       <section className="edit-area position-relative">
         <DisplayFile
-          extension={extension}
           pages={pages}
           page={page}
           lang={lang}

@@ -128,7 +128,6 @@ const Tool: React.FC<ToolProps> = ({
           <ErrorElement />
         </div>
         <EditPage
-          extension={data.type}
           edit_page={edit_page}
           pages={pages}
           page={page}

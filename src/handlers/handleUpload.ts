@@ -112,6 +112,12 @@ export const handleUpload = async (
     const response = await axios.post(url, formData, {
       responseType: "arraybuffer",
     });
+    // Check if response is Markdown
+    const textResponse = response.data?.response;
+    if (textResponse) {
+      dispatch(setField({ mdResponse: textResponse, showDownloadBtn: true }));
+      return;
+    }
     // const originalFileName = files[0]?.name?.split(".").slice(0, -1).join(".");
     const mimeType = response.data.type || response.headers["content-type"];
     const mimeTypeData = mimeTypeLookupTable[mimeType] || {

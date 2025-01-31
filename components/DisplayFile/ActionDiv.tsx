@@ -8,7 +8,7 @@ import { useFileStore } from "../../src/file-store";
 
 export type ActionProps = {
   index: number;
-  extension: string;
+  extension?: string;
   errors: _;
   fileName: string;
 };

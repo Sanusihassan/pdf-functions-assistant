@@ -16,7 +16,8 @@ export interface ToolState {
   nav_height: number;
   prompt: string;
   isScanned: boolean;
-  pageCount: number
+  pageCount: number;
+  mdResponse: string;
 }
 
 const initialState: ToolState = {
@@ -30,7 +31,8 @@ const initialState: ToolState = {
   nav_height: 0,
   prompt: "",
   isScanned: false,
-  pageCount: 0
+  pageCount: 0,
+  mdResponse: ""
 };
 
 const toolSlice = createSlice({
