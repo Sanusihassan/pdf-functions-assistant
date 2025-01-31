@@ -47,6 +47,7 @@ import "../index.scss";
 import Navbar from "pdfequips-navbar";
 import { Footer } from "pdfequips-footer/components/Footer.tsx";
 import { howToSchema } from "./how-to/how-to";
+import { fetchSubscriptionStatus } from "fetch-subscription-status";
 ---
 
 <!doctype html>
@@ -75,37 +76,6 @@ import { howToSchema } from "./how-to/how-to";
         />
 
         <slot name="head" />
-        <!-- root@vmi1914414:/home/pdf-functions-assistant# ls
-astro.config.mjs  dist        node_modules  package-lock.json  README.md  src
-components        index.scss  package.json  public             scss       tsconfig.json
-root@vmi1914414:/home/pdf-functions-assistant# ls dist/
- ar   _astro   es   favicon.svg   fr   hi   index.html  '~partytown'   pdf-assistant-md.png   pdf-assistant-xl.png   zh
-root@vmi1914414:/home/pdf-functions-assistant#  -->
-        <!-- Uncaught TypeError: Failed to resolve module specifier "fetch-subscription-status". Relative references must start with either "/", "./", or "../".
- -->
-        <script type="module">
-            import { fetchSubscriptionStatus } from "fetch-subscription-status";
-            document.addEventListener("DOMContentLoaded", async () => {
-                const status = await fetchSubscriptionStatus();
-                if (!status) {
-                    const head = document.head;
-
-                    // Create and append meta tag
-                    const metaTag = document.createElement("meta");
-                    metaTag.name = "google-adsense-account";
-                    metaTag.content = "ca-pub-7391414384206267";
-                    head.appendChild(metaTag);
-
-                    // Create and append script tag
-                    const scriptTag = document.createElement("script");
-                    scriptTag.async = true;
-                    scriptTag.src =
-                        "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7391414384206267";
-                    scriptTag.crossOrigin = "anonymous";
-                    head.appendChild(scriptTag);
-                }
-            });
-        </script>
         <script
             type="text/partytown"
             src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"

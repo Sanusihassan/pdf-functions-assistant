@@ -15,7 +15,7 @@
     "@reduxjs/toolkit": "^2.4.0",
     "astro": "^5.0.2",
     "astro-seo-schema": "^5.0.0",
-    "fetch-subscription-status": "^2.0.4",
+    "fetch-subscription-status": "^2.0.5",
     "pdfequips-footer": "^0.1.6",
     "pdfequips-navbar": "^3.4.2",
     "pdfjs-dist": "^4.9.155",
@@ -31,6 +31,7 @@
   "devDependencies": {
     "@astrojs/react": "^4.0.0",
     "@types/js-cookie": "^3.0.6",
+    "@types/node": "^22.12.0",
     "sass": "^1.66.1"
   }
 }
