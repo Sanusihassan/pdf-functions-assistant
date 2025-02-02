@@ -17,7 +17,7 @@ export const tool: _tool = {
     description: "एआई-संचालित सहायक जो उन्नत पीडीएफ कार्यों को आसानी से पूरा करता है।",
     color: "#38ada9",
     type: ".pdf",
-    to: "/pdf-assistant",
+    to: "pdf-assistant",
     features: [
       {
         title: "एआई-ड्रिवन टास्क्स",
@@ -105,7 +105,18 @@ export const edit_page: _edit_page = {
   page: "पृष्ठ",
   options: {
     info: "अपना संकेत जोड़ें",
-    placeholder: "PDFEquips सहायक को संदेश भेजें",
+    select_placeholder: "आप क्या करना चाहेंगे?",
+    placeholder: "PDFEquips सहायक को संदेश",
+    placeholders: {
+      script: "दूसरे पृष्ठ को पीडीएफ फ़ाइल के रूप में निकालें...",
+      content: "इस दस्तावेज़ का मुख्य विचार क्या है?",
+      generate: "मेरे संलग्न डेटा के आधार पर एक रिज़्यूमे बनाएं।"
+    },
+    labels: {
+      script: "एक कार्य करें",
+      content: "अपने दस्तावेज़ के बारे में पूछें",
+      generate: "एक दस्तावेज़ बनाएं"
+    }
   },
 };
 

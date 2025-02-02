@@ -21,6 +21,7 @@ export const handleUpload = async (
     prompt: string;
     isScanned: boolean;
     pageCount: number;
+    strategy: "script" | "content" | "generate"
   },
   files: File[],
   errors: _,
@@ -52,6 +53,7 @@ export const handleUpload = async (
   formData.append("prompt", state.prompt);
   formData.append("isScanned", String(state.isScanned));
   formData.append("pageCount", String(state.pageCount));
+  formData.append("strategy", String(state.strategy));
 
   let url: string;
   if (process.env.NODE_ENV === "development") {

@@ -16,7 +16,7 @@ export const tool: _tool = {
     description: "مساعد مدعوم بالذكاء الاصطناعي لتنفيذ مهام PDF المتقدمة بسهولة.",
     color: "#38ada9",
     type: ".pdf",
-    to: "/pdf-assistant",
+    to: "pdf-assistant",
     features: [
       {
         title: "مهام مدعومة بالذكاء الاصطناعي",
@@ -109,8 +109,19 @@ export const edit_page: _edit_page = {
   pages: "صفحات",
   page: "صفحة",
   options: {
-    info: "أضف ملاحظتك",
-    placeholder: "أرسل رسالة إلى مساعد PDFEquips",
+    info: "أضف تعليماتك",
+    select_placeholder: "ماذا تريد أن تفعل؟",
+    placeholder: "رسالة إلى مساعد PDFEquips",
+    placeholders: {
+      script: "استخرج الصفحة الثانية كملف PDF...",
+      content: "ما هي الفكرة الرئيسية لهذا المستند؟",
+      generate: "أنشئ سيرة ذاتية بناءً على بياناتي المرفقة."
+    },
+    labels: {
+      script: "أداء مهمة",
+      content: "اسأل عن مستندك",
+      generate: "أنشئ مستندًا"
+    }
   },
 };
 

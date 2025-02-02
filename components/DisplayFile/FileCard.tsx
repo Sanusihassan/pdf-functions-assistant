@@ -1,22 +1,3 @@
-/**
- * what's causing these errors when selecting a .json file for example?
- Warning: Setting up fake worker.
-pdf.worker.min.mjs:21 Warning: Indexing all PDF objects
-util.js:478  Uncaught (in promise) InvalidPDFException
-:4321/images/json.png:1 
-        
-        
-        Failed to load resource: the server responded with a status of 404 (Not Found)
-:4321/images/json.png:1 
-        
-        
-        Failed to load resource: the server responded with a status of 404 (Not Found)
-:4321/pdfequips.png:1 
-        
-        
-        Failed to load resource: the server responded with a status of 404 (Not Found)
-        i don't want pdfjs-dist to parse the json as pdf, only if pdf is selected then i'll handle it using the library.
- */
 import type { errors as _ } from "../../src/content";
 import { useEffect, useState } from "react";
 import { Loader } from "./Loader";

@@ -83,9 +83,13 @@ import { fetchSubscriptionStatus } from "fetch-subscription-status";
     </head>
     <body>
         <main>
-            <Navbar client:load lang={lang} path={to} />
+            <Navbar client:load lang={lang === "en" ? "" : lang} path={to} />
             <slot />
-            <Footer client:load title={seoTitle.split("-")[0]} lang={lang} />
+            <Footer
+                client:load
+                title={seoTitle.split("-")[0]}
+                lang={lang === "en" ? "" : lang}
+            />
         </main>
     </body>
 </html>

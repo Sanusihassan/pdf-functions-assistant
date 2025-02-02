@@ -6,7 +6,7 @@ export const tool = {
     description: "AI-powered assistant to perform advanced PDF tasks effortlessly.",
     color: "#38ada9",
     type: ".pdf",
-    to: "/pdf-assistant",
+    to: "pdf-assistant",
     features: [
       {
         title: "AI-Driven Tasks",
@@ -100,7 +100,18 @@ export const edit_page = {
   page: "page",
   options: {
     info: "Add your prompt",
-    placeholder: "Message PDFEquips Assistant"
+    select_placeholder: "What would you like to do?",
+    placeholder: "Message PDFEquips Assistant",
+    placeholders: {
+      script: "extract the second page as a pdf file...",
+      content: "What is the main idea of this document?",
+      generate: "create a resume based on my attached data."
+    },
+    labels: {
+      script: "Perform a task",
+      content: "Ask about your document",
+      generate: "Create a document"
+    }
   }
 };
 

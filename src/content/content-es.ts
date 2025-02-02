@@ -17,7 +17,7 @@ export const tool: _tool = {
     description: "Asistente impulsado por IA para realizar tareas avanzadas de PDF sin esfuerzo.",
     color: "#38ada9",
     type: ".pdf",
-    to: "/pdf-assistant",
+    to: "pdf-assistant",
     features: [
       {
         title: "Tareas impulsadas por IA",
@@ -111,7 +111,18 @@ export const edit_page: _edit_page = {
   page: "página",
   options: {
     info: "Agrega tu indicación",
-    placeholder: "Enviar mensaje al Asistente de PDFEquips",
+    select_placeholder: "¿Qué te gustaría hacer?",
+    placeholder: "Mensaje para el asistente PDFEquips",
+    placeholders: {
+      script: "extrae la segunda página como un archivo PDF...",
+      content: "¿Cuál es la idea principal de este documento?",
+      generate: "crea un currículum basado en mis datos adjuntos."
+    },
+    labels: {
+      script: "Realiza una tarea",
+      content: "Pregunta sobre tu documento",
+      generate: "Crea un documento"
+    }
   },
 };
 

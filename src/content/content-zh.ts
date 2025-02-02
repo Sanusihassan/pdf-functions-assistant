@@ -17,7 +17,7 @@ export const tool: _tool = {
     description: "由AI驱动的助手，轻松完成高级PDF任务。",
     color: "#38ada9",
     type: ".pdf",
-    to: "/pdf-assistant",
+    to: "pdf-assistant",
     features: [
       {
         title: "AI驱动的任务",
@@ -103,9 +103,20 @@ export const edit_page: _edit_page = {
   pages: "页面",
   page: "页",
   options: {
-    info: "添加您的提示",
-    placeholder: "向PDFEquips助手发送消息",
-  },
+    info: "添加你的提示",
+    select_placeholder: "你想做什么？",
+    placeholder: "给PDFEquips助手发消息",
+    placeholders: {
+      script: "将第二页提取为PDF文件...",
+      content: "这份文件的主要内容是什么？",
+      generate: "根据我附加的数据创建一份简历。"
+    },
+    labels: {
+      script: "执行任务",
+      content: "询问关于你的文件",
+      generate: "创建文档"
+    }
+  }
 };
 
 export const downloadFile: _downloadFile = {

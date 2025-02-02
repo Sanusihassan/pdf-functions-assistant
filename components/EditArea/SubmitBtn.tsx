@@ -22,6 +22,9 @@ export function SubmitBtn({
   const isSubmitted = useSelector(
     (state: { tool: ToolState }) => state.tool.isSubmitted
   );
+  const strategy = useSelector(
+    (state: { tool: ToolState }) => state.tool.strategy
+  );
   return (
     <button
       className={`submit-btn btn btn-lg text-white position-relative overflow-hidden ${k} grid-footer`}
@@ -32,7 +35,7 @@ export function SubmitBtn({
           submitBtn?.current?.click();
         }
       }}
-      disabled={errorMessage.length > 0 || prompt.length === 0}
+      disabled={errorMessage.length > 0 || prompt.length === 0 || !strategy}
     >
       <bdi>
         {
