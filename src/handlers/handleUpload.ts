@@ -21,7 +21,8 @@ export const handleUpload = async (
     prompt: string;
     isScanned: boolean;
     pageCount: number;
-    strategy: "script" | "content" | "generate"
+    strategy: "script" | "content" | "generate",
+    selectedLanguages: string[]
   },
   files: File[],
   errors: _,
@@ -54,6 +55,7 @@ export const handleUpload = async (
   formData.append("isScanned", String(state.isScanned));
   formData.append("pageCount", String(state.pageCount));
   formData.append("strategy", String(state.strategy));
+  formData.append("selectedLanguages", JSON.stringify(state.selectedLanguages));
 
   let url: string;
   if (process.env.NODE_ENV === "development") {

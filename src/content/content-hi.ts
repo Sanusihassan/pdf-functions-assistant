@@ -116,7 +116,9 @@ export const edit_page: _edit_page = {
       script: "एक कार्य करें",
       content: "अपने दस्तावेज़ के बारे में पूछें",
       generate: "एक दस्तावेज़ बनाएं"
-    }
+    },
+    ocr_placeholder: "भाषाएँ चुनें",
+    ocr_warning: "अधिक सटीक परिणामों के लिए दस्तावेज़ की भाषा जोड़ें।"
   },
 };
 

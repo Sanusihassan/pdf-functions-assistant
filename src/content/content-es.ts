@@ -122,7 +122,9 @@ export const edit_page: _edit_page = {
       script: "Realiza una tarea",
       content: "Pregunta sobre tu documento",
       generate: "Crea un documento"
-    }
+    },
+    ocr_placeholder: "Seleccionar idiomas",
+    ocr_warning: "Agrega el idioma del documento para obtener resultados más precisos."
   },
 };
 

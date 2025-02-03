@@ -115,7 +115,9 @@ export const edit_page: _edit_page = {
       script: "执行任务",
       content: "询问关于你的文件",
       generate: "创建文档"
-    }
+    },
+    ocr_placeholder: "选择语言",
+    ocr_warning: "添加文档语言以获得更准确的结果。"
   }
 };
 

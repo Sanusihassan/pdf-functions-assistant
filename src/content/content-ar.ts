@@ -121,7 +121,9 @@ export const edit_page: _edit_page = {
       script: "أداء مهمة",
       content: "اسأل عن مستندك",
       generate: "أنشئ مستندًا"
-    }
+    },
+    ocr_placeholder: "اختر اللغات",
+    ocr_warning: "أضف لغة المستند للحصول على نتائج أكثر دقة."
   },
 };
 

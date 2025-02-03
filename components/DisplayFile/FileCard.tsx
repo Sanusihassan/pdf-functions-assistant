@@ -51,7 +51,6 @@ const FileCard = ({
   const processFile = async () => {
     try {
       if (extension === ".pdf") {
-        console.log("extension", extension);
         if (isSubscribed) {
           const urls: imageUrlsType = [];
           for (let i = 1; i <= pageCount; i += 1) {

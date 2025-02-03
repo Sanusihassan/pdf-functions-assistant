@@ -4,14 +4,20 @@ import { setField, type ToolState } from "../../src/store";
 import type { edit_page as _edit_pages } from "../../src/content";
 import { Alert } from "react-bootstrap";
 import { InformationCircleIcon } from "@heroicons/react/outline";
+import { languages } from "../../src/content/content";
 
 export interface OptionsProps {
   content: _edit_pages["options"];
 }
 
+import { type MultiValue } from 'react-select';
 
+// Define an interface for your language option
+interface LanguageOption {
+  value: string;
+  label: string;
+}
 
-// Custom styles for react-select using the theme color (#38ada9)
 const customSelectStyles = {
   control: (provided: any, state: any) => ({
     ...provided,
@@ -35,23 +41,25 @@ const customSelectStyles = {
     },
   }),
 };
-/**
- * this is the options i'll be passing, please complete it and update the selectOptions to get the content for the labels from it instead of hardcoding them, this is because my website is multilingual
-content: {
-    info: "Add your prompt",
-    placeholder: "Message PDFEquips Assistant",
-    placeholders: {
-      script: "Ex: ",
-      content: "...",
-      generate: "..."
-    }
-  }
- */
 const Options = ({ content }: OptionsProps) => {
   const dispatch = useDispatch();
   const strategy = useSelector(
     (state: { tool: ToolState }) => state.tool.strategy
   );
+  const isScanned = useSelector(
+    (state: { tool: ToolState }) => state.tool.isScanned
+  );
+  const selectedLanguages = useSelector(
+    (state: { tool: ToolState }) => state.tool.selectedLanguages
+  );
+
+  const options = Object.entries(languages).map(
+    ([value, language]: [string, { name: string, nativeName: string }]) => ({
+      value,
+      label: `${language.name} (${language.nativeName})`,
+    })
+  );
+
 
 
   const placeholder = strategy ? content.placeholders[strategy] : content.placeholder;
@@ -68,9 +76,22 @@ const Options = ({ content }: OptionsProps) => {
     }
   };
 
+  const handleLangChange = (selectedOptions: MultiValue<LanguageOption>) => {
+    // Limit selection to maximum 3 languages
+    const limitedOptions = selectedOptions
+      ? selectedOptions.slice(0, 3)
+      : [];
+
+    dispatch(
+      setField({
+        selectedLanguages: limitedOptions.map(option => option.value)
+      })
+    );
+  };
+
   return (
     <div className="options-container">
-      <div className="select-container" style={{ margin: "10px 0" }}>
+      <div className="select-wrapper">
         <Select
           options={selectOptions}
           onChange={handleSelectChange}
@@ -88,6 +109,24 @@ const Options = ({ content }: OptionsProps) => {
           dispatch(setField({ prompt: e.target.value }))
         }
       ></textarea>
+      {isScanned ?
+        <div>
+          <Alert variant="warning">
+            <InformationCircleIcon className="icon" /> {content.ocr_warning}
+          </Alert>
+          <Select
+            isMulti
+            name="languages"
+            options={options}
+            className="select-wrapper"
+            classNamePrefix="select"
+            placeholder={content.ocr_placeholder}
+            onChange={handleLangChange}
+            styles={customSelectStyles}
+          // isDisabled={selectedLanguages.length === 3}
+          />
+        </div> : null
+      }
     </div>
   );
 };

@@ -18,7 +18,8 @@ export interface ToolState {
   isScanned: boolean;
   pageCount: number;
   mdResponse: string;
-  strategy: "script" | "content" | "generate" | null
+  strategy: "script" | "content" | "generate" | null,
+  selectedLanguages: string[]
 }
 
 const initialState: ToolState = {
@@ -34,7 +35,8 @@ const initialState: ToolState = {
   isScanned: false,
   pageCount: 0,
   mdResponse: "",
-  strategy: null
+  strategy: null,
+  selectedLanguages: []
 };
 
 const toolSlice = createSlice({

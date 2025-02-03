@@ -15,7 +15,6 @@ export const handleChange = async (
   }
 ) => {
   const _files = (e.target?.files as FileList) || null;
-  console.log("files", files)
   setFiles([...files, ...Array.from(!_files ? [] : _files)]);
 
   const fileNameParts = _files[0].name.split('.');
@@ -23,7 +22,6 @@ export const handleChange = async (
     ? `.${fileNameParts.pop()?.toLowerCase()}`
     : '';
   const isValid = await validateFiles(_files, extension, errors, dispatch, state);
-  console.log(isValid);
   if (isValid && files) {
     dispatch(setField({ showTool: false }));
     dispatch(resetErrorMessage());
