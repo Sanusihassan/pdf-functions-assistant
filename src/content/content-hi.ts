@@ -17,7 +17,7 @@ export const tool: _tool = {
     description: "एआई-संचालित सहायक जो उन्नत पीडीएफ कार्यों को आसानी से पूरा करता है।",
     color: "#38ada9",
     type: ".pdf",
-    to: "pdf-assistant",
+    to: "assistant",
     features: [
       {
         title: "एआई-ड्रिवन टास्क्स",

@@ -17,7 +17,7 @@ export const tool: _tool = {
     description: "Asistente impulsado por IA para realizar tareas avanzadas de PDF sin esfuerzo.",
     color: "#38ada9",
     type: ".pdf",
-    to: "pdf-assistant",
+    to: "assistant",
     features: [
       {
         title: "Tareas impulsadas por IA",

@@ -6,7 +6,7 @@ export const tool = {
     description: "AI-powered assistant to perform advanced PDF tasks effortlessly.",
     color: "#38ada9",
     type: ".pdf",
-    to: "pdf-assistant",
+    to: "assistant",
     features: [
       {
         title: "AI-Driven Tasks",

@@ -17,7 +17,7 @@ export const tool: _tool = {
     description: "由AI驱动的助手，轻松完成高级PDF任务。",
     color: "#38ada9",
     type: ".pdf",
-    to: "pdf-assistant",
+    to: "assistant",
     features: [
       {
         title: "AI驱动的任务",

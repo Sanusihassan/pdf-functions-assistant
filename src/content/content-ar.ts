@@ -16,7 +16,7 @@ export const tool: _tool = {
     description: "مساعد مدعوم بالذكاء الاصطناعي لتنفيذ مهام PDF المتقدمة بسهولة.",
     color: "#38ada9",
     type: ".pdf",
-    to: "pdf-assistant",
+    to: "assistant",
     features: [
       {
         title: "مهام مدعومة بالذكاء الاصطناعي",
