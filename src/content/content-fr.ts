@@ -99,12 +99,12 @@ export const tools: _tools = {
 
 export const edit_page: _edit_page = {
   edit_page_titles: {
-    pdf_assistant: "Options de l'assistant PDF",
+    assistant: "Options de l'assistant PDF",
   },
   loader_text: "veuillez patienter...",
   add_more_button: "Ajouter plus de pages",
   action_buttons: {
-    pdf_assistant: "Traiter le document",
+    assistant: "Traiter le document",
   },
   pages: "pages",
   page: "page",

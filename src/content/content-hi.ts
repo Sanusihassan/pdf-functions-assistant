@@ -94,12 +94,12 @@ export const pageProps: SeoProps = {
 
 export const edit_page: _edit_page = {
   edit_page_titles: {
-    pdf_assistant: "PDF सहायक विकल्प",
+    assistant: "PDF सहायक विकल्प",
   },
   loader_text: "कृपया प्रतीक्षा करें...",
   add_more_button: "अधिक पृष्ठ जोड़ें",
   action_buttons: {
-    pdf_assistant: "दस्तावेज़ संसाधित करें",
+    assistant: "दस्तावेज़ संसाधित करें",
   },
   pages: "पृष्ठ",
   page: "पृष्ठ",

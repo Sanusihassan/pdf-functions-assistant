@@ -93,12 +93,12 @@ export const pageProps: SeoProps = {
 
 export const edit_page: _edit_page = {
   edit_page_titles: {
-    pdf_assistant: "PDF助手选项",
+    assistant: "PDF助手选项",
   },
   loader_text: "请稍候...",
   add_more_button: "添加更多页面",
   action_buttons: {
-    pdf_assistant: "处理文档",
+    assistant: "处理文档",
   },
   pages: "页面",
   page: "页",
