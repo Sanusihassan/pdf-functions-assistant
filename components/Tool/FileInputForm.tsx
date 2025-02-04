@@ -28,7 +28,7 @@ export const FileInputForm: React.FC<FileInputFormProps> = ({
   lang,
   tools,
 }) => {
-  const path = data.to.replace("/", "");
+  const path = "assistant";
   const errorMessage = useSelector(
     (state: { tool: ToolState }) => state.tool.errorMessage
   );
