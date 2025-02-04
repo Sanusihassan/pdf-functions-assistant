@@ -77,7 +77,7 @@ const DownloadFile = ({
           data-tooltip-id="download-btn-tooltip"
           data-tooltip-place="left"
           onClick={() => {
-            dispatch(setField({ showDownloadBtn: false }));
+            dispatch(setField({ showDownloadBtn: false, mdResponse: "" }));
           }}
         >
           <ArrowLeftIcon className="icon" />
