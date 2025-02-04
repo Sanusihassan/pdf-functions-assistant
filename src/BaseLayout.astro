@@ -1,42 +1,20 @@
 ---
 const { pathname } = Astro.url;
-const { seoTitle, pageProps, to } = Astro.props;
-let lang = "en";
+const { seoTitle, pageProps, to, lang } = Astro.props;
 let dir = "ltr";
 
 let locale;
-
-switch (lang) {
-    case "ar":
-        break;
-    case "es":
-        break;
-    case "fr":
-        break;
-    case "hi":
-        break;
-    case "zh":
-        break;
-    default:
-        break;
-}
-
 // Determine language and direction based on URL path
-if (pathname.startsWith("/ar")) {
-    lang = "ar";
+if (lang === "ar") {
     dir = "rtl";
     locale = "ar_AR";
-} else if (pathname.startsWith("/es")) {
-    lang = "es";
+} else if (lang === "es") {
     locale = "es_ES";
-} else if (pathname.startsWith("/fr")) {
-    lang = "fr";
+} else if (lang === "fr") {
     locale = "fr_FR";
-} else if (pathname.startsWith("/hi")) {
-    lang = "hi";
+} else if (lang === "hi") {
     locale = "hi_IN";
-} else if (pathname.startsWith("/zh")) {
-    lang = "zh";
+} else if (lang === "zh") {
     locale = "zh_CN";
 }
 
