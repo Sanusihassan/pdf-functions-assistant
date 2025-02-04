@@ -30,10 +30,9 @@ export const pageProps: SeoProps = {
   title: "PDFEquips | Your AI-Powered PDF Assistant",
   description: "PDFEquips simplifies your PDF tasks with AI. Split PDFs by chapters, get summaries, extract data, and more. Your ultimate PDF assistant is here!",
   canonical: "https://www.pdfequips.com",
-  image: "https://www.pdfequips.com/assets/images/og-image.png",
   images: [
     {
-      url: "https://www.pdfequips.com/assets/images/og-image.png",
+      url: "https://www.pdfequips.com/images/pdf-assistant.png",
       width: 1200,
       height: 630,
       alt: "PDFEquips - Your AI-Powered PDF Assistant",

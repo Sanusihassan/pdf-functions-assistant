@@ -1,4 +1,5 @@
 ---
+//  SanusiHOST4096
 const { pathname } = Astro.url;
 const { seoTitle, pageProps, to, lang } = Astro.props;
 let dir = "ltr";
@@ -18,20 +19,43 @@ if (lang === "ar") {
     locale = "zh_CN";
 }
 
-import { AstroSeo } from "@astrolib/seo";
-
+import { SEO } from "astro-seo";
 import { Schema } from "astro-seo-schema";
 import "../index.scss";
 import Navbar from "pdfequips-navbar";
 import { Footer } from "pdfequips-footer/components/Footer.tsx";
 import { howToSchema } from "./how-to/how-to";
-import { fetchSubscriptionStatus } from "fetch-subscription-status";
+import type { SeoProps } from "./head";
 ---
 
 <!doctype html>
 <html lang={lang} dir={dir}>
     <head>
-        <AstroSeo {...pageProps} />
+        <SEO
+            title={pageProps.title}
+            description={pageProps.description}
+            openGraph={{
+                basic: {
+                    title: pageProps.title,
+                    type: pageProps.type,
+                    image: pageProps.images[0].url,
+                },
+                image: {
+                    alt: pageProps.images[0].alt,
+                    width: pageProps.images[0].width,
+                    height: pageProps.images[0].height,
+                },
+                optional: {
+                    locale: pageProps.locale,
+                    siteName: "PDFEquips",
+                },
+            }}
+            twitter={{
+                card: pageProps.twitter.cardType,
+                site: pageProps.twitter.site,
+                creator: pageProps.twitter.handle,
+            }}
+        />
         <Schema item={howToSchema} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -58,6 +82,20 @@ import { fetchSubscriptionStatus } from "fetch-subscription-status";
             type="text/partytown"
             src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"
         ></script>
+
+        <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=G-NY5F91MF0B`}
+        ></script>
+        <script is:inline>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+
+            gtag("config", "G-NY5F91MF0B");
+        </script>
     </head>
     <body>
         <main>
