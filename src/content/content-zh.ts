@@ -123,15 +123,15 @@ export const edit_page: _edit_page = {
 
 export const downloadFile: _downloadFile = {
   titles: {
-    "pdf-assistant": ["您的任务已成功完成！", "您的任务已成功完成！"],
+    "assistant": ["您的任务已成功完成！", "您的任务已成功完成！"],
   },
 
   btnText: {
-    "pdf-assistant": ["下载已处理文件", "下载已处理文件"],
+    "assistant": ["下载已处理文件", "下载已处理文件"],
   },
 
   backto: {
-    "pdf-assistant": "返回PDF助手",
+    "assistant": "返回PDF助手",
   },
 };
 

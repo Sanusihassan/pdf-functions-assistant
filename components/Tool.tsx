@@ -46,7 +46,7 @@ const Tool: React.FC<ToolProps> = ({
   page,
   downloadFile,
 }) => {
-  const path = data.to.replace("/", "");
+  const path = "assistant";
   const stateShowTool = useSelector((state: { tool: any }) => state.tool.showTool);
   const errorMessage = useSelector((state: { tool: any }) => state.tool.errorMessage);
   const { setFiles } = useFileStore();

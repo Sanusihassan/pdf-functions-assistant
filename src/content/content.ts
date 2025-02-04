@@ -119,15 +119,15 @@ export const edit_page = {
 
 export const downloadFile = {
   titles: {
-    "pdf-assistant": ["Your task has been successfully completed!", "Your tasks have been successfully completed!"],
+    "assistant": ["Your task has been successfully completed!", "Your tasks have been successfully completed!"],
   },
 
   btnText: {
-    "pdf-assistant": ["Download processed file", "Download processed files"],
+    "assistant": ["Download processed file", "Download processed files"],
   },
 
   backto: {
-    "pdf-assistant": "Back To PDF assistant",
+    "assistant": "Back To PDF assistant",
   },
 };
 

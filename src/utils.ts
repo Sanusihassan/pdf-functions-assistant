@@ -191,7 +191,7 @@ export const validateFiles = async (
   const status = await fetchSubscriptionStatus();
 
   // Validate usage limits
-  if (!canUseSiteToday(100) && !status) {
+  if (!canUseSiteToday(3) && !status) {
     dispatch(setField({ errorMessage: errors.ERR_MAX_USAGE.message }));
     dispatch(setField({ errorCode: "ERR_MAX_USAGE" }));
     return false;

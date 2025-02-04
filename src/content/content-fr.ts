@@ -129,15 +129,15 @@ export const edit_page: _edit_page = {
 
 export const downloadFile: _downloadFile = {
   titles: {
-    "pdf-assistant": ["Votre tâche a été réalisée avec succès !", "Vos tâches ont été réalisées avec succès !"],
+    "assistant": ["Votre tâche a été réalisée avec succès !", "Vos tâches ont été réalisées avec succès !"],
   },
 
   btnText: {
-    "pdf-assistant": ["Télécharger le fichier traité", "Télécharger les fichiers traités"],
+    "assistant": ["Télécharger le fichier traité", "Télécharger les fichiers traités"],
   },
 
   backto: {
-    "pdf-assistant": "Retour à l'assistant PDF",
+    "assistant": "Retour à l'assistant PDF",
   },
 };
 
