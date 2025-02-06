@@ -59,7 +59,7 @@ export const handleUpload = async (
 
   let url: string;
   if (process.env.NODE_ENV === "development") {
-    url = `https://www.pdfequips.com/api/pdf-assistant`;
+    url = `https://www.pdfequips.com/api/assistant`;
   } else {
     url = `/api/${state.path}`;
   }

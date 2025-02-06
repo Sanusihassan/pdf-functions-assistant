@@ -1,16 +1,19 @@
 import Select from "react-select";
 import { useDispatch, useSelector } from "react-redux";
 import { setField, type ToolState } from "../../src/store";
-import type { edit_page as _edit_pages } from "../../src/content";
+import type { edit_page as _edit_pages, errors } from "../../src/content";
 import { Alert } from "react-bootstrap";
 import { InformationCircleIcon } from "@heroicons/react/outline";
 import { languages } from "../../src/content/content";
 
 export interface OptionsProps {
   content: _edit_pages["options"];
+  errors: errors
 }
 
 import { type MultiValue } from 'react-select';
+import { useFileStore } from "../../src/file-store";
+import { validationForContentStrategy } from "../../src/utils";
 
 // Define an interface for your language option
 interface LanguageOption {
@@ -41,7 +44,8 @@ const customSelectStyles = {
     },
   }),
 };
-const Options = ({ content }: OptionsProps) => {
+const Options = ({ content, errors }: OptionsProps) => {
+  const { files } = useFileStore();
   const dispatch = useDispatch();
   const strategy = useSelector(
     (state: { tool: ToolState }) => state.tool.strategy
@@ -73,6 +77,11 @@ const Options = ({ content }: OptionsProps) => {
   const handleSelectChange = (selectedOption: any) => {
     if (selectedOption) {
       dispatch(setField({ strategy: selectedOption.value }));
+    }
+    if (selectedOption.type === "content") {
+      const file = files[0];
+
+      validationForContentStrategy(file, dispatch, errors);
     }
   };
 

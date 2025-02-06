@@ -128,13 +128,13 @@ const EditPage = ({
             }
           </bdi>
         </h5>
-        <Options content={edit_page.options} />
+        <Options content={edit_page.options} errors={errors} />
         <div className="hide-onsmall">
-          <SubmitBtn k={path} edit_page={edit_page} />
+          <SubmitBtn k={path} edit_page={edit_page} errors={errors} />
         </div>
       </section>
       <div className="show-onsmall">
-        <SubmitBtn k={path} edit_page={edit_page} />
+        <SubmitBtn k={path} edit_page={edit_page} errors={errors} />
       </div>
     </aside>
   );

@@ -4,7 +4,7 @@ import type { errors as _ } from "../content/content"; // import the errors cons
 
 import { validateFiles } from "../utils";
 import { setField, resetErrorMessage } from "../store";
-export const handleChange = async (
+export const handleChange = (
   e: React.ChangeEvent<HTMLInputElement>,
   dispatch: Dispatch<Action>,
   setFiles: (files: FileList | File[]) => void,
@@ -21,9 +21,11 @@ export const handleChange = async (
   const extension = fileNameParts.length > 1
     ? `.${fileNameParts.pop()?.toLowerCase()}`
     : '';
-  const isValid = await validateFiles(_files, extension, errors, dispatch, state);
-  if (isValid && files) {
-    dispatch(setField({ showTool: false }));
-    dispatch(resetErrorMessage());
-  }
+  (async () => {
+    const isValid = await validateFiles(_files, extension, errors, dispatch, state);
+    if (isValid && files) {
+      dispatch(setField({ showTool: false }));
+      dispatch(resetErrorMessage());
+    }
+  })();
 };

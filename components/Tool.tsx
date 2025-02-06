@@ -12,7 +12,7 @@ export type errorType = {
   response: {
     data: {
       error: string;
-      text: () => Promise<string>; // Add type for text() function
+      text: () => Promise<string>;
     };
   };
 };
@@ -27,13 +27,13 @@ export type ToolData = {
 
 export type ToolProps = {
   data: ToolData;
-  tools: any; // Define your type for 'tools' and 'downloadFile' appropriately
+  tools: any;
   lang: string;
-  errors: any; // Define your type for 'errors' appropriately
-  edit_page: any; // Define your type for 'edit_page' appropriately
+  errors: any;
+  edit_page: any;
   pages: string;
   page: string;
-  downloadFile: any; // Define your type for 'downloadFile' appropriately
+  downloadFile: any;
 };
 
 const Tool: React.FC<ToolProps> = ({
@@ -77,23 +77,31 @@ const Tool: React.FC<ToolProps> = ({
             handleHideTool();
             return;
           }
+        } else if (item.kind === "string") {
+          item.getAsString((text) => {
+            // Create a new File object from the pasted text
+            const textFile = new File([text], "pasted-text.txt", {
+              type: "text/plain"
+            });
+            setFiles([textFile]);
+            handleHideTool();
+          });
+          return;
         }
       }
     }
   }, []);
 
-
-
-  const { getRootProps, isDragActive } = dropzone.useDropzone({ onDrop });
-
-  const acceptedFileTypes = {
-    ".pdf": ".pdf, .PDF",
-    ".pptx": ".pptx, .ppt",
-    ".docx": ".docx, .doc",
-    ".xlsx": ".xlsx, .xls",
-    ".jpg": ".jpg, .jpeg",
-    ".html": ".html, .htm",
-  };
+  const { getRootProps, isDragActive } = dropzone.useDropzone({
+    onDrop,
+    accept: {
+      'application/pdf': ['.pdf'],
+      'text/csv': ['.csv'],
+      'text/plain': ['.txt'],
+      'text/markdown': ['.md'],
+      'application/json': ['.json']
+    }
+  });
 
   return (
     <>
@@ -122,7 +130,6 @@ const Tool: React.FC<ToolProps> = ({
             data={data}
             errors={errors}
             tools={tools}
-            acceptedFileTypes={acceptedFileTypes}
           />
           <p>{tools.or_drop}</p>
           <ErrorElement />

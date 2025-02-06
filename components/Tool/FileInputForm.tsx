@@ -16,14 +16,12 @@ interface FileInputFormProps {
     type: string;
     to: string;
   };
-  acceptedFileTypes: AcceptedFileTypes;
   errors: any;
   lang: string;
   tools: tools;
 }
 export const FileInputForm: React.FC<FileInputFormProps> = ({
   data,
-  acceptedFileTypes,
   errors,
   lang,
   tools,
@@ -126,8 +124,8 @@ export const FileInputForm: React.FC<FileInputFormProps> = ({
           onClick={(e) => {
             e.stopPropagation();
           }}
-          onChange={async (e) => {
-            await handleChange(e, dispatch, setFiles, errors, files, {
+          onChange={(e) => {
+            handleChange(e, dispatch, setFiles, errors, files, {
               path,
             });
           }}

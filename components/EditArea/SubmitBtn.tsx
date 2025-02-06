@@ -2,13 +2,17 @@ import { Spinner } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { useFileStore } from "../../src/file-store";
 import { type ToolState, setField } from "../../src/store";
-import type { edit_page } from "../../src/content";
+import type { edit_page, errors } from "../../src/content";
+import { fetchSubscriptionStatus, canUseSiteToday } from "fetch-subscription-status";
+import { useState } from "react";
 export function SubmitBtn({
   k,
   edit_page,
+  errors
 }: {
   k: string;
   edit_page: edit_page;
+  errors: errors
 }): JSX.Element {
   const dispatch = useDispatch();
   const { submitBtn } = useFileStore();
@@ -25,17 +29,28 @@ export function SubmitBtn({
   const strategy = useSelector(
     (state: { tool: ToolState }) => state.tool.strategy
   );
+
+  const [isDisabled, setIsDisabled] = useState(false);
   return (
     <button
       className={`submit-btn btn btn-lg text-white position-relative overflow-hidden ${k} grid-footer`}
-      onClick={() => {
+      onClick={async () => {
         dispatch(setField({ isSubmitted: true }));
         dispatch(setField({ showOptions: false }));
+        const status = await fetchSubscriptionStatus();
+        // Validate usage limits
+        if (!canUseSiteToday(3) && !status) {
+          dispatch(setField({ errorMessage: errors.ERR_MAX_USAGE.message }));
+          dispatch(setField({ errorCode: "ERR_MAX_USAGE" }));
+          setIsDisabled(false);
+          return false;
+        }
+
         if (submitBtn) {
           submitBtn?.current?.click();
         }
       }}
-      disabled={errorMessage.length > 0 || prompt.length === 0 || !strategy}
+      disabled={errorMessage.length > 0 || prompt.length === 0 || !strategy || isDisabled}
     >
       <bdi>
         {

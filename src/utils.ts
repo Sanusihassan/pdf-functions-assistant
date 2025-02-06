@@ -188,24 +188,9 @@ export const validateFiles = async (
   }
 ) => {
   const files = Array.from(_files);
-  const status = await fetchSubscriptionStatus();
-
-  // Validate usage limits
-  if (!canUseSiteToday(3) && !status) {
-    dispatch(setField({ errorMessage: errors.ERR_MAX_USAGE.message }));
-    dispatch(setField({ errorCode: "ERR_MAX_USAGE" }));
-    return false;
-  }
 
   // Validate PDF page count
-  if (extension === ".pdf") {
-    const pageCount = await calculatePages(files[0]);
-    if (pageCount > 10) {
-      dispatch(setField({ errorMessage: errors.ERR_FILE_PAGE_LIMIT.message }));
-      dispatch(setField({ errorCode: "ERR_FILE_PAGE_LIMIT" }));
-      return false;
-    }
-  }
+
 
   // Supported file configurations
   const SUPPORTED_EXTENSIONS = ['csv', 'txt', 'md', 'json', 'pdf'];
@@ -269,6 +254,24 @@ export const validateFiles = async (
 
   return true;
 };
+
+
+export const validationForContentStrategy = async (file: File, dispatch: Dispatch<Action>, errors: _) => {
+  const fileNameParts = file.name.split('.');
+  const extension = fileNameParts.length > 1
+    ? `.${fileNameParts.pop()?.toLowerCase()}`
+    : '';
+  if (extension === ".pdf") {
+    const pageCount = await calculatePages(file);
+    if (pageCount > 10) {
+      dispatch(setField({ errorMessage: errors.ERR_FILE_PAGE_LIMIT.message }));
+      dispatch(setField({ errorCode: "ERR_FILE_PAGE_LIMIT" }));
+      return false;
+    }
+  }
+}
+
+
 interface PDFFile extends Blob {
   name: string;
 }
