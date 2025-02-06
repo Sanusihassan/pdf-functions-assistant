@@ -178,7 +178,7 @@ export const isDraggableExtension = (ext: string, asPath: string) => {
   return ext === ".jpg" || asPath.includes("merge-pdf");
 };
 
-export const validateFiles = async (
+export const validateFiles = (
   _files: FileList | File[],
   extension: string,
   errors: _,

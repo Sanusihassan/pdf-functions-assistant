@@ -21,11 +21,10 @@ export const handleChange = (
   const extension = fileNameParts.length > 1
     ? `.${fileNameParts.pop()?.toLowerCase()}`
     : '';
-  (async () => {
-    const isValid = await validateFiles(_files, extension, errors, dispatch, state);
-    if (isValid && files) {
-      dispatch(setField({ showTool: false }));
-      dispatch(resetErrorMessage());
-    }
-  })();
+
+  const isValid = validateFiles(_files, extension, errors, dispatch, state);
+  if (isValid && files) {
+    dispatch(setField({ showTool: false }));
+    dispatch(resetErrorMessage());
+  }
 };
