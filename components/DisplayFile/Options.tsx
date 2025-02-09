@@ -78,10 +78,11 @@ const Options = ({ content, errors }: OptionsProps) => {
     if (selectedOption) {
       dispatch(setField({ strategy: selectedOption.value }));
     }
-    if (selectedOption.type === "content") {
+    if (selectedOption.value === "content") {
       const file = files[0];
-
-      validationForContentStrategy(file, dispatch, errors);
+      (async () => {
+        await validationForContentStrategy(file, dispatch, errors);
+      })();
     }
   };
 

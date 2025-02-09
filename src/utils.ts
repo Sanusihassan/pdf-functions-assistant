@@ -263,6 +263,7 @@ export const validationForContentStrategy = async (file: File, dispatch: Dispatc
     : '';
   if (extension === ".pdf") {
     const pageCount = await calculatePages(file);
+    console.log("pageCount", pageCount)
     if (pageCount > 10) {
       dispatch(setField({ errorMessage: errors.ERR_FILE_PAGE_LIMIT.message }));
       dispatch(setField({ errorCode: "ERR_FILE_PAGE_LIMIT" }));
