@@ -7,7 +7,6 @@ import { type _howToSchema } from '../src/how-to/how-to';
 import { Features } from './Features';
 import type { WithContext, HowTo as HowToType } from 'schema-dts';
 import HowTo from './HowTo';
-import { fetchSubscriptionStatus } from 'fetch-subscription-status';
 
 export const store = configureStore({
     reducer: {
@@ -32,28 +31,28 @@ export function ToolWrapper(props: ToolWrapperProps) {
     const { features, seoTitle, to, howTo } = props;
     useEffect(() => {
         const loadAdSense = async () => {
-            const status = await fetchSubscriptionStatus();
-            if (!status) {
-                const head = document.head;
+            // if (!status) {
+            //     const head = document.head;
+            //     // dispatch(setField({ subscriptionStatus: status }))
 
-                // Add meta tag if not present
-                // if (!document.querySelector('meta[name="google-adsense-account"]')) {
-                //     const metaTag = document.createElement('meta');
-                //     metaTag.name = 'google-adsense-account';
-                //     metaTag.content = 'ca-pub-7391414384206267';
-                //     head.appendChild(metaTag);
-                // }
+            //     // Add meta tag if not present
+            //     // if (!document.querySelector('meta[name="google-adsense-account"]')) {
+            //     //     const metaTag = document.createElement('meta');
+            //     //     metaTag.name = 'google-adsense-account';
+            //     //     metaTag.content = 'ca-pub-7391414384206267';
+            //     //     head.appendChild(metaTag);
+            //     // }
 
-                // // Add script tag if not present
-                // if (!document.querySelector('script[src*="googlesyndication.com/pagead/js/adsbygoogle.js"]')) {
-                //     const scriptTag = document.createElement('script');
-                //     scriptTag.async = true;
-                //     scriptTag.src =
-                //         'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7391414384206267';
-                //     scriptTag.crossOrigin = 'anonymous';
-                //     head.appendChild(scriptTag);
-                // }
-            }
+            //     // // Add script tag if not present
+            //     // if (!document.querySelector('script[src*="googlesyndication.com/pagead/js/adsbygoogle.js"]')) {
+            //     //     const scriptTag = document.createElement('script');
+            //     //     scriptTag.async = true;
+            //     //     scriptTag.src =
+            //     //         'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7391414384206267';
+            //     //     scriptTag.crossOrigin = 'anonymous';
+            //     //     head.appendChild(scriptTag);
+            //     // }
+            // }
         };
 
         loadAdSense();

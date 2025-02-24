@@ -7,6 +7,7 @@ import { FileInputForm } from "./Tool/FileInputForm";
 import DownloadFile from "./DownloadFile";
 import { useFileStore } from "../src/file-store";
 import { setField } from "../src/store";
+import { fetchSubscriptionStatus } from "fetch-subscription-status";
 
 export type errorType = {
   response: {
@@ -57,6 +58,12 @@ const Tool: React.FC<ToolProps> = ({
   };
 
   useEffect(() => {
+    (async () => {
+      const status = await fetchSubscriptionStatus();
+      if (!status) {
+        dispatch(setField({ subscriptionStatus: status }))
+      }
+    })();
     dispatch(setField({ showDownloadBtn: false }));
   }, [stateShowTool]);
 

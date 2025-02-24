@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useFileStore } from "../../src/file-store";
 import { type ToolState, setField } from "../../src/store";
 import type { edit_page, errors } from "../../src/content";
-import { fetchSubscriptionStatus, canUseSiteToday } from "fetch-subscription-status";
 import { useState } from "react";
 export function SubmitBtn({
   k,
@@ -29,6 +28,9 @@ export function SubmitBtn({
   const strategy = useSelector(
     (state: { tool: ToolState }) => state.tool.strategy
   );
+  const subscriptionStatus = useSelector(
+    (state: { tool: ToolState }) => state.tool.subscriptionStatus
+  );
 
   const [isDisabled, setIsDisabled] = useState(false);
   return (
@@ -37,13 +39,8 @@ export function SubmitBtn({
       onClick={async () => {
         dispatch(setField({ isSubmitted: true }));
         dispatch(setField({ showOptions: false }));
-        const status = await fetchSubscriptionStatus();
-        // Validate usage limits
-        if (!canUseSiteToday(3) && !status) {
-          dispatch(setField({ errorMessage: errors.ERR_MAX_USAGE.message }));
-          dispatch(setField({ errorCode: "ERR_MAX_USAGE" }));
-          setIsDisabled(false);
-          return false;
+        if (!subscriptionStatus) {
+          location.href = "/pricing";
         }
 
         if (submitBtn) {
