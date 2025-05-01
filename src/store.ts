@@ -20,7 +20,6 @@ export interface ToolState {
   mdResponse: string;
   strategy: "script" | "content" | "generate" | null,
   selectedLanguages: string[];
-  subscriptionStatus: boolean;
 }
 
 const initialState: ToolState = {
@@ -38,7 +37,6 @@ const initialState: ToolState = {
   mdResponse: "",
   strategy: null,
   selectedLanguages: [],
-  subscriptionStatus: false
 };
 
 const toolSlice = createSlice({

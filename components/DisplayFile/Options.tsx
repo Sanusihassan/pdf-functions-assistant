@@ -53,6 +53,9 @@ const Options = ({ content, errors }: OptionsProps) => {
   const isScanned = useSelector(
     (state: { tool: ToolState }) => state.tool.isScanned
   );
+  const prompt = useSelector(
+    (state: { tool: ToolState }) => state.tool.prompt
+  );
   const selectedLanguages = useSelector(
     (state: { tool: ToolState }) => state.tool.selectedLanguages
   );
@@ -118,7 +121,7 @@ const Options = ({ content, errors }: OptionsProps) => {
         onChange={(e) =>
           dispatch(setField({ prompt: e.target.value }))
         }
-      ></textarea>
+      >{prompt}</textarea>
       {isScanned ?
         <div>
           <Alert variant="warning">

@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 // store
-import type { ToolState } from "../../src/store";
+import { setField, type ToolState } from "../../src/store";
 import { handleUpload } from "../../src/handlers/handleUpload";
 import { handleChange } from "../../src/handlers/handleChange";
 import { useFileStore } from "../../src/file-store";
@@ -19,12 +19,14 @@ interface FileInputFormProps {
   errors: any;
   lang: string;
   tools: tools;
+  placeholders: string[]
 }
 export const FileInputForm: React.FC<FileInputFormProps> = ({
   data,
   errors,
   lang,
   tools,
+  placeholders
 }) => {
   const path = "assistant";
   const errorMessage = useSelector(
@@ -60,11 +62,30 @@ export const FileInputForm: React.FC<FileInputFormProps> = ({
   const fileInput = useRef<HTMLInputElement>(null);
   const submitBtn = useRef<HTMLButtonElement>(null);
   const downloadBtn = useRef<HTMLAnchorElement>(null);
+
+  // State for current placeholder index
+  const [currentPlaceholderIndex, setCurrentPlaceholderIndex] = useState<number>(0);
+
   useEffect(() => {
     setFileInput(fileInput);
     setSubmitBtn(submitBtn);
     setDownloadBtn(downloadBtn);
   }, []);
+
+  // Effect for rotating through placeholders
+  useEffect(() => {
+    if (!placeholders || placeholders.length <= 1) return;
+
+    const intervalId = setInterval(() => {
+      setCurrentPlaceholderIndex(prevIndex =>
+        prevIndex === placeholders.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 2000);
+
+    // Clean up interval on unmount
+    return () => clearInterval(intervalId);
+  }, [placeholders]);
+
   return (
     <form
       onClick={(e) => {
@@ -92,6 +113,7 @@ export const FileInputForm: React.FC<FileInputFormProps> = ({
       }
       method="POST"
       encType="multipart/form-data"
+      className="position-relative"
     >
       <div
         className={`upload-btn btn btn-lg text-white position-relative overflow-hidden ${path}`}
@@ -141,6 +163,41 @@ export const FileInputForm: React.FC<FileInputFormProps> = ({
           </div> */}
       <button type="submit" ref={submitBtn} className="d-none">
         submit
+      </button>
+      <textarea
+        placeholder={placeholders[currentPlaceholderIndex]}
+        className="styled-textarea mt-3"
+        onChange={(e) =>
+          dispatch(setField({ prompt: e.target.value }))
+        }
+      ></textarea>
+      <button className="up-arrow-button" aria-label="submit" onSubmit={(e) => {
+        e.preventDefault();
+      }} onClick={(e) => {
+        e.preventDefault();
+        const textFile = new File([prompt], "prompt.txt", {
+          type: "text/plain"
+        });
+
+        console.log(prompt);
+        setFiles([textFile]);
+        dispatch(setField({
+          showTool: false
+        }));
+      }}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="m18 15-6-6-6 6" />
+        </svg>
       </button>
     </form>
   );

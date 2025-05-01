@@ -4,6 +4,7 @@ import { useFileStore } from "../../src/file-store";
 import { type ToolState, setField } from "../../src/store";
 import type { edit_page, errors } from "../../src/content";
 import { useState } from "react";
+import { fetchSubscriptionStatus } from "fetch-subscription-status";
 export function SubmitBtn({
   k,
   edit_page,
@@ -28,9 +29,6 @@ export function SubmitBtn({
   const strategy = useSelector(
     (state: { tool: ToolState }) => state.tool.strategy
   );
-  const subscriptionStatus = useSelector(
-    (state: { tool: ToolState }) => state.tool.subscriptionStatus
-  );
 
   const [isDisabled, setIsDisabled] = useState(false);
   return (
@@ -39,7 +37,7 @@ export function SubmitBtn({
       onClick={async () => {
         dispatch(setField({ isSubmitted: true }));
         dispatch(setField({ showOptions: false }));
-        if (!subscriptionStatus) {
+        if (!fetchSubscriptionStatus()) {
           location.href = "/pricing";
         }
 

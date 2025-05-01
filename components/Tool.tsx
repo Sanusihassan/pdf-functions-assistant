@@ -7,7 +7,7 @@ import { FileInputForm } from "./Tool/FileInputForm";
 import DownloadFile from "./DownloadFile";
 import { useFileStore } from "../src/file-store";
 import { setField } from "../src/store";
-import { fetchSubscriptionStatus } from "fetch-subscription-status";
+import type { edit_page } from "../src/content";
 
 export type errorType = {
   response: {
@@ -31,7 +31,7 @@ export type ToolProps = {
   tools: any;
   lang: string;
   errors: any;
-  edit_page: any;
+  edit_page: edit_page;
   pages: string;
   page: string;
   downloadFile: any;
@@ -58,12 +58,6 @@ const Tool: React.FC<ToolProps> = ({
   };
 
   useEffect(() => {
-    (async () => {
-      const status = await fetchSubscriptionStatus();
-      if (!status) {
-        dispatch(setField({ subscriptionStatus: status }))
-      }
-    })();
     dispatch(setField({ showDownloadBtn: false }));
   }, [stateShowTool]);
 
@@ -110,6 +104,8 @@ const Tool: React.FC<ToolProps> = ({
     }
   });
 
+  const { content, generate, script } = edit_page.options.placeholders;
+
   return (
     <>
       <div
@@ -137,6 +133,7 @@ const Tool: React.FC<ToolProps> = ({
             data={data}
             errors={errors}
             tools={tools}
+            placeholders={[edit_page.options.select_placeholder, content, generate, script]}
           />
           <p>{tools.or_drop}</p>
           <ErrorElement />
