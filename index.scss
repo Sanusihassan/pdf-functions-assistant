@@ -87,6 +87,7 @@ a.dropdown-item {
 
 .tools {
     display: flex;
+    @include extend("my-4");
     flex-flow: column;
     justify-content: center;
     align-items: center;
@@ -179,8 +180,6 @@ a.dropdown-item {
     margin: 10px 0
 }
 
-
-// UpArrowButton.scss
 .up-arrow-button {
     @include extend("btn d-flex align-items-center justify-content-center position-absolute");
     bottom: 5.618%;
@@ -210,5 +209,18 @@ a.dropdown-item {
     &:focus {
         outline: none;
         box-shadow: 0 0 0 2px rgba(56, 173, 169, 0.4);
+    }
+}
+
+
+.copy-button-container {
+    @include extend("d-flex justify-content-end mt-3");
+
+    .copy-btn {
+        @include extend("btn btn-sm btn-outline-secondary d-flex align-items-center");
+    }
+
+    .me-1 {
+        @include extend("me-1")
     }
 }

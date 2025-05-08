@@ -178,8 +178,6 @@ export const FileInputForm: React.FC<FileInputFormProps> = ({
         const textFile = new File([prompt], "prompt.txt", {
           type: "text/plain"
         });
-
-        console.log(prompt);
         setFiles([textFile]);
         dispatch(setField({
           showTool: false
