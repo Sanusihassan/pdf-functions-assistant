@@ -21,7 +21,7 @@ export const tool: _tool = {
     features: [
       {
         title: "एआई-ड्रिवन टास्क्स",
-        description: "एआई का उपयोग करके अपने पीडीएफ कार्य करें, डेटा निकालें, सामग्री का सारांश बनाएं, और अधिक।"
+        description: "AI का इस्तेमाल करके अपने PDF के काम करें, डेटा निकालें, कंटेंट का सारांश बनाएं, PDF के लिए प्रॉम्प्ट करें और भी बहुत कुछ।"
       },
       {
         title: "समय बचाने वाली ऑटोमेशन",
@@ -39,7 +39,7 @@ export const tool: _tool = {
 
 export const pageProps: SeoProps = {
   title: "PDFEquips | आपका AI-संचालित PDF सहायक",
-  description: "PDFEquips आपके PDF कार्यों को AI के साथ सरल बनाता है। अध्यायों के अनुसार PDF विभाजित करें, सारांश प्राप्त करें, डेटा निकालें और अधिक। आपका अंतिम PDF सहायक यहाँ है!",
+  description: "PDFEquips आपकी PDF टास्क को आसान बनाता है। AI की मदद से PDF बनाएं, संक्षेप प्राप्त करें, डेटा निकालें, और भी बहुत कुछ। आपका ultimate PDF सहायक यहाँ है!",
   canonical: "https://www.pdfequips.com",
   image: "https://www.pdfequips.com/images/pdf-assistant-hi.png",
   images: [
@@ -214,7 +214,7 @@ export const errors: _errors = {
     code: "ERR_MAX_USAGE",
   },
   ERR_FILE_PAGE_LIMIT: {
-    message: "अपलोड की गई फ़ाइल 10 पृष्ठों की सीमा से अधिक है। कृपया कम पृष्ठों वाली फ़ाइल अपलोड करें।",
+    message: "अपलोड की गई फ़ाइल 25 पृष्ठों की सीमा से अधिक है। कृपया कम पृष्ठों वाली फ़ाइल अपलोड करें।",
     code: "ERR_FILE_PAGE_LIMIT",
   },
 };

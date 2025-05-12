@@ -21,7 +21,7 @@ export const tool: _tool = {
     features: [
       {
         title: "AI驱动的任务",
-        description: "利用AI执行您的PDF任务、提取数据、总结内容等等。"
+        description: "利用人工智能来处理你的PDF任务，提取数据，总结内容，转换为PDF等等。"
       },
       {
         title: "节省时间的自动化",
@@ -38,7 +38,7 @@ export const tool: _tool = {
 
 export const pageProps: SeoProps = {
   title: "PDFEquips | 您的AI驱动PDF助手",
-  description: "PDFEquips利用AI简化您的PDF任务。按章节拆分PDF，获取摘要，提取数据等。您的终极PDF助手就在这里！",
+  description: "PDFEquips 让你的 PDF 任务变得简单。用 AI 生成 PDF，获取摘要，提取数据，等等。你终极的 PDF 助手来了！",
   canonical: "https://www.pdfequips.com",
   image: "https://www.pdfequips.com/images/pdf-assistant-zh.png",
   images: [
@@ -207,7 +207,7 @@ export const errors: _errors = {
     code: "ERR_MAX_USAGE",
   },
   ERR_FILE_PAGE_LIMIT: {
-    message: "上传的文件超过了10页的限制。请上传页数较少的文件。",
+    message: "上传的文件超过了25页的限制。请上传页数较少的文件。",
     code: "ERR_FILE_PAGE_LIMIT",
   },
 };

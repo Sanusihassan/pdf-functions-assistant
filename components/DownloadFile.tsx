@@ -3,19 +3,22 @@ import { setField, type ToolState } from "../src/store";
 import { DownloadIcon, ArrowLeftIcon } from "@heroicons/react/solid";
 import { useDispatch } from "react-redux";
 import { Tooltip } from "react-tooltip";
-import type { downloadFile } from "../src/content";
+import type { downloadFile, errors } from "../src/content";
 import { useEffect } from "react";
 import { useFileStore } from "../src/file-store";
 import MarkdownViewer from "./MarkdownViewer";
+import { getRemainingUsage, trackSubscriptionUsage } from "../src/trackSubscriptionUsage";
 
 const DownloadFile = ({
   lang,
   downloadFile,
   path,
+  errors
 }: {
   lang: string;
   downloadFile: downloadFile;
   path: string;
+  errors: errors
 }) => {
   const { files, downloadBtn } = useFileStore();
   const dispatch = useDispatch();
@@ -26,7 +29,48 @@ const DownloadFile = ({
     (state: { tool: ToolState }) => state.tool.mdResponse
   );
 
-  useEffect(() => { }, [downloadFile, showDownloadBtn]);
+  const subscriptionAndStatus = useSelector(
+    (state: { tool: ToolState }) => state.tool.subscriptionAndStatus
+  );
+
+  const pageCount = useSelector(
+    (state: { tool: ToolState }) => state.tool.pageCount
+  );
+
+  useEffect(() => {
+    // No need to track usage on initial mount, only when download happens
+  }, [downloadFile, showDownloadBtn]);
+
+  const handleDownload = () => {
+    if (!subscriptionAndStatus?.subscription) {
+      // No subscription data available
+      return;
+    }
+
+    // Track usage when download button is clicked
+    const allowUsage = trackSubscriptionUsage(
+      subscriptionAndStatus.subscription.plan,
+      pageCount
+    );
+
+    if (!allowUsage) {
+      // Show error message if usage limit is reached
+      dispatch(setField({
+        errorMessage: errors.ERR_MAX_USAGE.message
+      }));
+      return;
+    }
+
+    // Trigger the download if usage is allowed
+    if (downloadBtn?.current) {
+      downloadBtn.current.click();
+    }
+  };
+
+  // Get remaining usage for display
+  const remainingUsage = subscriptionAndStatus?.subscription
+    ? getRemainingUsage(subscriptionAndStatus.subscription.plan)
+    : null;
 
   if (mdResponse) {
     return (
@@ -55,8 +99,7 @@ const DownloadFile = ({
 
   return (
     <div
-      className={`download-page flex-column align-items-center justify-content-center text-center${showDownloadBtn ? " d-flex" : " d-none"
-        }`}
+      className={`download-page flex-column align-items-center justify-content-center text-center${showDownloadBtn ? " d-flex" : " d-none"}`}
     >
       <h3 className="text-center mb-4">
         <bdi>
@@ -85,11 +128,7 @@ const DownloadFile = ({
         </button>
         <button
           className={`download-btn btn btn-lg text-white position-relative overflow-hidden ${path}`}
-          onClick={() => {
-            if (downloadBtn?.current) {
-              downloadBtn.current.click();
-            }
-          }}
+          onClick={handleDownload}
         >
           <DownloadIcon className="icon text-white mr-2" />
           <bdi>

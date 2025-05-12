@@ -20,7 +20,7 @@ export const tool: _tool = {
     features: [
       {
         title: "مهام مدعومة بالذكاء الاصطناعي",
-        description: "استخدم الذكاء الاصطناعي لتنفيذ مهام PDF الخاصة بك، واستخراج البيانات، وتلخيص المحتوى، والمزيد."
+        description: "استفد من الذكاء الاصطناعي لأداء مهام PDF الخاصة بك، استخراج البيانات، تلخيص المحتوى، وتحويل النص إلى PDF وأكثر."
       },
       {
         title: "أتمتة لتوفير الوقت",
@@ -37,7 +37,7 @@ export const tool: _tool = {
 
 export const pageProps: SeoProps = {
   title: "PDFEquips | مساعد PDF بالذكاء الاصطناعي",
-  description: "PDFEquips يجعل مهام PDF أسهل باستخدام الذكاء الاصطناعي. قم بتقسيم ملفات PDF حسب الفصول، واحصل على ملخصات، واستخرج البيانات والمزيد. مساعد PDF النهائي الخاص بك هنا!",
+  description: "PDFEquips يسهل عليك مهام PDF. أنشئ PDF باستخدام الذكاء الاصطناعي، احصل على ملخصات، استخرج بيانات، وأكثر. مساعدك النهائي في PDFs هنا!",
   canonical: "https://www.pdfequips.com",
   image: "https://www.pdfequips.com/images/pdf-assistant-ar.png",
   images: [
@@ -211,7 +211,7 @@ export const errors: _errors = {
     code: "ERR_MAX_USAGE",
   },
   ERR_FILE_PAGE_LIMIT: {
-    message: "الملف الذي تم تحميله يتجاوز الحد الأقصى لعدد الصفحات وهو 10. يرجى تحميل ملف يحتوي على صفحات أقل.",
+    message: "الملف الذي تم تحميله يتجاوز الحد الأقصى لعدد الصفحات وهو 25. يرجى تحميل ملف يحتوي على صفحات أقل.",
     code: "ERR_FILE_PAGE_LIMIT",
   },
 };

@@ -10,7 +10,7 @@ export const tool = {
     features: [
       {
         title: "AI-Driven Tasks",
-        description: "Leverage AI to perform your PDF tasks, extract data, summarize content, and more."
+        description: "Leverage AI to perform your PDF tasks, extract data, summarize content, prompt to pdf and more."
       },
       {
         title: "Time-Saving Automation",
@@ -28,7 +28,7 @@ export const tool = {
 
 export const pageProps: SeoProps = {
   title: "PDFEquips | Your AI-Powered PDF Assistant",
-  description: "PDFEquips simplifies your PDF tasks with AI. Split PDFs by chapters, get summaries, extract data, and more. Your ultimate PDF assistant is here!",
+  description: "PDFEquips simplifies your PDF tasks. Generate PDF using AI, get summaries, extract data, and more. Your ultimate PDF assistant is here!",
   canonical: "https://www.pdfequips.com",
   images: [
     {
@@ -803,7 +803,7 @@ export const errors = {
   },
   ERR_FILE_PAGE_LIMIT: {
     message:
-      "The uploaded file exceeds the page limit of 10. Please upload a file with fewer pages.",
+      "The uploaded file exceeds the page limit of 25. Please upload a file with fewer pages.",
     code: "ERR_FILE_PAGE_LIMIT",
   },
 };

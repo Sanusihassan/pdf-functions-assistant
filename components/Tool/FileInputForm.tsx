@@ -170,6 +170,9 @@ export const FileInputForm: React.FC<FileInputFormProps> = ({
         onChange={(e) =>
           dispatch(setField({ prompt: e.target.value }))
         }
+        onPaste={(e) => {
+          e.stopPropagation();
+        }}
       ></textarea>
       <button className="up-arrow-button" aria-label="submit" onSubmit={(e) => {
         e.preventDefault();

@@ -1,10 +1,22 @@
 import { createSlice, type Draft, type PayloadAction } from "@reduxjs/toolkit";
+import type { SubscriptionPlan, SubscriptionStatus } from "fetch-subscription-status";
 type WritableDraft<T> = {
   -readonly [K in keyof T]: Draft<T[K]>;
 };
 
 type k = keyof WritableDraft<ToolState>;
-
+interface SubscriptionData {
+  id: string;
+  userId: string;
+  paddleSubscriptionId: string;
+  plan: SubscriptionPlan;
+  status: SubscriptionStatus;
+  startDate: Date;
+  endDate: Date;
+  canceledAt: Date;
+  createdAt: Date;
+  updatedAt: Date;
+}
 export interface ToolState {
   showTool: boolean;
   isSubmitted: boolean;
@@ -20,6 +32,7 @@ export interface ToolState {
   mdResponse: string;
   strategy: "script" | "content" | "generate" | null,
   selectedLanguages: string[];
+  subscriptionAndStatus: { subscription: SubscriptionData, status: boolean } | null;
 }
 
 const initialState: ToolState = {
@@ -37,6 +50,7 @@ const initialState: ToolState = {
   mdResponse: "",
   strategy: null,
   selectedLanguages: [],
+  subscriptionAndStatus: null
 };
 
 const toolSlice = createSlice({

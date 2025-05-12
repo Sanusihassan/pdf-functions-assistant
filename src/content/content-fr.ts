@@ -21,7 +21,7 @@ export const tool: _tool = {
     features: [
       {
         title: "Tâches pilotées par IA",
-        description: "Utilisez l'IA pour effectuer vos tâches PDF, extraire des données, résumer du contenu, et bien plus."
+        description: "Utilise l'IA pour faire tes tâches PDF, extraire des données, résumer du contenu, passer des invites en PDF et bien plus."
       },
       {
         title: "Automatisation gain de temps",
@@ -38,7 +38,7 @@ export const tool: _tool = {
 
 export const pageProps: SeoProps = {
   title: "PDFEquips | Votre Assistant PDF Alimenté par IA",
-  description: "PDFEquips simplifie vos tâches PDF grâce à l'IA. Divisez des PDF par chapitres, obtenez des résumés, extrayez des données, et plus encore. Votre assistant PDF ultime est ici !",
+  description: "PDFEquips simplifie vos tâches PDF. Générez des PDF avec l'IA, obtenez des résumés, extrayez des données, et bien plus encore. Votre assistant PDF ultime est là !",
   canonical: "https://www.pdfequips.com",
   image: "https://www.pdfequips.com/images/pdf-assistant-fr.png",
   images: [
@@ -213,7 +213,7 @@ export const errors: _errors = {
     code: "ERR_MAX_USAGE",
   },
   ERR_FILE_PAGE_LIMIT: {
-    message: "Le fichier téléchargé dépasse la limite de 10 pages. Veuillez télécharger un fichier contenant moins de pages.",
+    message: "Le fichier téléchargé dépasse la limite de 25 pages. Veuillez télécharger un fichier contenant moins de pages.",
     code: "ERR_FILE_PAGE_LIMIT",
   },
 };

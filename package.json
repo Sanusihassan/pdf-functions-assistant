@@ -16,7 +16,7 @@
     "astro": "^5.0.2",
     "astro-seo": "^0.8.4",
     "astro-seo-schema": "^5.0.0",
-    "fetch-subscription-status": "^2.0.5",
+    "fetch-subscription-status": "^2.0.70",
     "katex": "^0.16.21",
     "lucide-react": "^0.508.0",
     "pdfequips-footer": "^0.1.6",

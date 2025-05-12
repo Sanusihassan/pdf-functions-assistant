@@ -3,8 +3,7 @@ import { type Action, type Dispatch } from "@reduxjs/toolkit";
 import type { errors as _ } from "./content";
 import { setField } from "./store";
 import * as pdfjs from "pdfjs-dist";
-import { getDocument, type PDFDocumentProxy, type PageViewport, type RenderTask } from "pdfjs-dist";
-import { canUseSiteToday, fetchSubscriptionStatus } from "fetch-subscription-status";
+import { type PDFDocumentProxy, type PageViewport, type RenderTask } from "pdfjs-dist";
 
 // @ts-ignore
 // how can i optimize this using partytown? this is included in a astro.js app
@@ -263,7 +262,7 @@ export const validationForContentStrategy = async (file: File, dispatch: Dispatc
     : '';
   if (extension === ".pdf") {
     const pageCount = await calculatePages(file);
-    if (pageCount > 10) {
+    if (pageCount > 25) {
       dispatch(setField({ errorMessage: errors.ERR_FILE_PAGE_LIMIT.message }));
       dispatch(setField({ errorCode: "ERR_FILE_PAGE_LIMIT" }));
       return false;

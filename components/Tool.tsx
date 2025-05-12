@@ -146,7 +146,7 @@ const Tool: React.FC<ToolProps> = ({
           errors={errors}
           path={path}
         />
-        <DownloadFile lang={lang} downloadFile={downloadFile} path={path} />
+        <DownloadFile lang={lang} downloadFile={downloadFile} path={path} errors={errors} />
       </div>
     </>
   );
