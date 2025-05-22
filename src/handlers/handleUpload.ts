@@ -133,11 +133,15 @@ export const handleUpload = async (
     if (contentType.includes("application/json")) {
       try {
         const parsed = JSON.parse(decodedText);
-        if (parsed && parsed.response) {
+        if (parsed && parsed.response && parsed.responseType === "md") {
           dispatch(
             setField({ mdResponse: parsed.response, showDownloadBtn: true })
           );
           return;
+        } else if (parsed && parsed.responseType === "html") {
+          dispatch(
+            setField({ htmlResponse: parsed.response, showDownloadBtn: true })
+          );
         }
       } catch (error) {
         // If JSON parsing fails, continue to file handling.

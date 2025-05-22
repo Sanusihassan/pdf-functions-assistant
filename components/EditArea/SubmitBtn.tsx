@@ -44,7 +44,11 @@ export function SubmitBtn({
         // Get subscription status
         const { isActive: status, subscription } = await getUserSubscription();
         dispatch(setField({ subscriptionAndStatus: { status, subscription } }));
-
+        // just now
+        if (submitBtn) {
+          submitBtn?.current?.click();
+          return;
+        }
         // Redirect to pricing if no active subscription
         if (!status) {
           location.href = "/pricing";

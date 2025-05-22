@@ -1,7 +1,17 @@
 @import "/node_modules/pdfequips-navbar/scss/navbar";
+@import "/node_modules/flex-system/index.scss";
+$main-bazier-curve: cubic-bezier(0.42, 0, 1, 1);
+@import "./scss/common";
+@include flex-system;
 
 %debug {
     outline: 1px solid;
+}
+
+@mixin max-lg {
+    @media only screen and (max-width: 767px) {
+        @content;
+    }
 }
 
 @import "./scss/minxins";
@@ -34,6 +44,7 @@ $color-map: (
 
 $main-color: #38ada9;
 
+// i want to ignore .html-viewer-wrapper which is inside the body
 body {
     @include ar-wrapper {
         text-align: right !important;
@@ -41,6 +52,10 @@ body {
 
     font-family: "Raleway",
     sans-serif;
+
+    .html-viewer-wrapper {
+        font-family: initial;
+    }
 }
 
 .tools-page {
@@ -152,6 +167,7 @@ a.dropdown-item {
 }
 
 @import "pdfequips-footer/scss/footer";
+@import "./scss/style-tools";
 
 
 .styled-textarea {
@@ -174,6 +190,15 @@ a.dropdown-item {
         border-color: transparent;
         box-shadow: 0 0 0 2px $main-color;
     }
+
+    &.overlayed-text-area {
+        @include extend("position-fixed");
+        bottom: 5%;
+        width: 75%;
+        z-index: 5;
+        left: 50%;
+        translate: -50% 0;
+    }
 }
 
 .select-wrapper {
@@ -186,6 +211,31 @@ a.dropdown-item {
     right: 1.618%;
     width: 32px;
     height: 32px;
+    z-index: 6;
+
+    &.deep-search {
+        @include extend("position-fixed");
+        z-index: 6;
+        left: 13.618%;
+
+        @include ar-wrapper {
+            left: unset !important;
+            right: calc(100% - 16.618%);
+
+            @include xs {
+                right: 74.618%;
+            }
+        }
+
+        bottom: 6.618%;
+    }
+
+    &.fixed {
+        @include extend("position-fixed");
+        right: 13.618%;
+        bottom: 6.618%;
+    }
+
     padding: 0;
     border-radius: 4px;
     background-color: #38ada9;
@@ -223,4 +273,37 @@ a.dropdown-item {
     .me-1 {
         @include extend("me-1")
     }
+}
+
+
+.html-viewer-wrapper, .tiptap {
+    outline: none;
+}
+
+// floating-download-btn
+.floating-download-btn {
+    @include extend("btn btn-lg p-3 rounded-circle position-fixed d-flex align-items-center justify-content-center shadow text-white");
+
+    // Positioning: bottom right, but bottom left on Arabic
+    bottom: 1.5rem;
+    right: 1.5rem;
+
+    // RTL positioning override
+    @include ar-wrapper {
+        left: 1.5rem;
+        right: auto;
+    }
+
+    // Theme color
+    background-color: $main-color;
+
+    // Icon sizing handled by Lucide size prop
+
+    &:hover,
+    &:focus {
+        background-color: darken($main-color, 5%);
+        cursor: pointer;
+    }
+
+    transition: background-color 0.2s ease-in-out;
 }

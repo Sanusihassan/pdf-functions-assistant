@@ -164,6 +164,7 @@ export const FileInputForm: React.FC<FileInputFormProps> = ({
       <button type="submit" ref={submitBtn} className="d-none">
         submit
       </button>
+      {/* only if the ai assistant enabled, it may have a search button and a submit btn style fixed */}
       <textarea
         placeholder={placeholders[currentPlaceholderIndex]}
         className="styled-textarea mt-3"

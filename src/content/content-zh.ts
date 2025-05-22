@@ -133,6 +133,11 @@ export const downloadFile: _downloadFile = {
   backto: {
     "assistant": "返回PDF助手",
   },
+  chatAreaTooltipContent: {
+    search: "高级搜索与推理",
+    textarea: "在此输入您的消息",
+    submit: "提交消息",
+  }
 };
 
 

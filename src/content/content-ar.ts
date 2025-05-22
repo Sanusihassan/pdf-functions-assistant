@@ -139,6 +139,11 @@ export const downloadFile: _downloadFile = {
   backto: {
     "assistant": "العودة إلى مساعد PDF",
   },
+  chatAreaTooltipContent: {
+    search: "البحث المتقدم والاستدلال",
+    textarea: "أدخل رسالتك هنا",
+    submit: "إرسال الرسالة",
+  }
 };
 
 

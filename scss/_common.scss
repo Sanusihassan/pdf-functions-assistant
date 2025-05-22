@@ -1,0 +1,60 @@
+// @keyframes hide {
+//     from {
+//         opacity: 1;
+//         transform: translateY(0px);
+//     }
+
+//     to {
+//         opacity: 0;
+//         transform: translateY(-15px);
+//         display: none;
+//     }
+// }
+
+
+.hide-show {
+    transition: .2s $main-bazier-curve;
+
+    &.hide {
+        &:not(.ignore) {
+            opacity: 1;
+        }
+
+        transform: translateY(-15px);
+
+        &:not(.shapes-tool):not(.multiple-fonts):not(.ignore) {
+            height: 0% !important;
+        }
+
+
+        overflow: hidden !important;
+        z-index: -1;
+        pointer-events: none;
+        @include extend("position-absolute");
+
+        &.shapes-tool,
+        &.ignore {
+            opacity: 0;
+            @include extend("position-fixed");
+        }
+    }
+
+    &.show {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+
+.btn {
+    @include extend("btn w-100 text-white mt-2");
+
+    &.btn-purple {
+        @include extend("mb-0");
+        background-color: darken(#6c5ce7, 5);
+
+        &:hover {
+            background-color: darken(#6c5ce7, 10)
+        }
+    }
+}

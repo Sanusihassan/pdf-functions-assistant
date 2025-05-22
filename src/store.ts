@@ -30,9 +30,11 @@ export interface ToolState {
   isScanned: boolean;
   pageCount: number;
   mdResponse: string;
+  htmlResponse: string;
   strategy: "script" | "content" | "generate" | null,
   selectedLanguages: string[];
   subscriptionAndStatus: { subscription: SubscriptionData, status: boolean } | null;
+  showStyleTools: boolean;
 }
 
 const initialState: ToolState = {
@@ -48,9 +50,11 @@ const initialState: ToolState = {
   isScanned: false,
   pageCount: 0,
   mdResponse: "",
+  htmlResponse: "",
   strategy: null,
   selectedLanguages: [],
-  subscriptionAndStatus: null
+  subscriptionAndStatus: null,
+  showStyleTools: true
 };
 
 const toolSlice = createSlice({

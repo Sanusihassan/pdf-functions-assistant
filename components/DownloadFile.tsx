@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { useFileStore } from "../src/file-store";
 import MarkdownViewer from "./MarkdownViewer";
 import { getRemainingUsage, trackSubscriptionUsage } from "../src/trackSubscriptionUsage";
+import { HTMLViewer } from "./HTMLViewer";
 
 const DownloadFile = ({
   lang,
@@ -25,8 +26,13 @@ const DownloadFile = ({
   const showDownloadBtn = useSelector(
     (state: { tool: ToolState }) => state.tool.showDownloadBtn
   );
+
   const mdResponse = useSelector(
     (state: { tool: ToolState }) => state.tool.mdResponse
+  );
+
+  const htmlResponse = useSelector(
+    (state: { tool: ToolState }) => state.tool.htmlResponse
   );
 
   const subscriptionAndStatus = useSelector(
@@ -72,7 +78,7 @@ const DownloadFile = ({
     ? getRemainingUsage(subscriptionAndStatus.subscription.plan)
     : null;
 
-  if (mdResponse) {
+  if (mdResponse || htmlResponse) {
     return (
       <div className={`download-page flex-column justify-content-center${showDownloadBtn ? " d-flex" : " d-none"}`}>
         <div className="d-flex align-items-center justify-content-between w-100">
@@ -92,7 +98,7 @@ const DownloadFile = ({
             <Tooltip id="download-btn-tooltip" />
           </button>
         </div>
-        <MarkdownViewer content={mdResponse} />
+        {mdResponse ? <MarkdownViewer content={mdResponse} /> : <HTMLViewer content={htmlResponse} chatAreaTooltipContent={downloadFile.chatAreaTooltipContent} />}
       </div>
     );
   }

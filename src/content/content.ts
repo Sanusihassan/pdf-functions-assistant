@@ -128,6 +128,11 @@ export const downloadFile = {
   backto: {
     "assistant": "Back To PDF assistant",
   },
+  chatAreaTooltipContent: {
+    search: "Advanced search and reasoning",
+    textarea: "Enter your message here",
+    submit: "Submit message",
+  }
 };
 
 export const languages = {
