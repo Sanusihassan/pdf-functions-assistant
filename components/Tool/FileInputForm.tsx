@@ -47,6 +47,9 @@ export const FileInputForm: React.FC<FileInputFormProps> = ({
   const selectedLanguages = useSelector(
     (state: { tool: ToolState }) => state.tool.selectedLanguages
   );
+  const advancedSearch = useSelector(
+    (state: { tool: ToolState }) => state.tool.advancedSearch
+  );
   const dispatch = useDispatch();
   // file store
   const {
@@ -103,7 +106,8 @@ export const FileInputForm: React.FC<FileInputFormProps> = ({
             isScanned,
             pageCount,
             strategy,
-            selectedLanguages
+            selectedLanguages,
+            advancedSearch
           },
           files,
           errors,

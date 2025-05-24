@@ -35,6 +35,8 @@ export interface ToolState {
   selectedLanguages: string[];
   subscriptionAndStatus: { subscription: SubscriptionData, status: boolean } | null;
   showStyleTools: boolean;
+  showChatTextArea: boolean;
+  advancedSearch: boolean
 }
 
 const initialState: ToolState = {
@@ -54,7 +56,9 @@ const initialState: ToolState = {
   strategy: null,
   selectedLanguages: [],
   subscriptionAndStatus: null,
-  showStyleTools: true
+  showStyleTools: true,
+  showChatTextArea: false,
+  advancedSearch: false
 };
 
 const toolSlice = createSlice({

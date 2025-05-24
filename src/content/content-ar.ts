@@ -120,7 +120,8 @@ export const edit_page: _edit_page = {
     labels: {
       script: "أداء مهمة",
       content: "اسأل عن مستندك",
-      generate: "أنشئ مستندًا"
+      generate: "أنشئ مستندًا",
+      advancedSearch: "بحث متقدم"
     },
     ocr_placeholder: "اختر اللغات",
     ocr_warning: "أضف لغة المستند للحصول على نتائج أكثر دقة."

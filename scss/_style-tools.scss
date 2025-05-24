@@ -202,6 +202,7 @@
     .spacing-tool,
     .save-document,
     .paint-tool,
+    .chat-bot-tool,
     .more>.indicator {
         @include extend("position-relative btn btn-light border-0 padding rounded-2 text-center");
         min-height: 1em;

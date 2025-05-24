@@ -52,7 +52,15 @@
     }
 
     .gear-button {
-      @include extend("position-absolute");
+      @include extend("position-absolute btn");
+      background-color: $main-color;
+
+      &:hover,
+      &:active {
+        background-color: lighten($main-color, 5);
+      }
+
+      width: fit-content !important;
       top: 80px;
       left: 2.535px;
       z-index: 15;
@@ -72,7 +80,7 @@
 
   .add-more-files {
     @include extend("position-absolute rounded-circle");
-    width: 2em;
+    width: 2em !important;
     height: 2em;
 
     // what i'm trying to do is when the language is not arabic apply this style

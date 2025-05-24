@@ -25,6 +25,7 @@
     "astro": "^5.0.2",
     "astro-seo": "^0.8.4",
     "astro-seo-schema": "^5.0.0",
+    "axios": "^1.9.0",
     "fetch-subscription-status": "^2.0.70",
     "flex-system": "^2.1.0",
     "katex": "^0.16.21",
@@ -32,6 +33,8 @@
     "pdfequips-footer": "^0.1.6",
     "pdfequips-navbar": "^3.5.4",
     "pdfjs-dist": "^4.9.155",
+    "pretty-checkbox": "^3.0.3",
+    "pretty-checkbox-react": "^3.2.0",
     "rc-slider": "^11.1.8",
     "react-beautiful-dnd": "^13.1.1",
     "react-bootstrap": "^2.10.6",
@@ -44,7 +47,9 @@
     "react-tooltip": "^5.28.0",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",
+    "sanitize-html": "^2.17.0",
     "schema-dts": "^1.1.2",
+    "socket.io-client": "^4.8.1",
     "typescript": "^5.7.2",
     "typewriter-effect": "^2.21.0"
   },
@@ -54,6 +59,7 @@
     "@types/node": "^22.12.0",
     "@types/react-lazy-load-image-component": "^1.6.4",
     "@types/react-syntax-highlighter": "^15.5.13",
+    "@types/sanitize-html": "^2.16.0",
     "sass": "^1.66.1"
   }
 }

@@ -115,7 +115,8 @@ export const edit_page: _edit_page = {
     labels: {
       script: "एक कार्य करें",
       content: "अपने दस्तावेज़ के बारे में पूछें",
-      generate: "एक दस्तावेज़ बनाएं"
+      generate: "एक दस्तावेज़ बनाएं",
+      advancedSearch: "उन्नत खोज"
     },
     ocr_placeholder: "भाषाएँ चुनें",
     ocr_warning: "अधिक सटीक परिणामों के लिए दस्तावेज़ की भाषा जोड़ें।"

@@ -120,7 +120,8 @@ export const edit_page: _edit_page = {
     labels: {
       script: "Effectuez une tâche",
       content: "Posez des questions sur votre document",
-      generate: "Créez un document"
+      generate: "Créez un document",
+      advancedSearch: "Recherche avancée"
     },
     ocr_placeholder: "Sélectionner les langues",
     ocr_warning: "Ajoutez la langue du document pour obtenir des résultats plus précis."

@@ -2,6 +2,7 @@ import ImageWithLoader from "./ImageWithLoader";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import type { imageUrlsType } from "./FileCard";
+import type { ToolState } from "../../src/store";
 
 type props = {
     imageUrls: imageUrlsType;
@@ -29,14 +30,15 @@ const arrangementToClassName = (arrangement: "1x1" | "2x1" | "3x1" | "4x1" | "1x
 
 export const Pages = ({ imageUrls, loader_text }: props) => {
     const dispatch = useDispatch();
-    // const arrangement = useSelector((state: { tool: any }) => state.tool.arrangement);
+    const pageCount = useSelector((state: { tool: ToolState }) => state.tool.pageCount);
     // const { files } = useFileStore();
     // const fileNameParts = files[0].name.split('.');
     // const extension = fileNameParts.length > 1
     //     ? `.${fileNameParts.pop()?.toLowerCase()}`
     //     : '';
     // const arrangement = extension !== ".pdf" ? "4x1" : "3x3";
-    const arrangementClass = arrangementToClassName("3x1");
+
+    const arrangementClass = arrangementToClassName(pageCount >= 10 ? "3x3" : "2x2");
 
     useEffect(() => {
     }, [imageUrls, dispatch]);

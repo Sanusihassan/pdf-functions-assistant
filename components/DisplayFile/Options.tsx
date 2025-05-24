@@ -5,17 +5,17 @@ import type { edit_page as _edit_pages, errors } from "../../src/content";
 import { Alert } from "react-bootstrap";
 import { InformationCircleIcon } from "@heroicons/react/outline";
 import { languages } from "../../src/content/content";
-
-export interface OptionsProps {
-  content: _edit_pages["options"];
-  errors: errors
-}
-
 import { type MultiValue } from 'react-select';
 import { useFileStore } from "../../src/file-store";
 import { validationForContentStrategy } from "../../src/utils";
+import { Checkbox } from "pretty-checkbox-react";
 
-// Define an interface for your language option
+
+export interface OptionsProps {
+  content: _edit_pages["options"];
+  errors: errors;
+}
+
 interface LanguageOption {
   value: string;
   label: string;
@@ -44,21 +44,14 @@ const customSelectStyles = {
     },
   }),
 };
+
 const Options = ({ content, errors }: OptionsProps) => {
   const { files } = useFileStore();
   const dispatch = useDispatch();
-  const strategy = useSelector(
-    (state: { tool: ToolState }) => state.tool.strategy
-  );
-  const isScanned = useSelector(
-    (state: { tool: ToolState }) => state.tool.isScanned
-  );
-  const prompt = useSelector(
-    (state: { tool: ToolState }) => state.tool.prompt
-  );
-  const selectedLanguages = useSelector(
-    (state: { tool: ToolState }) => state.tool.selectedLanguages
-  );
+  const strategy = useSelector((state: { tool: ToolState }) => state.tool.strategy);
+  const isScanned = useSelector((state: { tool: ToolState }) => state.tool.isScanned);
+  const prompt = useSelector((state: { tool: ToolState }) => state.tool.prompt);
+  const advancedSearch = useSelector((state: { tool: ToolState }) => state.tool.advancedSearch);
 
   const options = Object.entries(languages).map(
     ([value, language]: [string, { name: string, nativeName: string }]) => ({
@@ -66,8 +59,6 @@ const Options = ({ content, errors }: OptionsProps) => {
       label: `${language.name} (${language.nativeName})`,
     })
   );
-
-
 
   const placeholder = strategy ? content.placeholders[strategy] : content.placeholder;
 
@@ -90,14 +81,10 @@ const Options = ({ content, errors }: OptionsProps) => {
   };
 
   const handleLangChange = (selectedOptions: MultiValue<LanguageOption>) => {
-    // Limit selection to maximum 3 languages
-    const limitedOptions = selectedOptions
-      ? selectedOptions.slice(0, 3)
-      : [];
-
+    const limitedOptions = selectedOptions ? selectedOptions.slice(0, 3) : [];
     dispatch(
       setField({
-        selectedLanguages: limitedOptions.map(option => option.value)
+        selectedLanguages: limitedOptions.map(option => option.value),
       })
     );
   };
@@ -112,17 +99,32 @@ const Options = ({ content, errors }: OptionsProps) => {
           styles={customSelectStyles}
         />
       </div>
+
       <Alert variant="info">
         <InformationCircleIcon className="icon" /> {content?.info}
       </Alert>
+
       <textarea
         placeholder={placeholder}
         className="styled-textarea"
-        onChange={(e) =>
-          dispatch(setField({ prompt: e.target.value }))
-        }
+        onChange={(e) => dispatch(setField({ prompt: e.target.value }))}
       >{prompt}</textarea>
-      {isScanned ?
+
+      {/* Pretty Checkbox Toggle */}
+      <Checkbox
+        animation="smooth"
+        color="primary"
+        checked={advancedSearch}
+        onClick={(e) => e.stopPropagation()}
+        onChange={() => dispatch(setField({ advancedSearch: !advancedSearch }))}
+        className="ml-1 my-3 mb-0"
+      >
+        {content.labels.advancedSearch}
+      </Checkbox>
+
+
+
+      {isScanned ? (
         <div>
           <Alert variant="warning">
             <InformationCircleIcon className="icon" /> {content.ocr_warning}
@@ -136,10 +138,9 @@ const Options = ({ content, errors }: OptionsProps) => {
             placeholder={content.ocr_placeholder}
             onChange={handleLangChange}
             styles={customSelectStyles}
-          // isDisabled={selectedLanguages.length === 3}
           />
-        </div> : null
-      }
+        </div>
+      ) : null}
     </div>
   );
 };

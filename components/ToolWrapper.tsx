@@ -61,12 +61,12 @@ export function ToolWrapper(props: ToolWrapperProps) {
         <ReduxProvider store={store}>
             <ToolComponent {...props} />
             <div className="container">
+                <HowTo howTo={howTo} alt={seoTitle} imgSrc={to.replace("/", "")} />
+            </div>
+            <div className="container">
                 <Features
                     features={features as { title: string; description: string }[]}
                 />
-            </div>
-            <div className="container">
-                <HowTo howTo={howTo} alt={seoTitle} imgSrc={to.replace("/", "")} />
             </div>
 
         </ReduxProvider>
