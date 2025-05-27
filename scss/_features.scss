@@ -1,0 +1,44 @@
+.features {
+    @include extend("d-flex flex-wrap text-center justify-content-between pt-5");
+
+    @media only screen and (min-width: 768px) {
+        padding-top: 0 !important;
+    }
+
+    &.d-none {
+        @include extend("d-none");
+    }
+
+    .feature {
+        @include extend("d-flex flex-column justify-content-evenly align-items-center");
+
+        @include xs {
+            flex: 0 1 100%;
+        }
+
+
+        @include xl {
+            flex: 0 1 32%
+        }
+
+        .feature-icon {
+            width: 3em;
+            height: 3em;
+
+            &:not(.no-fill) {
+                fill: currentColor;
+            }
+
+            color: currentColor
+        }
+
+
+        .title {
+            @include extend("h3");
+        }
+
+        .description {
+            @include extend("lead")
+        }
+    }
+}

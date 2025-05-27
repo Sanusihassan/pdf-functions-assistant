@@ -1,0 +1,337 @@
+@import "/node_modules/pdfequips-navbar/scss/navbar";
+@import "pretty-checkbox/src/scss/_variables.scss";
+@import "pretty-checkbox/src/scss/_core.scss";
+@import "pretty-checkbox/src/pretty-checkbox.scss";
+// @import "/node_modules/flex-system/index.scss";
+$main-bazier-curve: cubic-bezier(0.42, 0, 1, 1);
+@import "./scss/common";
+// @include flex-system;
+
+%debug {
+    outline: 1px solid;
+}
+
+@mixin max-lg {
+    @media only screen and (max-width: 767px) {
+        @content;
+    }
+}
+
+@import "./scss/minxins";
+@import "./scss/placeholders";
+
+
+$pdf-color: #fc271c;
+$color-map: (
+    "merge-pdf": $pdf-color,
+    "split-pdf": #fd7e14,
+    "compress-pdf": #28a745,
+    "pdf-to-powerpoint": #c13b1b,
+    "jpg-to-pdf": #f1c40f,
+    "word-to-pdf": #1b5ebe,
+    "powerpoint-to-pdf": #c13b1b,
+    "excel-to-pdf": #10793f,
+    "web-to-pdf": #0984e3,
+    "pdf-to-text": #4493e1,
+    "html-to-pdf": rgb(228, 77, 38),
+    "pdf-to-jpg": #f1c40f,
+    "pdf-to-word": #1b5ebe,
+    "pdf-to-excel": #10793f,
+    "pdf-to-pdf-a": #000000,
+    "pdf-to-html": rgb(228, 77, 38),
+    "pdf-to-markdown": #000000,
+    "translate-pdf": #185abc,
+    "merge-pages": #27ae60,
+    "assistant": #38ada9
+);
+
+$main-color: #38ada9;
+
+// i want to ignore .html-viewer-wrapper which is inside the body
+body {
+    @include ar-wrapper {
+        text-align: right !important;
+    }
+
+    font-family: "Raleway",
+    sans-serif;
+
+    .html-viewer-wrapper {
+        font-family: initial;
+    }
+}
+
+.tools-page {
+    min-height: fit-content;
+}
+
+.h-5,
+.icon {
+    height: 1em;
+}
+
+.w-5,
+.icon {
+    width: 1em;
+}
+
+.object-fit-cover {
+    object-fit: cover;
+    object-position: center;
+}
+
+.object-fit-contain {
+    object-fit: contain;
+    object-position: center;
+}
+
+.img-fluid-custom {
+    max-width: 100%;
+    height: 100%;
+}
+
+.bdi,
+a.dropdown-item {
+    unicode-bidi: isolate;
+}
+
+@media (min-width: 992px) {
+    .drop-down-container {
+        flex-wrap: nowrap !important;
+    }
+}
+
+/* tools page */
+
+.tools {
+    display: flex;
+    @include extend("my-4");
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    height: 69vh;
+}
+
+.dropdown-item {
+
+    &.active,
+    &:active {
+        background-color: initial !important;
+        color: #212529 !important;
+    }
+}
+
+.react-tooltip {
+    z-index: 100;
+}
+
+// error element styles
+.error-element {
+    .hide-on-rtl {
+
+        [dir="rtl"] &,
+        [lang="ar"] & {
+            display: none;
+        }
+    }
+
+    .hide-on-rtl {
+
+        [dir="ltr"] &,
+        :not([lang="ar"]) & {
+            display: none;
+        }
+    }
+}
+
+@import "./scss/toolspage";
+@import "./scss/editpage";
+@import "./scss/display-file";
+
+@import "./scss/_features.scss";
+
+.how-to {
+    .image {
+        img {
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+    }
+
+    .how-to-steps {
+        @include xs {
+            text-align: center;
+        }
+
+        ol {
+            list-style: none
+        }
+    }
+}
+
+@import "pdfequips-footer/scss/footer";
+@import "./scss/style-tools";
+
+
+.styled-textarea {
+    width: 100%;
+    font-family: "Raleway",
+        sans-serif;
+    min-height: 150px;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    transition: all 0.3s ease;
+    resize: none;
+    font-size: 0.875rem;
+    color: #333;
+
+    &::placeholder {
+        color: #9ca3af;
+    }
+
+    &:focus {
+        outline: none;
+        border-color: transparent;
+        box-shadow: 0 0 0 2px $main-color;
+    }
+
+    &.overlayed-text-area {
+        @include extend("position-fixed");
+        bottom: 5%;
+        width: 75%;
+        z-index: 5;
+        left: 50%;
+        translate: -50% 0;
+    }
+}
+
+.select-wrapper {
+    margin: 10px 0
+}
+
+.up-arrow-button {
+    @include extend("btn d-flex align-items-center justify-content-center position-absolute");
+    bottom: 5.618%;
+    right: 1.618%;
+    width: 32px;
+    height: 32px;
+    z-index: 6;
+
+    &.deep-search {
+        @include extend("position-fixed");
+        z-index: 6;
+        left: 13.618%;
+
+        @include ar-wrapper {
+            left: unset !important;
+            right: calc(100% - 16.618%);
+
+            @include xs {
+                right: 74.618%;
+            }
+        }
+
+        bottom: 6.618%;
+    }
+
+    &.fixed {
+        @include extend("position-fixed");
+        right: 13.618%;
+        bottom: 6.618%;
+    }
+
+    padding: 0;
+    border-radius: 4px;
+    background-color: #38ada9;
+    border: none;
+    transition: all 0.2s ease;
+
+    svg {
+        color: white;
+    }
+
+    &:hover {
+        background-color: darken(#38ada9, 5%);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+        transform: translateY(1px);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(56, 173, 169, 0.4);
+    }
+}
+
+
+.copy-button-container {
+    @include extend("d-flex justify-content-end mt-3");
+
+    .copy-btn {
+        @include extend("btn btn-sm btn-outline-secondary d-flex align-items-center");
+    }
+
+    .me-1 {
+        @include extend("me-1")
+    }
+}
+
+
+.html-viewer-wrapper, .tiptap {
+    outline: none;
+}
+
+// floating-download-btn
+.floating-download-btn {
+    @include extend("btn btn-lg p-3 rounded-circle position-fixed d-flex align-items-center justify-content-center shadow text-white");
+
+    // Positioning: bottom right, but bottom left on Arabic
+    bottom: 1.5rem;
+    right: 1.5rem;
+
+    // RTL positioning override
+    @include ar-wrapper {
+        left: 1.5rem;
+        right: auto;
+    }
+
+    // Theme color
+    background-color: $main-color;
+
+    // Icon sizing handled by Lucide size prop
+
+    &:hover,
+    &:focus {
+        background-color: darken($main-color, 5%);
+        cursor: pointer;
+    }
+
+    transition: background-color 0.2s ease-in-out;
+}
+
+.d-none {
+    @include extend("d-none");
+}
+
+/* custom-pretty-checkbox.css */
+// .pretty.p-primary-o input:checked~.state.p-primary-o:before {
+//     border-color: #38ada9;
+//     background-color: #38ada9;
+// }
+
+.pretty input:checked~.state.p-primary label:after,
+.pretty.p-toggle .state.p-primary label:after {
+    border-color: #38ada9;
+    background-color: #38ada9;
+}
+
+.pretty .state label:before,
+.pretty .state label:after {
+    @include ar-wrapper {
+        left: unset !important;
+    }
+}

@@ -1,0 +1,186 @@
+$pdf-color: #fc271c;
+$color-map: (
+  "merge-pdf": $pdf-color,
+  "split-pdf": #fd7e14,
+  "compress-pdf": #28a745,
+  "pdf-to-powerpoint": #c13b1b,
+  "jpg-to-pdf": #f1c40f,
+  "word-to-pdf": #1b5ebe,
+  "powerpoint-to-pdf": #c13b1b,
+  "excel-to-pdf": #10793f,
+  "web-to-pdf": #0984e3,
+  "pdf-to-text": #4493e1,
+  "html-to-pdf": rgb(228, 77, 38),
+  "pdf-to-jpg": #f1c40f,
+  "pdf-to-word": #1b5ebe,
+  "pdf-to-excel": #10793f,
+  "pdf-to-pdf-a": #000000,
+  "pdf-to-html": rgb(228, 77, 38),
+  "pdf-to-markdown": #000000,
+  "translate-pdf": #185abc,
+  "merge-pages": #27ae60,
+  "assistant": #38ada9
+);
+
+@mixin generateColorClasses($map) {
+  @each $key, $color in $map {
+    &.#{$key} {
+      background-color: $color;
+
+      &:hover {
+        @if $key =="PDF-to-PDF-A" or $key =="pdf-to-markdown" {
+          background-color: lighten($color, 14%);
+        }
+
+        @else {
+          background-color: darken($color, 13%);
+        }
+      }
+    }
+  }
+}
+
+.tools-page {
+
+  // overlay
+  .overlay {
+    position: absolute;
+    inset: 0px;
+    background-color: rgb(0 0 0 / 80%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    z-index: 1;
+    color: white;
+    border: 3px dashed;
+    width: 100%;
+    height: 100vh;
+  }
+
+  // .btn {
+  //   @include generateColorClasses($color-map);
+  // }
+  // input[type="file"]
+  .file-input {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+
+    &::before {
+      content: "";
+      display: block;
+      position: inherit;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+  }
+
+  .download-page {
+    min-height: 50vh;
+
+    .back-btn {
+      @include extend("btn btn-dark rounded-circle mr-2 align-items-center");
+      display: flex;
+      width: 40px !important;
+      height: 40px;
+
+      .icon {
+        flex: 1;
+      }
+    }
+  }
+}
+
+.md-2pdf {
+  display: flex;
+
+  @media (max-width: 600px) {
+    flex-wrap: wrap;
+  }
+
+  height: 100%;
+
+  .editor {
+    flex: 0 1 50%;
+    height: 100%;
+    resize: none;
+  }
+
+  .editor-loader {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+  }
+
+  .react-markdown-container {
+    flex: 0 1 50%;
+    padding: 15px;
+  }
+}
+
+.upload-btn,
+.submit-btn {
+  font-size: 2em;
+  cursor: pointer;
+}
+
+.upload-btn {
+  width: fit-content !important;
+}
+
+.upload-btn,
+.submit-btn,
+.download-btn,
+.btn {
+  @include generateColorClasses($color-map);
+}
+
+.translate-pdf {
+  .translate-file-selector {
+    height: 50vh;
+
+    %flex-centered {
+      @include extend("flex justify-content-center align-items-center");
+    }
+
+    .dropzone {
+      @extend %flex-centered;
+    }
+
+    .devider {
+      width: 2px;
+      background-color: #dee2e6;
+    }
+
+    .file-selector {
+      @extend %flex-centered;
+    }
+
+    .upload-btn {
+
+      input {
+        opacity: 0;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        @include extend("w-100 h-100");
+
+        &::-webkit-file-upload-button {
+          @include extend("w-100 h-100 d-block");
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

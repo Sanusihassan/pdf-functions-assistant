@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "../BaseLayout.astro";
+import BaseLayout from "../../BaseLayout.astro";
 import {
     downloadFile,
     edit_page,
@@ -7,13 +7,13 @@ import {
     pageProps,
     tool,
     tools,
-} from "../content/content";
+} from "../../content/content-zh";
 const { to, seoTitle } = tool.PDF_Assistant;
 import { Provider as ReduxProvider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
-import toolReducer from "../store";
-import { ToolWrapper } from "../../components/ToolWrapper";
-import { howToSchema } from "../how-to/how-to";
+import toolReducer from "../../store";
+import { ToolWrapper } from "../../../components/ToolWrapper";
+import { howToSchema } from "../../how-to/how-to-zh";
 export const store = configureStore({
     reducer: {
         tool: toolReducer,
@@ -21,7 +21,7 @@ export const store = configureStore({
 });
 ---
 
-<BaseLayout pageProps={pageProps} to={to} seoTitle={seoTitle} lang="en">
+<BaseLayout pageProps={pageProps} to={to} seoTitle={seoTitle} lang="zh">
     <ReduxProvider store={store}>
         <ToolWrapper
             client:load

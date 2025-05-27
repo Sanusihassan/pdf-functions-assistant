@@ -1,0 +1,258 @@
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(var(--pulse-animation-color), 0.4);
+    box-shadow: 0 0 0 0 rgba(var(--pulse-animation-color), 0.4);
+  }
+
+  70% {
+    -moz-box-shadow: 0 0 0 10px rgba(var(--pulse-animation-color), 0);
+    box-shadow: 0 0 0 10px rgba(var(--pulse-animation-color), 0);
+  }
+
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(var(--pulse-animation-color), 0);
+    box-shadow: 0 0 0 0 rgba(var(--pulse-animation-color), 0);
+  }
+}
+
+.edit-page {
+  display: flex;
+  align-items: flex-start;
+  min-height: 100%;
+
+  %border {
+    border: 1px solid #dee2e6;
+  }
+
+  .edit-area {
+    flex: 0 0 69%;
+
+    @media (max-width: 600px) {
+      flex: 0 0 100%;
+    }
+
+    padding: 1rem;
+    @extend %border;
+    border-radius: 0.25rem;
+    position: relative;
+
+    .loader {
+      %fh {
+        height: 100%;
+        top: 0;
+        left: 0;
+      }
+
+      @include extend("w-100 placeholder-glow h-100 position-absolute");
+
+      .inner-loader {
+        @include extend("placeholder col-12 fh position-absolute w-100 d-flex justify-content-center align-items-center"
+        );
+      }
+    }
+
+    .gear-button {
+      @include extend("position-absolute btn");
+      background-color: $main-color;
+
+      &:hover,
+      &:active {
+        background-color: lighten($main-color, 5);
+      }
+
+      width: fit-content !important;
+      top: 80px;
+      left: 2.535px;
+      z-index: 15;
+      display: none;
+      border: 1px solid #ccc;
+
+      @media (max-width: 600px) {
+        display: inline-flex;
+      }
+
+      .gear-icon {
+        width: 1.6em;
+        height: 1.6em;
+      }
+    }
+  }
+
+  .add-more-files {
+    @include extend("position-absolute rounded-circle");
+    width: 2em !important;
+    height: 2em;
+
+    // what i'm trying to do is when the language is not arabic apply this style
+    :not([lang="ar"]) & {
+      left: unset;
+      right: 0;
+    }
+
+    // and when it is apply this style
+    [lang="ar"] & {
+      right: unset;
+      left: -8px;
+    }
+
+    top: 38%;
+
+    .icon-container {
+      font-size: 1.5em;
+      display: flex;
+      @include extend("w-100 h-100 justify-content-center align-items-center position-absolute rounded-circle"
+      );
+      top: 0;
+      left: 0;
+
+      .icon {
+        flex: 0 1 62%;
+      }
+    }
+  }
+
+  .options {
+    border-left: 1px solid #dee2e6;
+    flex: 1 0 25%;
+    z-index: 1;
+    // padding: 0 15px;
+
+    // @include xs {
+    //   display: grid;
+    //   grid-template-rows: repeat(12, 1fr);
+    // }
+
+    // grid-template-columns: repeat(12, 1fr);
+    // grid-template-areas: "header"
+    // "body"
+    // "body"
+    // "body"
+    // "body"
+    // "body"
+    // "body"
+    // "body"
+    // "body"
+    // "body"
+    // "body"
+    // "body";
+    .body {
+      padding: 0 15px;
+    }
+
+    .options-container {
+      @include extend("container")
+    }
+
+    display: flex;
+    min-height: 85vh;
+    max-height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+
+    // .grid-header {
+    //   grid-area: header;
+    //   grid-column: 1 / -1;
+    // }
+
+    // .grid-body {
+    //   grid-area: body;
+    //   grid-column: 1 / -1;
+    // }
+
+    // .grid-footer {
+
+    //   @include extend("d-flex justify-content-center align-items-center");
+    // }
+
+    &+.show-onsmall {
+      @include extend("d-none");
+      width: 100%;
+      position: fixed;
+      z-index: 1;
+      bottom: 0;
+      left: 0;
+
+      @media (max-width: 600px) {
+        display: block !important;
+      }
+    }
+
+
+    transition: 0.3s;
+
+    @media (max-width: 600px) {
+      position: absolute;
+      width: 100%;
+
+      .hide-onsmall {
+        display: none;
+      }
+
+      [dir="rtl"] &,
+      [lang="ar"] & {
+        right: calc(-100% - 3.25rem);
+
+        &.expanded {
+          right: 0;
+        }
+      }
+
+      // left to right languages like (en)
+      [dir="ltr"] &,
+      :not([lang="ar"]) & {
+        left: calc(-100% - 3.25rem);
+
+        &.expanded {
+          left: 0;
+        }
+      }
+    }
+
+    @extend %border;
+    border-bottom: 0;
+
+    flex-flow: column;
+    justify-content: space-between;
+
+    h5 {
+      text-transform: uppercase;
+
+      text-align: center;
+
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .option-title {
+      @each $key, $color in $color-map {
+        &.#{$key} {
+          color: darken($color, 10%);
+        }
+      }
+    }
+
+    .list-group-item {
+      cursor: pointer;
+
+      &.active {
+        @extend %active-list-item;
+      }
+    }
+  }
+}
+
+.submit-btn {
+  @each $key, $color in $color-map {
+    &.#{$key} {
+      $r: red($color);
+      $g: green($color);
+      $b: blue($color);
+      --pulse-animation-color: #{$r},
+      #{$g},
+      #{$b};
+      animation: pulse 2s infinite;
+    }
+  }
+
+  width: 100%;
+}

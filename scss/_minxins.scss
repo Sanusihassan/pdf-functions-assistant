@@ -1,0 +1,69 @@
+@use "sass:list";
+@use "./str-split" as s;
+
+@mixin extend($res, $extend-type: "") {
+
+  @if(type-of($res)=="string") {
+
+    $placeholders: s.str-split($res, " ");
+    $extends: "";
+    $i: 0;
+    $prefix: if($extend-type =="class" or $extend-type ==".", ".", "%");
+
+    @each $placeholder in $placeholders {
+      $i: $i +1;
+      $extends: $extends +#{$prefix + $placeholder + if(list.length($placeholders) == $i, "", ",") };
+    }
+
+    @extend #{$extends} !optional;
+  }
+
+}
+
+/* Extra small devices (phones) */
+@mixin xs {
+  @media only screen and (max-width: 575px) {
+    @content;
+  }
+}
+
+/* Small devices (tablets) */
+@mixin sm {
+  @media only screen and (min-width: 576px) and (max-width: 767px) {
+    @content;
+  }
+}
+
+/* Medium devices (desktops) */
+@mixin md {
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+    @content;
+  }
+}
+
+/* Large devices (large desktops) */
+@mixin lg {
+  @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    @content;
+  }
+}
+
+/* Extra large devices (larger desktops) */
+@mixin xl {
+  @media only screen and (min-width: 1200px) {
+    @content;
+  }
+}
+
+
+@mixin all-langs {
+  :not([lang="ar"]) & {
+    @content;
+  }
+}
+
+@mixin ar-wrapper {
+  [lang="ar"] & {
+    @content;
+  }
+}

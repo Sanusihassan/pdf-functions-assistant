@@ -1,0 +1,299 @@
+.style-tools {
+    @include extend("position-sticky border-bottom w-100 bg-white flex-row px-2 py-2 main-space-around cross-center d-flex mx-auto justify-content-evenly");
+    max-width: 75%;
+    z-index: 1;
+
+    @include max-lg {
+        max-width: 500px;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    // >* {
+    //     // @include extend("push-left")
+    // }
+
+    %padding {
+        padding-top: 2.9px !important;
+        padding-bottom: 2.9px !important;
+        @include extend("px-2");
+    }
+
+    .opacity-tool {
+        &.hide {
+            @include extend("d-none");
+        }
+    }
+
+    .slider-container.opacity {
+        width: 100%;
+        @include extend("py-2 px-2 position-absolute bg-white rounded-1");
+        top: 100%;
+        left: 0;
+        // margin: 10px 0;
+        // padding: 0 20px;
+
+        @include extend("flex-row cross-center main-space-between");
+        column-gap: 10px;
+
+        .input {
+            @include extend("col-2 available m-0");
+
+            // now i want to remove the up and down arrows that increase and decrease the input[number] value i don't want those to appear in the design, is this possible in css for example?
+            input {
+                @include extend("w-100 p-2 rounded text-center");
+                border: .5px solid #ccc;
+                outline: none;
+            }
+        }
+    }
+
+    .select {
+        @include extend("position-absolute w-100");
+        top: 100%;
+        left: 0;
+
+        .options {
+            @include extend("list-unstyled bg-white w-100 rounded");
+
+            li {
+                @include extend("padding");
+
+                &.big-padding {
+                    padding: 15px;
+                }
+
+                cursor: pointer;
+
+                &:hover,
+                &.active {
+                    background-color: #ecf0f1;
+                }
+            }
+        }
+    }
+
+    .fonts-dropdown {
+        @include extend("padding border rounded flex-row main-space-between cross-center transition");
+        user-select: none;
+        flex: 0 0 var(--col-2);
+        cursor: pointer;
+
+        &:hover {
+            background-color: #ecf0f1;
+        }
+
+        svg {
+            font-size: .57rem;
+        }
+    }
+
+    .font-size-tool {
+        @include extend("border rounded flex-row cross-center self-stretch position-relative");
+        cursor: pointer;
+
+        >* {
+            flex: 1;
+        }
+
+        .font-size-options {
+            max-height: 351.9px;
+            overflow: auto;
+
+            &.hide {
+                @include extend("d-none")
+            }
+        }
+
+        button {
+            @include extend("btn btn-light border border-top-0 border-bottom-0 p-0");
+            @include extend("padding h-100");
+            color: #2f3640;
+
+            svg {
+                margin-top: -2.75px;
+            }
+
+            &:first-of-type {
+                border-left: 0 !important;
+                border-top-right-radius: 0 !important;
+                border-bottom-right-radius: 0 !important;
+            }
+
+            &:nth-of-type(2) {
+                border-right: 0 !important;
+                border-top-left-radius: 0 !important;
+                border-bottom-left-radius: 0 !important;
+            }
+
+        }
+
+        .font-size {
+            @include extend("available text-center padding px-0 text-muted h-100 flex-row main-center cross-center");
+            min-width: 3ch;
+
+            &.sm {
+                svg {
+                    font-size: .5em;
+                }
+            }
+
+            background-color: #dfe6e9;
+        }
+    }
+
+    .hex-picker {
+        @include extend("position-relative");
+
+        .color-picker-wrapper {
+            @include extend("position-absolute");
+            top: calc(100% + 2em);
+            left: 0;
+
+            // help me to transition the display: none by transition-behavior: allow-discrete;
+            &.hide {
+                @include extend("d-none");
+            }
+        }
+    }
+
+    .text-color-tool {
+        // font-size: 1.15em;
+        font-weight: 500;
+        @include extend("position-relative btn btn-light border-0 rounded-2 flex-row");
+        padding: 5px 5.75px;
+
+
+        // * {
+        //     outline: 1px solid red;
+        // }
+
+        svg {
+            font-size: 1.25em;
+            // margin: auto;
+            margin-top: -.5px;
+        }
+
+        &::after {
+            content: "";
+            display: block;
+            @include extend("position-absolute rounded-2 bg-dark");
+            width: var(--col-9);
+            padding: 2.5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(to right,
+                    #ff0000,
+                    #ff7f00,
+                    #ffff00,
+                    #00ff00,
+                    #0000ff,
+                    #4b0082,
+                    #9400d3);
+            bottom: 0;
+        }
+    }
+
+    .bold-tool,
+    .italic-tool,
+    .list-tool,
+    .alignment-tool,
+    .text-direction-tool,
+    .spacing-tool,
+    .save-document,
+    .paint-tool,
+    .chat-bot-tool,
+    .more>.indicator {
+        @include extend("position-relative btn btn-light border-0 padding rounded-2 text-center");
+        min-height: 1em;
+
+        &.active {
+            background-color: lighten($main-color, 50) !important;
+            color: $main-color;
+        }
+
+        svg {
+            @include extend("m-0 mb-1");
+        }
+    }
+
+    .more {
+        position: static;
+
+        .rest {
+            @include extend("py-2 px-2 rounded bg-white border position-absolute flex-row");
+
+            width: fit-content;
+            top: 95%;
+            right: 1%;
+
+            button {
+                @include extend("btn btn-light border-0 rounded-2 text-center");
+                background-color: transparent;
+            }
+        }
+    }
+
+    .spacing-tool-wrapper {
+        @include extend("position-relative");
+        z-index: 500;
+
+        p {
+            @include extend("lead my-0");
+            text-align: start;
+        }
+
+        .spacing-tool-dropdown {
+            @include extend("position-absolute bg-white p-2 rounded-2 shadow-lg");
+            min-width: 250px;
+            width: fit-content;
+            top: 100%;
+            right: -325%;
+        }
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        user-select: none;
+        -webkit-user-drag: none;
+
+        // .spacing-tool {
+        //     margin-bottom: 10px;
+        // }
+
+        .spacing-tool-dropdown {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .slider-container {
+            width: 100%;
+            @include extend("py-2");
+            // margin: 10px 0;
+            // padding: 0 20px;
+
+            @include extend("flex-row cross-center main-space-between");
+            column-gap: 10px;
+
+            .input {
+                @include extend("col-2 available m-0");
+
+                // now i want to remove the up and down arrows that increase and decrease the input[number] value i don't want those to appear in the design, is this possible in css for example?
+                input {
+                    @include extend("w-100 p-2 rounded text-center");
+                    border: .5px solid #ccc;
+                    outline: none;
+                }
+            }
+        }
+
+
+
+        // .rc-slider {
+        //     width: 100%;
+        //     left: 0;
+        // }
+    }
+}
