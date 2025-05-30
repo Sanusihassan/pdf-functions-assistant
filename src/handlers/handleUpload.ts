@@ -1,5 +1,4 @@
-// the problem is that my front-end is doing request to my backend when generating a pdf file i.e when strategy is "generate"
-
+// first request client-side:
 import axios from "axios";
 import { downloadConvertedFile } from "../downloadFile";
 import type { errors as _ } from "../content";
@@ -45,9 +44,8 @@ export const handleUpload = async (
           ? "https://www.pdfequips.com"
           : `https://${window.location.host}`;
 
-        globalSocket = io(socketUrl, {
-          path: '/api/conversation'
-        });
+        globalSocket = io(`${socketUrl}/html`);
+
 
         // Wait for connection to be established
         await new Promise((resolve, reject) => {
@@ -90,7 +88,7 @@ export const handleUpload = async (
       );
 
       // Send file upload event through WebSocket
-      globalSocket.emit("file-upload", {
+      globalSocket.emit("generate-pdf", {
         files: fileData,
         prompt: state.prompt,
         isScanned: state.isScanned,
@@ -98,15 +96,12 @@ export const handleUpload = async (
         strategy: state.strategy,
         selectedLanguages: state.selectedLanguages,
         advancedSearch: state.advancedSearch,
-        path: state.path
+        path: state.path,
+        isFirstRequest: true // Always true for file uploads
       });
 
       // Set up one-time listeners for upload response
       globalSocket.once("file-upload-success", (response: any) => {
-        console.log("File upload successful:", response);
-        console.log("Response type:", response.responseType);
-        console.log("Initial response preview:", response.initialResponse?.substring(0, 200));
-
         dispatch(setField({
           showChatTextArea: true,
           isSubmitted: false
@@ -132,6 +127,15 @@ export const handleUpload = async (
           } else {
             dispatch(setField({
               mdResponse: response.initialResponse,
+              showDownloadBtn: true
+            }));
+          }
+        } else {
+          const responseType = response.responseType || 'text';
+          console.log("responseType = response.responseType || 'text'")
+          if (responseType === 'html') {
+            dispatch(setField({
+              message: response.message,
               showDownloadBtn: true
             }));
           }

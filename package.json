@@ -12,6 +12,7 @@
     "@astrojs/partytown": "^2.1.4",
     "@astrojs/react": "^4.3.0",
     "@reduxjs/toolkit": "^2.8.2",
+    "@tailwindcss/vite": "^4.1.8",
     "@tiptap/core": "^2.12.0",
     "@tiptap/extension-color": "^2.12.0",
     "@tiptap/extension-heading": "^2.12.0",
@@ -30,6 +31,7 @@
     "astro-seo": "^0.8.4",
     "astro-seo-schema": "^5.0.0",
     "fetch-subscription-status": "^2.0.70",
+    "flex-system": "^2.1.0",
     "katex": "^0.16.22",
     "lucide-react": "^0.511.0",
     "pdfequips-footer": "^0.1.7",
@@ -46,12 +48,14 @@
     "react-markdown": "^10.1.0",
     "react-redux": "^9.2.0",
     "react-select": "^5.10.1",
+    "react-switch": "^7.1.0",
     "react-syntax-highlighter": "^15.6.1",
     "react-tooltip": "^5.28.1",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",
     "schema-dts": "^1.1.5",
-    "socket.io-client": "^4.8.1"
+    "socket.io-client": "^4.8.1",
+    "tailwindcss": "^4.1.8"
   },
   "devDependencies": {
     "@types/react-syntax-highlighter": "^15.5.13",

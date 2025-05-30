@@ -2,10 +2,14 @@
 @import "pretty-checkbox/src/scss/_variables.scss";
 @import "pretty-checkbox/src/scss/_core.scss";
 @import "pretty-checkbox/src/pretty-checkbox.scss";
-// @import "/node_modules/flex-system/index.scss";
+@import "/node_modules/flex-system/index.scss";
 $main-bazier-curve: cubic-bezier(0.42, 0, 1, 1);
 @import "./scss/common";
-// @include flex-system;
+@include flex-system;
+
+svg {
+    display: initial !important;
+}
 
 %debug {
     outline: 1px solid;
@@ -222,6 +226,11 @@ a.dropdown-item {
         @include extend("position-fixed");
         z-index: 6;
         left: 13.618%;
+        opacity: .75;
+
+        &.active {
+            opacity: 1;
+        }
 
         @include ar-wrapper {
             left: unset !important;
@@ -335,3 +344,5 @@ a.dropdown-item {
         left: unset !important;
     }
 }
+
+@import "./scss/pdf-download-options";

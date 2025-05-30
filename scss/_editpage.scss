@@ -140,7 +140,7 @@
     }
 
     .options-container {
-      @include extend("container")
+      padding: 15px;
     }
 
     display: flex;

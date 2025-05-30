@@ -114,6 +114,30 @@ export const edit_page = {
     },
     ocr_placeholder: "Select Languages",
     ocr_warning: "Add the document's language to get more accurate results."
+  },
+  downloadOptions: {
+    downloadOptions: "Download Options",
+    pdfDownloadOptions: "PDF Download Options",
+    layout: "Layout",
+    portrait: "Portrait",
+    landscape: "Landscape",
+    paperSize: "Paper Size",
+    scale: "Scale",
+    margins: "Margins",
+    default: "Default",
+    none: "None",
+    minimal: "Minimal",
+    custom: "Custom",
+    customMarginsTitle: "Custom Margins",
+    customMarginsUnit: "mm",
+    top: "Top",
+    right: "Right",
+    bottom: "Bottom",
+    left: "Left",
+    doubleSided: "Double-sided printing",
+    doubleSidedDesc: "Print on both sides of the page",
+    cancel: "Cancel",
+    downloadPdf: "Download PDF"
   }
 };
 

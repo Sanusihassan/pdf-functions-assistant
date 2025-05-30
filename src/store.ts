@@ -17,6 +17,23 @@ interface SubscriptionData {
   createdAt: Date;
   updatedAt: Date;
 }
+// i want an interface for editing an object of this type
+interface DownloadOptionsState {
+  layout: 'portrait' | 'landscape';
+  paperSize: string;
+  scale: number;
+  margin: 'default' | 'none' | 'minimal' | 'custom';
+  customMargins: {
+    top: number;
+    right: number;
+    bottom: number;
+    left: number;
+  };
+  duplex: boolean;
+}
+
+// this is a tsx component for options for downloading a PDF file [inputs], the interface would be triggered by a floating options btn, my main theme color: #38ada9;
+
 export interface ToolState {
   showTool: boolean;
   isSubmitted: boolean;
@@ -36,7 +53,10 @@ export interface ToolState {
   subscriptionAndStatus: { subscription: SubscriptionData | null, status: boolean } | null;
   showStyleTools: boolean;
   showChatTextArea: boolean;
-  advancedSearch: boolean
+  advancedSearch: boolean;
+  headSection: string;
+  message: string | null;
+  downloadOptions: DownloadOptionsState | null
 }
 
 const initialState: ToolState = {
@@ -58,7 +78,10 @@ const initialState: ToolState = {
   subscriptionAndStatus: null,
   showStyleTools: true,
   showChatTextArea: false,
-  advancedSearch: false
+  advancedSearch: false,
+  headSection: "",
+  message: null,
+  downloadOptions: null
 };
 
 const toolSlice = createSlice({

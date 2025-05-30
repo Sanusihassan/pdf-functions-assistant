@@ -7,11 +7,12 @@ import { FileInputForm } from "./Tool/FileInputForm";
 import DownloadFile from "./DownloadFile";
 import { useFileStore } from "../src/file-store";
 import { setField } from "../src/store";
-import type { edit_page } from "../src/content";
+import type { downloadFile, edit_page } from "../src/content";
 import type { WithContext, HowTo as HowToType } from "schema-dts";
 import { Features } from "./Features";
 import HowTo from "./HowTo";
 import { Footer } from "pdfequips-footer/components/Footer.tsx";
+import { HTMLViewer } from "./HTMLViewer";
 
 export type errorType = {
   response: {
@@ -38,7 +39,7 @@ export type ToolProps = {
   edit_page: edit_page;
   pages: string;
   page: string;
-  downloadFile: any;
+  downloadFile: downloadFile;
   howTo: WithContext<HowToType>;
   seoTitle: string;
   features: {
@@ -163,6 +164,7 @@ const Tool: React.FC<ToolProps> = ({
         />
         <DownloadFile lang={lang} downloadFile={downloadFile} path={path} errors={errors} />
       </div>
+      <HTMLViewer chatAreaTooltipContent={downloadFile.chatAreaTooltipContent} content={`<div>test</div>`} />
       <div className={`container${stateShowTool ? "" : " d-none"}`}>
         <HowTo howTo={howTo} alt={seoTitle} imgSrc={to.replace("/", "")} />
       </div>
@@ -171,10 +173,12 @@ const Tool: React.FC<ToolProps> = ({
           features={features as { title: string; description: string }[]}
         />
       </div>
-      <Footer
-        title={seoTitle.split("-")[0]}
-        lang={lang === "en" ? "" : lang}
-      />
+      <div className={`${stateShowTool ? "" : "d-none"}`}>
+        <Footer
+          title={seoTitle.split("-")[0]}
+          lang={lang === "en" ? "" : lang}
+        />
+      </div>
     </>
   );
 };
