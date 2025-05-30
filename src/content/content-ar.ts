@@ -140,10 +140,43 @@ export const downloadFile: _downloadFile = {
   backto: {
     "assistant": "العودة إلى مساعد PDF",
   },
-  chatAreaTooltipContent: {
-    search: "البحث المتقدم والاستدلال",
-    textarea: "أدخل رسالتك هنا",
-    submit: "إرسال الرسالة",
+  htmlViewerContent: {
+    chatAreaTooltipContent: {
+      search: "بحث متقدم واستدلال",
+      textarea: "أدخل رسالتك هنا",
+      submit: "إرسال الرسالة",
+    },
+    downloadOptions: {
+      downloadOptions: "خيارات التنزيل",
+      pdfDownloadOptions: "خيارات تنزيل PDF",
+      layout: "التخطيط",
+      portrait: "عمودي",
+      landscape: "أفقي",
+      paperSize: "حجم الورق",
+      scale: "المقياس",
+      margins: "الهوامش",
+      default: "افتراضي",
+      none: "بدون",
+      minimal: "حد أدنى",
+      custom: "مخصص",
+      customMarginsTitle: "هوامش مخصصة",
+      customMarginsUnit: "مم",
+      top: "أعلى",
+      right: "يمين",
+      bottom: "أسفل",
+      left: "يسار",
+      doubleSided: "الطباعة على الوجهين",
+      doubleSidedDesc: "الطباعة على جانبي الصفحة",
+      fileName: "اسم الملف",
+      fileNamePlaceholder: "أدخل اسم الملف...",
+      cancel: "إلغاء",
+      save: "حفظ"
+    },
+    floatingDownloadBtnContent: {
+      downloading: "جارٍ التنزيل...",
+      complete: "اكتمل التنزيل",
+      default: "تنزيل"
+    }
   }
 };
 

@@ -290,37 +290,38 @@ a.dropdown-item {
 }
 
 
+
 .html-viewer-wrapper, .tiptap {
     outline: none;
 }
 
 // floating-download-btn
-.floating-download-btn {
-    @include extend("btn btn-lg p-3 rounded-circle position-fixed d-flex align-items-center justify-content-center shadow text-white");
+// .floating-download-btn {
+//     @include extend("btn btn-lg p-3 rounded-circle position-fixed d-flex align-items-center justify-content-center shadow text-white");
 
-    // Positioning: bottom right, but bottom left on Arabic
-    bottom: 1.5rem;
-    right: 1.5rem;
+//     // Positioning: bottom right, but bottom left on Arabic
+//     bottom: 1.5rem;
+//     right: 1.5rem;
 
-    // RTL positioning override
-    @include ar-wrapper {
-        left: 1.5rem;
-        right: auto;
-    }
+//     // RTL positioning override
+//     @include ar-wrapper {
+//         left: 1.5rem;
+//         right: auto;
+//     }
 
-    // Theme color
-    background-color: $main-color;
+//     // Theme color
+//     background-color: $main-color;
 
-    // Icon sizing handled by Lucide size prop
+//     // Icon sizing handled by Lucide size prop
 
-    &:hover,
-    &:focus {
-        background-color: darken($main-color, 5%);
-        cursor: pointer;
-    }
+//     &:hover,
+//     &:focus {
+//         background-color: darken($main-color, 5%);
+//         cursor: pointer;
+//     }
 
-    transition: background-color 0.2s ease-in-out;
-}
+//     transition: background-color 0.2s ease-in-out;
+// }
 
 .d-none {
     @include extend("d-none");

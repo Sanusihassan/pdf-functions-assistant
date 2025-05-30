@@ -100,7 +100,7 @@ const DownloadFile = ({
             </button>
           </div>
         </div>
-        {mdResponse ? <MarkdownViewer content={mdResponse} /> : <HTMLViewer content={htmlResponse} chatAreaTooltipContent={downloadFile.chatAreaTooltipContent} />}
+        {mdResponse ? <MarkdownViewer content={mdResponse} /> : <HTMLViewer content={htmlResponse} textContent={downloadFile.htmlViewerContent} />}
       </div>
     );
   }

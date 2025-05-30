@@ -12,7 +12,7 @@ import type { WithContext, HowTo as HowToType } from "schema-dts";
 import { Features } from "./Features";
 import HowTo from "./HowTo";
 import { Footer } from "pdfequips-footer/components/Footer.tsx";
-import { HTMLViewer } from "./HTMLViewer";
+// import { HTMLViewer } from "./HTMLViewer";
 
 export type errorType = {
   response: {
@@ -164,7 +164,6 @@ const Tool: React.FC<ToolProps> = ({
         />
         <DownloadFile lang={lang} downloadFile={downloadFile} path={path} errors={errors} />
       </div>
-      <HTMLViewer chatAreaTooltipContent={downloadFile.chatAreaTooltipContent} content={`<div>test</div>`} />
       <div className={`container${stateShowTool ? "" : " d-none"}`}>
         <HowTo howTo={howTo} alt={seoTitle} imgSrc={to.replace("/", "")} />
       </div>

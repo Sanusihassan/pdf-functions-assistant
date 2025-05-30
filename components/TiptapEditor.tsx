@@ -16,6 +16,7 @@ import { useSelector } from 'react-redux';
 import type { ToolState } from '../src/store';
 import { FloatingDownloadBtn } from './FloatingDownloadBtn';
 import axios from "axios";
+import type { downloadFile } from '../src/content';
 
 // Custom Paragraph to preserve class, id, and style
 const CustomParagraph = Paragraph.extend({
@@ -182,11 +183,13 @@ interface TiptapEditorProps {
     html: string;
     setHtml: (html: string) => void;
     onCursorPositionChange?: (position: CursorPosition) => void;
+    content: downloadFile["htmlViewerContent"]["floatingDownloadBtnContent"]
 }
 
-const TiptapEditor = ({ html, setHtml, onCursorPositionChange }: TiptapEditorProps) => {
+const TiptapEditor = ({ html, setHtml, onCursorPositionChange, content }: TiptapEditorProps) => {
     const [cursorPosition, setCursorPosition] = useState<CursorPosition | null>(null);
     const headSection = useSelector((state: { tool: ToolState }) => state.tool.headSection);
+    const lang = useSelector((state: { tool: ToolState }) => state.tool.lang);
     const message = useSelector((state: { tool: ToolState }) => state.tool.message);
 
     // Function to calculate line and column from cursor position
@@ -290,7 +293,16 @@ const TiptapEditor = ({ html, setHtml, onCursorPositionChange }: TiptapEditorPro
         if (editor) {
             try {
                 // Get the HTML content from the editor
-                const htmlContent = editor.getHTML();
+                const html = editor.getHTML();
+                const htmlContent = `
+                <!DOCTYPE html>
+                <html lang="${lang || "en"}">
+                    ${headSection}
+                    ${html.includes("<body") ? html : `<body class="pdf-html">${html}</body>`}
+                </html>
+                `;
+
+
                 console.log("htmlcontent", htmlContent);
 
                 // Define default download options matching the backend's DownloadOptionsState
@@ -352,7 +364,7 @@ const TiptapEditor = ({ html, setHtml, onCursorPositionChange }: TiptapEditorPro
             <div onClick={handleEditorClick}>
                 <EditorContent editor={editor} />
             </div>
-            <FloatingDownloadBtn onClick={handleDownload} />
+            <FloatingDownloadBtn onClick={handleDownload} content={content} />
         </div>
     );
 };

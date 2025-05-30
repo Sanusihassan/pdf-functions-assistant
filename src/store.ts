@@ -56,7 +56,8 @@ export interface ToolState {
   advancedSearch: boolean;
   headSection: string;
   message: string | null;
-  downloadOptions: DownloadOptionsState | null
+  downloadOptions: DownloadOptionsState | null;
+  lang: string | null;
 }
 
 const initialState: ToolState = {
@@ -81,7 +82,8 @@ const initialState: ToolState = {
   advancedSearch: false,
   headSection: "",
   message: null,
-  downloadOptions: null
+  downloadOptions: null,
+  lang: null
 };
 
 const toolSlice = createSlice({

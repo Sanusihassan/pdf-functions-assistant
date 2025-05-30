@@ -134,10 +134,43 @@ export const downloadFile: _downloadFile = {
   backto: {
     "assistant": "返回PDF助手",
   },
-  chatAreaTooltipContent: {
-    search: "高级搜索与推理",
-    textarea: "在此输入您的消息",
-    submit: "提交消息",
+  htmlViewerContent: {
+    chatAreaTooltipContent: {
+      search: "高级搜索与推理",
+      textarea: "在此输入您的消息",
+      submit: "发送消息",
+    },
+    downloadOptions: {
+      downloadOptions: "下载选项",
+      pdfDownloadOptions: "PDF 下载选项",
+      layout: "布局",
+      portrait: "纵向",
+      landscape: "横向",
+      paperSize: "纸张大小",
+      scale: "比例",
+      margins: "边距",
+      default: "默认",
+      none: "无",
+      minimal: "最小",
+      custom: "自定义",
+      customMarginsTitle: "自定义边距",
+      customMarginsUnit: "毫米",
+      top: "上",
+      right: "右",
+      bottom: "下",
+      left: "左",
+      doubleSided: "双面打印",
+      doubleSidedDesc: "页面正反面打印",
+      fileName: "文件名",
+      fileNamePlaceholder: "输入文件名...",
+      cancel: "取消",
+      save: "保存"
+    },
+    floatingDownloadBtnContent: {
+      downloading: "正在下载...",
+      complete: "下载完成",
+      default: "下载"
+    }
   }
 };
 

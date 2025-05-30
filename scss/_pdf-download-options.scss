@@ -23,8 +23,16 @@ $transition-duration-long: 300ms;
 // Floating Action Button
 .floating-action-button {
     position: fixed;
+
+    &.left {
+        left: 2rem;
+    }
+
+    &.right {
+        right: 2rem;
+    }
+
     bottom: 2rem;
-    left: 2rem;
     z-index: 50;
 
     &__button {
@@ -38,18 +46,136 @@ $transition-duration-long: 300ms;
         cursor: pointer;
         transform: scale(1);
         transition: all $transition-duration-long ease-out;
+        overflow: hidden;
 
-        &:hover {
+        &:hover:not(:disabled) {
             background: linear-gradient(to right, $primary-color-dark, $primary-color-darker);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             transform: scale(1.05);
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+        }
+
+        // Loading state
+        &.loading {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            animation: pulse-loading 1.5s ease-in-out infinite;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+                animation: shimmer 2s ease-in-out infinite;
+            }
+        }
+
+        // Complete state
+        &.complete {
+            background: linear-gradient(to right, #27ae60, #2ecc71);
+            animation: bounce-success 0.6s ease-out;
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 0;
+                height: 0;
+                background: rgba(255, 255, 255, 0.3);
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+                animation: success-ripple 0.6s ease-out;
+            }
         }
     }
 
     &__icon {
         width: 1.5rem;
         height: 1.5rem;
+        transition: transform 0.3s ease;
     }
+}
+
+// Animations
+@keyframes pulse-loading {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 15px 20px -3px rgba(255, 107, 107, 0.3), 0 8px 10px -2px rgba(255, 107, 107, 0.2);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes bounce-success {
+    0% {
+        transform: scale(1);
+    }
+
+    30% {
+        transform: scale(1.15);
+    }
+
+    50% {
+        transform: scale(0.95);
+    }
+
+    70% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes success-ripple {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+
+    100% {
+        width: 60px;
+        height: 60px;
+        opacity: 0;
+    }
+}
+
+// Spin animation for loading icon
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
 }
 
 // Modal Overlay
@@ -139,7 +265,7 @@ $transition-duration-long: 300ms;
         transition: color $transition-duration;
 
         .modal-header__close-button:hover & {
-            color: $gray-900;
+            color: $gray-200;
         }
     }
 }

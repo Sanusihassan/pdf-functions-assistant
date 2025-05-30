@@ -3,9 +3,9 @@ import { ChatTextArea } from './ChatTextArea';
 import type { downloadFile } from '../src/content';
 import { setField, type ToolState } from '../src/store';
 import { useDispatch, useSelector } from 'react-redux';
-import { defaultTextContent, PdfDownloadOptions } from './PdfDownloadOptions';
+import { PdfDownloadOptions } from './PdfDownloadOptions';
 
-export const HTMLViewer = ({ content, chatAreaTooltipContent }: { content: string; chatAreaTooltipContent: downloadFile["chatAreaTooltipContent"] }) => {
+export const HTMLViewer = ({ content, textContent }: { content: string; textContent: downloadFile["htmlViewerContent"] }) => {
     const [html, setHtml] = useState(content);
     const [TiptapEditor, setTiptapEditor] = useState<any>(null);
     const editorRef = useRef<any>(null);
@@ -16,6 +16,7 @@ export const HTMLViewer = ({ content, chatAreaTooltipContent }: { content: strin
         const doc = parser.parseFromString(content, 'text/html');
         const bodyContent = doc.body.innerHTML;
         const _headSection = doc.head.innerHTML;
+        dispatch(setField({ lang: doc.documentElement.getAttribute("lang") }))
         dispatch(setField({ headSection: _headSection }));
         setHtml(bodyContent);
         import('./TiptapEditor').then((module) => {
@@ -42,9 +43,9 @@ export const HTMLViewer = ({ content, chatAreaTooltipContent }: { content: strin
                         <div className="editor-placeholder" dangerouslySetInnerHTML={{ __html: html }}></div>
                     </div>
                 )}
-                <ChatTextArea content={chatAreaTooltipContent} insertAtCursor={insertAtCursor} />
+                <ChatTextArea content={textContent.chatAreaTooltipContent} insertAtCursor={insertAtCursor} />
             </div>
-            <PdfDownloadOptions textContent={defaultTextContent} />
+            <PdfDownloadOptions textContent={textContent.downloadOptions} />
         </>
     );
 };

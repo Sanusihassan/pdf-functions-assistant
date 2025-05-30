@@ -135,10 +135,43 @@ export const downloadFile: _downloadFile = {
   backto: {
     "assistant": "PDF सहायक पर वापस जाएं",
   },
-  chatAreaTooltipContent: {
-    search: "उन्नत खोज और तर्क",
-    textarea: "यहां अपना संदेश दर्ज करें",
-    submit: "संदेश सबमिट करें",
+  htmlViewerContent: {
+    chatAreaTooltipContent: {
+      search: "उन्नत खोज और विश्लेषण",
+      textarea: "यहां अपना संदेश दर्ज करें",
+      submit: "संदेश भेजें",
+    },
+    downloadOptions: {
+      downloadOptions: "डाउनलोड विकल्प",
+      pdfDownloadOptions: "PDF डाउनलोड विकल्प",
+      layout: "लेआउट",
+      portrait: "पोर्ट्रेट",
+      landscape: "लैंडस्केप",
+      paperSize: "कागज का आकार",
+      scale: "स्केल",
+      margins: "हाशिये",
+      default: "डिफ़ॉल्ट",
+      none: "कोई नहीं",
+      minimal: "न्यूनतम",
+      custom: "कस्टम",
+      customMarginsTitle: "कस्टम हाशिये",
+      customMarginsUnit: "मिमी",
+      top: "ऊपर",
+      right: "दायां",
+      bottom: "नीचे",
+      left: "बायां",
+      doubleSided: "दोनों तरफ छपाई",
+      doubleSidedDesc: "पृष्ठ के दोनों तरफ प्रिंट करें",
+      fileName: "फ़ाइल का नाम",
+      fileNamePlaceholder: "फ़ाइल का नाम दर्ज करें...",
+      cancel: "रद्द करें",
+      save: "सहेजें"
+    },
+    floatingDownloadBtnContent: {
+      downloading: "डाउनलोड हो रहा है...",
+      complete: "डाउनलोड पूर्ण हुआ",
+      default: "डाउनलोड करें"
+    }
   }
 };
 

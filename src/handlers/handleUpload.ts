@@ -1,4 +1,3 @@
-// first request client-side:
 import axios from "axios";
 import { downloadConvertedFile } from "../downloadFile";
 import type { errors as _ } from "../content";
@@ -253,7 +252,7 @@ export const handleUpload = async (
       try {
         const parsed = JSON.parse(decodedText);
         console.log("parsed.responseType", parsed.responseType);
-        if (parsed && parsed.response && parsed.responseType === "md") {
+        if (parsed && parsed.response && parsed.responseType === "md" || state.strategy === "content") {
           dispatch(
             setField({ mdResponse: parsed.response, showDownloadBtn: true })
           );

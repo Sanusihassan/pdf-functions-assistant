@@ -114,30 +114,6 @@ export const edit_page = {
     },
     ocr_placeholder: "Select Languages",
     ocr_warning: "Add the document's language to get more accurate results."
-  },
-  downloadOptions: {
-    downloadOptions: "Download Options",
-    pdfDownloadOptions: "PDF Download Options",
-    layout: "Layout",
-    portrait: "Portrait",
-    landscape: "Landscape",
-    paperSize: "Paper Size",
-    scale: "Scale",
-    margins: "Margins",
-    default: "Default",
-    none: "None",
-    minimal: "Minimal",
-    custom: "Custom",
-    customMarginsTitle: "Custom Margins",
-    customMarginsUnit: "mm",
-    top: "Top",
-    right: "Right",
-    bottom: "Bottom",
-    left: "Left",
-    doubleSided: "Double-sided printing",
-    doubleSidedDesc: "Print on both sides of the page",
-    cancel: "Cancel",
-    downloadPdf: "Download PDF"
   }
 };
 
@@ -153,10 +129,43 @@ export const downloadFile = {
   backto: {
     "assistant": "Back To PDF assistant",
   },
-  chatAreaTooltipContent: {
-    search: "Advanced search and reasoning",
-    textarea: "Enter your message here",
-    submit: "Submit message",
+  htmlViewerContent: {
+    chatAreaTooltipContent: {
+      search: "Advanced search and reasoning",
+      textarea: "Enter your message here",
+      submit: "Submit message",
+    },
+    downloadOptions: {
+      downloadOptions: "Download Options",
+      pdfDownloadOptions: "PDF Download Options",
+      layout: "Layout",
+      portrait: "Portrait",
+      landscape: "Landscape",
+      paperSize: "Paper Size",
+      scale: "Scale",
+      margins: "Margins",
+      default: "Default",
+      none: "None",
+      minimal: "Minimal",
+      custom: "Custom",
+      customMarginsTitle: "Custom Margins",
+      customMarginsUnit: "mm",
+      top: "Top",
+      right: "Right",
+      bottom: "Bottom",
+      left: "Left",
+      doubleSided: "Double-sided printing",
+      doubleSidedDesc: "Print on both sides of the page",
+      fileName: "File Name",
+      fileNamePlaceholder: "Enter file name...",
+      cancel: "Cancel",
+      save: "Save"
+    },
+    floatingDownloadBtnContent: {
+      downloading: "Downloading...",
+      complete: "Download Complete",
+      default: "Download"
+    }
   }
 };
 

@@ -141,10 +141,43 @@ export const downloadFile: _downloadFile = {
   backto: {
     "assistant": "Volver al asistente PDF",
   },
-  chatAreaTooltipContent: {
-    search: "Búsqueda avanzada y razonamiento",
-    textarea: "Introduce tu mensaje aquí",
-    submit: "Enviar mensaje",
+  htmlViewerContent: {
+    chatAreaTooltipContent: {
+      search: "Búsqueda avanzada y razonamiento",
+      textarea: "Escribe tu mensaje aquí",
+      submit: "Enviar mensaje",
+    },
+    downloadOptions: {
+      downloadOptions: "Opciones de descarga",
+      pdfDownloadOptions: "Opciones de descarga de PDF",
+      layout: "Diseño",
+      portrait: "Vertical",
+      landscape: "Horizontal",
+      paperSize: "Tamaño del papel",
+      scale: "Escala",
+      margins: "Márgenes",
+      default: "Predeterminado",
+      none: "Ninguno",
+      minimal: "Mínimo",
+      custom: "Personalizado",
+      customMarginsTitle: "Márgenes personalizados",
+      customMarginsUnit: "mm",
+      top: "Superior",
+      right: "Derecha",
+      bottom: "Inferior",
+      left: "Izquierda",
+      doubleSided: "Impresión a doble cara",
+      doubleSidedDesc: "Imprimir en ambos lados de la página",
+      fileName: "Nombre del archivo",
+      fileNamePlaceholder: "Introduce el nombre del archivo...",
+      cancel: "Cancelar",
+      save: "Guardar"
+    },
+    floatingDownloadBtnContent: {
+      downloading: "Descargando...",
+      complete: "Descarga completada",
+      default: "Descargar"
+    }
   }
 };
 
