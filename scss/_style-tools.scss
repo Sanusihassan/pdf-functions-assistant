@@ -1,5 +1,6 @@
 .style-tools {
     @include extend("position-sticky border-bottom w-100 bg-white flex-row px-2 py-2 main-space-around cross-center d-flex mx-auto justify-content-evenly");
+    top: 0;
     max-width: 75%;
     z-index: 1;
 

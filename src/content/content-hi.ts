@@ -140,6 +140,7 @@ export const downloadFile: _downloadFile = {
       search: "उन्नत खोज और विश्लेषण",
       textarea: "यहां अपना संदेश दर्ज करें",
       submit: "संदेश भेजें",
+      loader_text: "कृपया प्रतीक्षा करें...",
     },
     downloadOptions: {
       downloadOptions: "डाउनलोड विकल्प",

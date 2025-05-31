@@ -24,26 +24,19 @@ export const HTMLViewer = ({ content, textContent }: { content: string; textCont
         });
     }, [content]);
 
-    const insertAtCursor = (newHtml: string) => {
-        if (editorRef.current) {
-            const editor = editorRef.current;
-            const { from } = editor.state.selection;
-            editor.chain().focus().insertContentAt(from, newHtml).run();
-        }
-    };
 
     return (
         <>
             <div className="html-viewer-wrapper">
                 <div dangerouslySetInnerHTML={{ __html: headSection }} />
                 {TiptapEditor ? (
-                    <TiptapEditor html={html} setHtml={setHtml} editorRef={editorRef} />
+                    <TiptapEditor html={html} setHtml={setHtml} editorRef={editorRef} content={textContent.floatingDownloadBtnContent} />
                 ) : (
                     <div className="editor-loading">
                         <div className="editor-placeholder" dangerouslySetInnerHTML={{ __html: html }}></div>
                     </div>
                 )}
-                <ChatTextArea content={textContent.chatAreaTooltipContent} insertAtCursor={insertAtCursor} />
+                <ChatTextArea content={textContent.chatAreaTooltipContent} />
             </div>
             <PdfDownloadOptions textContent={textContent.downloadOptions} />
         </>

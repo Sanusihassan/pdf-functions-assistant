@@ -146,6 +146,7 @@ export const downloadFile: _downloadFile = {
       search: "Búsqueda avanzada y razonamiento",
       textarea: "Escribe tu mensaje aquí",
       submit: "Enviar mensaje",
+      loader_text: "por favor espera...",
     },
     downloadOptions: {
       downloadOptions: "Opciones de descarga",

@@ -1,6 +1,5 @@
-
 import { Download, Check, Loader } from 'lucide-react';
-import { useState, type Dispatch, type SetStateAction } from 'react';
+import { useEffect, useState, type Dispatch, type SetStateAction } from 'react';
 
 interface FloatingDownloadBtnContent {
     downloading: string;
@@ -16,6 +15,9 @@ interface FloatingDownloadBtnProps {
 export const FloatingDownloadBtn: React.FC<FloatingDownloadBtnProps> = ({ onClick, content }) => {
     const [isLoading, setIsloading] = useState(false);
     const [isComplete, setIsComplete] = useState(false);
+    useEffect(() => {
+
+    }, [content]);
 
     const handleClick = async () => {
         if (isLoading || isComplete) return;

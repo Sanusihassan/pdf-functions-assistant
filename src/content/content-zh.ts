@@ -139,6 +139,7 @@ export const downloadFile: _downloadFile = {
       search: "高级搜索与推理",
       textarea: "在此输入您的消息",
       submit: "发送消息",
+      loader_text: "请稍候...",
     },
     downloadOptions: {
       downloadOptions: "下载选项",

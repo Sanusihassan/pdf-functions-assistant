@@ -30,6 +30,7 @@ interface DownloadOptionsState {
     left: number;
   };
   duplex: boolean;
+  fileName: string
 }
 
 // this is a tsx component for options for downloading a PDF file [inputs], the interface would be triggered by a floating options btn, my main theme color: #38ada9;
@@ -82,7 +83,15 @@ const initialState: ToolState = {
   advancedSearch: false,
   headSection: "",
   message: null,
-  downloadOptions: null,
+  downloadOptions: {
+    layout: 'portrait',
+    paperSize: 'A4',
+    scale: 1,
+    margin: 'default',
+    customMargins: { top: 10, right: 10, bottom: 10, left: 10 },
+    duplex: false,
+    fileName: "document.pdf"
+  },
   lang: null
 };
 

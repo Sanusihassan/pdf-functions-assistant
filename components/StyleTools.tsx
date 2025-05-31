@@ -80,9 +80,9 @@ export const StyleTools = ({ editor }: { editor: Editor }) => {
             <ListTool editor={editor} />
             {/* <SpacingTool editor={editor} /> */}
             <MoreTools editor={editor} />
-            <button className="save-document">
+            {/* <button className="save-document">
                 <BiDownload />
-            </button>
+            </button> */}
         </div>
     );
 };

@@ -112,6 +112,7 @@ export const PdfDownloadOptions = ({ textContent }: { textContent: TextContent }
             {isOpen && (
                 <div
                     className="modal-overlay"
+                    id="settings-modal"
                     onClick={handleOverlayClick}
                 >
                     <div

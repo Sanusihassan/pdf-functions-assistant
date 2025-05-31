@@ -34,7 +34,7 @@ export const handleUpload = async (
   if (!files || files.length === 0) return;
 
   // If strategy is "generate", handle WebSocket connection and file upload
-  console.log("strategy", state.strategy)
+
   if (state.strategy === "generate") {
     try {
       // Initialize WebSocket connection if not already connected
@@ -53,7 +53,7 @@ export const handleUpload = async (
           }, 10000); // 10 second timeout
 
           globalSocket.on("connect", () => {
-            console.log("WebSocket connected for file upload");
+            ;
             clearTimeout(timeout);
             resolve(true);
           });
@@ -102,7 +102,6 @@ export const handleUpload = async (
       // Set up one-time listeners for upload response
       globalSocket.once("file-upload-success", (response: any) => {
         dispatch(setField({
-          showChatTextArea: true,
           isSubmitted: false
         }));
         setFilesOnSubmit(files.map((f) => f.name));
@@ -112,13 +111,13 @@ export const handleUpload = async (
           const responseType = response.responseType || 'text';
 
           if (responseType === 'html') {
-            console.log("Setting HTML response");
+            ;
             dispatch(setField({
               htmlResponse: response.initialResponse,
               showDownloadBtn: true
             }));
           } else if (responseType === 'md') {
-            console.log("Setting Markdown response");
+            ;
             dispatch(setField({
               mdResponse: response.initialResponse,
               showDownloadBtn: true
@@ -131,7 +130,7 @@ export const handleUpload = async (
           }
         } else {
           const responseType = response.responseType || 'text';
-          console.log("responseType = response.responseType || 'text'")
+
           if (responseType === 'html') {
             dispatch(setField({
               message: response.message,
@@ -251,7 +250,7 @@ export const handleUpload = async (
     if (contentType.includes("application/json")) {
       try {
         const parsed = JSON.parse(decodedText);
-        console.log("parsed.responseType", parsed.responseType);
+        ;
         if (parsed && parsed.response && parsed.responseType === "md" || state.strategy === "content") {
           dispatch(
             setField({ mdResponse: parsed.response, showDownloadBtn: true })
