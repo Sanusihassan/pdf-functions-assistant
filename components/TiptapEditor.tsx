@@ -769,7 +769,6 @@ const TiptapEditor = ({ html, setHtml, onCursorPositionChange, content }: Tiptap
     const message = useSelector((state: { tool: ToolState }) => state.tool.message);
     const downloadOptions = useSelector((state: { tool: ToolState }) => state.tool.downloadOptions);
     useEffect(() => {
-
     }, [downloadOptions])
 
     // Function to calculate line and column from cursor position

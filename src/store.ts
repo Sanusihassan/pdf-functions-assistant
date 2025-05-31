@@ -86,7 +86,7 @@ const initialState: ToolState = {
   downloadOptions: {
     layout: 'portrait',
     paperSize: 'A4',
-    scale: 1,
+    scale: 100,
     margin: 'default',
     customMargins: { top: 10, right: 10, bottom: 10, left: 10 },
     duplex: false,
