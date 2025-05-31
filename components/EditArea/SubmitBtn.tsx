@@ -44,8 +44,7 @@ export function SubmitBtn({
         // Get subscription status
         const { isActive: status, subscription } = await getUserSubscription();
         dispatch(setField({ subscriptionAndStatus: { status, subscription } }));
-        // just for now
-        if (submitBtn) {
+        if (process.env.NODE_ENV === "development") {
           submitBtn?.current?.click();
           return;
         }
