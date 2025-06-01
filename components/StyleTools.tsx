@@ -1,9 +1,19 @@
+/**
+ bold & italic tools are not working but the rest are working fine:
+ [vite] hot updated: /components/StyleTools.tsx
+StyleTools.tsx:71 
+Editor {callbacks: {…}, isFocused: false, isInitialized: true, extensionStorage: {…}, options: {…}, …}
+StyleTools.tsx:72 
+ Uncaught TypeError: editor.chain(...).focus(...).toggleBold is not a function
+    at onClick (StyleTools.tsx:72:44)
+
+ */
 import { FaItalic, FaBold } from "react-icons/fa6";
-import { BiDownload, BiFont } from "react-icons/bi";
+import { BiFont } from "react-icons/bi";
 import { Bot, PaintBucket } from "lucide-react";
 // import { FontSizeTool } from "./StyleTools/FontSizeTool";
 import { HexColorPicker } from "react-colorful";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AlignmentTool } from "./StyleTools/AlignmentTool";
 import { ListTool } from "./StyleTools/ListTool";
 // import { SpacingTool } from "./StyleTools/SpacingTool";
@@ -24,6 +34,8 @@ export const StyleTools = ({ editor }: { editor: Editor }) => {
     const showChatTextArea = useSelector(
         (state: { tool: ToolState }) => state.tool.showChatTextArea
     );
+
+    if (!editor) return <>...</>
 
     const dispatch = useDispatch();
     return (
@@ -65,7 +77,9 @@ export const StyleTools = ({ editor }: { editor: Editor }) => {
             </div>
             <div
                 className={`bold-tool${editor.isActive('bold') ? " active" : ""}`}
-                onClick={() => editor.chain().focus().toggleBold().run()}
+                onClick={() => {
+                    editor.chain().focus().toggleBold().run();
+                }}
             >
                 <FaBold />
             </div>
