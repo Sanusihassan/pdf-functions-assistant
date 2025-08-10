@@ -37,7 +37,7 @@
     "katex": "^0.16.22",
     "lucide-react": "^0.511.0",
     "pdfequips-footer": "^0.1.7",
-    "pdfequips-navbar": "^3.6.1",
+    "pdfequips-navbar": "^3.6.2",
     "pdfjs-dist": "^4.9.155",
     "pretty-checkbox": "^3.0.3",
     "pretty-checkbox-react": "^3.2.0",
