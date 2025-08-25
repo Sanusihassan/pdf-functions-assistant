@@ -43,7 +43,7 @@ const FileCard = ({
 
   const ICON_LOOKUP: Record<string, string> = {
     ".csv": "csv.png",
-    ".txt": "txt-file.png",
+    ".txt": "prompt.png",
     ".md": "file-markdown.png",
     ".json": "json.png",
   };
