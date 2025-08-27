@@ -173,104 +173,271 @@ a.dropdown-item {
 @import "./scss/style-tools";
 
 
+// Modern chatbot textarea inspired by ChatGPT
 .styled-textarea {
     @include extend("bg-white");
     width: 100%;
-    font-family: "Raleway",
-        sans-serif;
-    min-height: 150px;
-    padding: 0.75rem;
-    border: 1px solid #d1d5db;
-    border-radius: 0.375rem;
-    transition: all 0.3s ease;
+    max-width: 100%;
+
+    &:not(.no-min-width) {
+        min-width: 45ch;
+    }
+
+    font-family: "Inter",
+    "Segoe UI",
+    "Roboto",
+    "Raleway",
+    sans-serif;
+    min-height: 24px;
+    max-height: 200px;
+    padding: 12px 50px 12px 16px; // Extra right padding for submit button
+    border: 1.5px solid #d1d5db;
+    border-radius: 12px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     resize: none;
-    font-size: 0.875rem;
-    color: #333;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #374151;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    overflow-y: auto;
+
+    // Auto-resize behavior
+    field-sizing: content; // Modern CSS for auto-resize (if supported)
 
     &::placeholder {
         color: #9ca3af;
+        font-weight: 400;
     }
 
     &:focus {
         outline: none;
-        border-color: transparent;
-        box-shadow: 0 0 0 2px $main-color;
+        border-color: $main-color;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1),
+            0 1px 3px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
     }
+
+    &:hover:not(:focus) {
+        border-color: #9ca3af;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    // Dark mode support
+    // @media (prefers-color-scheme: dark) {
+    //     background-color: #374151 !important;
+    //     border-color: #4b5563 !important;
+    //     color: #f9fafb;
+
+    //     &::placeholder {
+    //         color: #9ca3af;
+    //     }
+
+    //     &:focus {
+    //         border-color: #60a5fa;
+    //         background-color: #374151;
+    //         box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1),
+    //             0 1px 3px rgba(0, 0, 0, 0.2);
+    //     }
+
+    //     &:hover:not(:focus) {
+    //         border-color: #6b7280;
+    //     }
+    // }
 
     &.overlayed-text-area {
         @include extend("position-fixed");
-        bottom: 5%;
-        width: 75%;
-        z-index: 5;
+        bottom: 24px;
         left: 50%;
-        translate: -50% 0;
+        transform: translateX(-50%);
+        width: min(768px, calc(100vw - 32px)); // Responsive width with max-width
+        z-index: 1000;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+            0 2px 4px -1px rgba(0, 0, 0, 0.06),
+            0 0 0 1px rgba(0, 0, 0, 0.05);
+
+        // Mobile responsive adjustments
+        @media (max-width: 768px) {
+            width: calc(100vw - 24px);
+            bottom: 20px;
+            padding: 14px 50px 14px 16px;
+            font-size: 16px; // Prevent zoom on iOS
+        }
+
+        @media (max-width: 480px) {
+            width: calc(100vw - 16px);
+            bottom: 16px;
+        }
+    }
+}
+
+// Modern submit button with better UX
+.up-arrow-button {
+    @include extend("btn d-flex align-items-center justify-content-center position-absolute");
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 8px;
+    background: linear-gradient(135deg, $main-color 0%, darken($main-color, 10%) 100%);
+    border: none;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    z-index: 1001;
+
+    // Position relative to textarea
+    bottom: 6px;
+    right: 6px;
+
+    // Icon styling
+    svg {
+        width: 18px;
+        height: 18px;
+        color: white;
+        transition: transform 0.15s ease;
+    }
+
+    // Interactive states
+    &:hover:not(:disabled) {
+        background: linear-gradient(135deg, lighten($main-color, 5%) 0%, darken($main-color, 5%) 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(56, 173, 169, 0.3);
+
+        svg {
+            transform: translateY(-1px);
+        }
+    }
+
+    &:active:not(:disabled) {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(56, 173, 169, 0.2);
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(56, 173, 169, 0.4);
+    }
+
+    // Disabled state
+    &:disabled {
+        background: #e5e7eb;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+
+        svg {
+            color: #9ca3af;
+        }
+    }
+
+    // Deep search variant
+    &.deep-search {
+        @include extend("position-fixed");
+        background: rgba(55, 65, 81, 0.8);
+        backdrop-filter: blur(8px);
+        left: calc(50% - 384px + 12px); // Aligned with textarea left edge
+        bottom: 30px;
+        opacity: 0.6;
+        transition: all 0.2s ease;
+
+        &:hover {
+            opacity: 0.9;
+            background: rgba(55, 65, 81, 0.95);
+        }
+
+        &.active {
+            opacity: 1;
+            background: linear-gradient(135deg, $main-color 0%, darken($main-color, 15%) 100%);
+
+            &:hover {
+                background: linear-gradient(135deg, lighten($main-color, 5%) 0%, darken($main-color, 10%) 100%);
+            }
+        }
+
+        // Mobile adjustments
+        @media (max-width: 768px) {
+            left: 12px;
+            bottom: 26px;
+        }
+
+        @media (max-width: 480px) {
+            left: 8px;
+            bottom: 22px;
+            width: 32px;
+            height: 32px;
+
+            svg {
+                width: 16px;
+                height: 16px;
+            }
+        }
+    }
+
+    // Fixed position variant
+    &.fixed {
+        @include extend("position-fixed");
+        right: calc(50% - 384px + 50px); // Aligned with textarea right edge
+        bottom: 30px;
+
+        @media (max-width: 768px) {
+            right: calc((100vw - (100vw - 24px)) / 2 + (100vw - 24px) - 50px);
+        }
+
+        @media (max-width: 480px) {
+            right: calc((100vw - (100vw - 16px)) / 2 + (100vw - 16px) - 44px);
+            width: 32px;
+            height: 32px;
+        }
+    }
+
+    // Loading state animation
+    &.loading {
+        svg {
+            animation: spin 1s linear infinite;
+        }
+    }
+}
+
+// Keyframe for loading animation
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+// Container wrapper for better layout
+.chatbot-input-container {
+    position: relative;
+    width: 100%;
+    max-width: 768px;
+    margin: 0 auto;
+
+    // Ensures proper stacking context
+    &.fixed-container {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1000;
+        width: min(768px, calc(100vw - 32px));
+
+        @media (max-width: 768px) {
+            width: calc(100vw - 24px);
+            bottom: 20px;
+        }
+
+        @media (max-width: 480px) {
+            width: calc(100vw - 16px);
+            bottom: 16px;
+        }
     }
 }
 
 .select-wrapper {
     margin: 10px 0
-}
-
-.up-arrow-button {
-    @include extend("btn d-flex align-items-center justify-content-center position-absolute");
-    bottom: 5.618%;
-    right: 1.618%;
-    width: 32px;
-    height: 32px;
-    z-index: 6;
-
-    &.deep-search {
-        @include extend("position-fixed");
-        z-index: 6;
-        left: 13.618%;
-        opacity: .75;
-
-        &.active {
-            opacity: 1;
-        }
-
-        @include ar-wrapper {
-            left: unset !important;
-            right: calc(100% - 16.618%);
-
-            @include xs {
-                right: 74.618%;
-            }
-        }
-
-        bottom: 6.618%;
-    }
-
-    &.fixed {
-        @include extend("position-fixed");
-        right: 13.618%;
-        bottom: 6.618%;
-    }
-
-    padding: 0;
-    border-radius: 4px;
-    background-color: #38ada9;
-    border: none;
-    transition: all 0.2s ease;
-
-    svg {
-        color: white;
-    }
-
-    &:hover {
-        background-color: darken(#38ada9, 5%);
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
-
-    &:active {
-        transform: translateY(1px);
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    }
-
-    &:focus {
-        outline: none;
-        box-shadow: 0 0 0 2px rgba(56, 173, 169, 0.4);
-    }
 }
 
 

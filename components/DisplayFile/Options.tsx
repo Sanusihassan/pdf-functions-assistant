@@ -108,7 +108,7 @@ const Options = ({ content, errors }: OptionsProps) => {
 
       <textarea
         placeholder={placeholder}
-        className="styled-textarea"
+        className="styled-textarea no-min-width"
         onChange={(e) => dispatch(setField({ prompt: e.target.value }))}
         value={prompt}
       />

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useFileStore } from "../../src/file-store";
 import { type ToolState, setField } from "../../src/store";
 import type { edit_page, errors } from "../../src/content";
-import { getUserSubscription, SubscriptionPlan } from "fetch-subscription-status";
+import { getAITokens, getUserSubscription, SubscriptionPlan } from "fetch-subscription-status";
 import { trackSubscriptionUsage } from "../../src/trackSubscriptionUsage";
 import type { JSX, RefObject } from "react";
 
@@ -43,6 +43,7 @@ export function SubmitBtn({
         dispatch(setField({ showOptions: false }));
         // Get subscription status
         const { isActive: status, subscription } = await getUserSubscription();
+        // const aiTokens = await getAITokens(userid)
         dispatch(setField({ subscriptionAndStatus: { status, subscription } }));
         if (process.env.NODE_ENV === "development") {
           submitBtn?.current?.click();
