@@ -338,7 +338,7 @@ export async function getNthPageAsImage(
 
 
 
-export async function analyzePDF(pdfFile) {
+export async function analyzePDF(pdfFile: File) {
   try {
     // Load PDF from File or Blob object
     const data = await pdfFile.arrayBuffer();

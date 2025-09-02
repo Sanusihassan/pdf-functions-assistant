@@ -3,14 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { useFileStore } from "../../src/file-store";
 import { type ToolState, setField } from "../../src/store";
 import type { edit_page, errors } from "../../src/content";
-import { getAITokens, getUserSubscription, SubscriptionPlan } from "fetch-subscription-status";
-import { trackSubscriptionUsage } from "../../src/trackSubscriptionUsage";
+import { getAITokens, getUserInfo, getUserSubscription } from "fetch-subscription-status";
 import type { JSX, RefObject } from "react";
 
 export function SubmitBtn({
   k,
-  edit_page,
-  errors
+  edit_page
 }: {
   k: string;
   edit_page: edit_page;
@@ -43,34 +41,17 @@ export function SubmitBtn({
         dispatch(setField({ showOptions: false }));
         // Get subscription status
         const { isActive: status, subscription } = await getUserSubscription();
-        // const aiTokens = await getAITokens(userid)
+        const user = await getUserInfo();
+        const aiTokens = user ? await getAITokens(user.id) : 0;
         dispatch(setField({ subscriptionAndStatus: { status, subscription } }));
         if (process.env.NODE_ENV === "development") {
           submitBtn?.current?.click();
           return;
         }
         // Redirect to pricing if no active subscription
-        if (!status) {
+        if (!status || aiTokens === 0) {
           location.href = "/pricing";
           return;
-        }
-
-        // Check if trial plan and apply limits
-        if (subscription?.plan === SubscriptionPlan.TRIAL) {
-          // Track usage to see if trial limit is reached
-          const allowUsage = trackSubscriptionUsage(
-            subscription.plan,
-            pageCount
-          );
-
-          if (!allowUsage) {
-            // Show error message if usage limit is reached
-            dispatch(setField({
-              errorMessage: errors.ERR_MAX_USAGE.message,
-              isSubmitted: false // Reset submission state
-            }));
-            return;
-          }
         }
 
         // Proceed with submission if checks pass

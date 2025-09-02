@@ -63,6 +63,7 @@ const Options = ({ content, errors }: OptionsProps) => {
   const placeholder = strategy ? content.placeholders[strategy] : content.placeholder;
 
   const selectOptions = [
+    { value: "auto", label: content.labels.auto },
     { value: "script", label: content.labels.script },
     { value: "content", label: content.labels.content },
     { value: "generate", label: content.labels.generate },

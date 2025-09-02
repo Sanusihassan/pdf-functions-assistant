@@ -94,6 +94,7 @@ export const FileInputForm: React.FC<FileInputFormProps> = ({
 
   return (
     <form
+      suppressHydrationWarning={true}
       onClick={(e) => {
         e.stopPropagation();
       }}
@@ -187,7 +188,6 @@ export const FileInputForm: React.FC<FileInputFormProps> = ({
         aria-label="submit"
         onClick={(e) => {
           e.preventDefault();
-          e.stopPropagation(); // Also add this for extra safety
           const textFile = new File([prompt], "prompt.txt", {
             type: "text/plain"
           });

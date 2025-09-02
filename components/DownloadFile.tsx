@@ -7,7 +7,6 @@ import type { downloadFile, errors } from "../src/content";
 import { useEffect } from "react";
 import { useFileStore } from "../src/file-store";
 import MarkdownViewer from "./MarkdownViewer";
-import { getRemainingUsage, trackSubscriptionUsage } from "../src/trackSubscriptionUsage";
 import { HTMLViewer } from "./HTMLViewer";
 
 const DownloadFile = ({
@@ -53,19 +52,6 @@ const DownloadFile = ({
       return;
     }
 
-    // Track usage when download button is clicked
-    const allowUsage = trackSubscriptionUsage(
-      subscriptionAndStatus.subscription.plan,
-      pageCount
-    );
-
-    if (!allowUsage) {
-      // Show error message if usage limit is reached
-      dispatch(setField({
-        errorMessage: errors.ERR_MAX_USAGE.message
-      }));
-      return;
-    }
 
     // Trigger the download if usage is allowed
     if (downloadBtn?.current) {
@@ -73,10 +59,6 @@ const DownloadFile = ({
     }
   };
 
-  // Get remaining usage for display
-  const remainingUsage = subscriptionAndStatus?.subscription
-    ? getRemainingUsage(subscriptionAndStatus.subscription.plan)
-    : null;
 
   if (mdResponse || htmlResponse) {
     return (

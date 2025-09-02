@@ -110,7 +110,8 @@ export const edit_page = {
       script: "Perform a task",
       content: "Ask about your document",
       generate: "Create a document",
-      advancedSearch: "Advanced search"
+      advancedSearch: "Advanced search",
+      auto: "Auto (AI chooses)"
     },
     ocr_placeholder: "Select Languages",
     ocr_warning: "Add the document's language to get more accurate results."

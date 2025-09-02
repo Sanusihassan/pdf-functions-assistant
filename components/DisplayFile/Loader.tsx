@@ -1,9 +1,22 @@
-// import { Spinner } from "react-bootstrap";
+import { useEffect } from "react";
 
-// this is a loader component instead of spinners i want to use a placeholder
-export const Loader = ({ loader_text }: { loader_text: string }) => (
-  <div className="loader">
-    {/* <Spinner as="span" animation="grow" role="status" aria-hidden="true" />{" "} */}
-    <div className="inner-loader">{loader_text}</div>
-  </div>
-);
+// Loader.tsx
+interface LoaderProps {
+  loader_text: string;
+  width?: number;
+  height?: number;
+}
+
+export const Loader = ({ loader_text, width = 392, height = 392 }: LoaderProps) => {
+
+  useEffect(() => {
+  }, [width, height])
+  return (
+    <div
+      className="loader"
+      style={width && height ? { width: `${width}px !important`, height: `${height}px !important` } : undefined}
+    >
+      <div className="inner-loader">{loader_text}</div>
+    </div>
+  )
+};

@@ -6,6 +6,43 @@ import { resetErrorMessage, setField } from "../store";
 import type { Action, Dispatch } from "@reduxjs/toolkit/react";
 import io from "socket.io-client";
 
+// dev:
+export async function parseError(error: unknown): Promise<any> {
+  try {
+    // Case 1: Fetch Response
+    if (error instanceof Response) {
+      const buffer = await error.arrayBuffer();
+      const text = new TextDecoder().decode(buffer);
+      return tryParseJson(text);
+    }
+
+    // Case 2: ArrayBuffer directly
+    if (error instanceof ArrayBuffer) {
+      const text = new TextDecoder().decode(error);
+      return tryParseJson(text);
+    }
+
+    // Case 3: Normal Error object
+    if (error instanceof Error) {
+      return { message: error.message, stack: error.stack };
+    }
+
+    // Case 4: Anything else (fallback)
+    return error;
+  } catch (e) {
+    return { message: "Failed to parse error", original: error, parseError: e };
+  }
+}
+
+function tryParseJson(text: string) {
+  try {
+    return JSON.parse(text);
+  } catch {
+    return { raw: text }; // return as text if not JSON
+  }
+}
+
+
 // Global socket reference to maintain connection across components
 let globalSocket: any = null;
 
@@ -40,7 +77,7 @@ export const handleUpload = async (
       // Initialize WebSocket connection if not already connected
       if (!globalSocket || !globalSocket.connected) {
         const socketUrl = process.env.NODE_ENV === "development"
-          ? "https://www.pdfequips.com"
+          ? process.env.DEV_ENDPOINT
           : `https://${window.location.host}`;
 
         globalSocket = io(`${socketUrl}/html`);
@@ -175,11 +212,15 @@ export const handleUpload = async (
   formData.append("selectedLanguages", JSON.stringify(state.selectedLanguages));
 
   let url: string;
+  // Instead of process.env.DEV_ENDPOINT
+  console.log("DEV_ENDPOINT", import.meta.env.DEV_ENDPOINT);
+  console.log("NODE_ENV", import.meta.env.NODE_ENV);
   if (process.env.NODE_ENV === "development") {
-    url = `https://www.pdfequips.com/api/assistant`;
+    url = `${import.meta.env.PUBLIC_DEV_ENDPOINT!}/api/assistant`;
   } else {
     url = `/api/${state.path}`;
   }
+
 
   if (state.errorMessage) {
     return;
@@ -291,7 +332,10 @@ export const handleUpload = async (
       dispatch(resetErrorMessage());
       dispatch(setField({ isSubmitted: false }));
     }
-  } catch (error) {
+  } catch (error: any) {
+    // the error object is an array buffer json object that can't be simply logged:
+    const _error = await parseError(error.response.data);
+    console.log("error", _error);
     if ((error as { code: string }).code === "ERR_NETWORK") {
       dispatch(setField({ errorMessage: errors.ERR_NETWORK.message }));
       return;
